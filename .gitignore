@@ -28,6 +28,8 @@ Thumbs.db
 # ---- Generated imagery ----
 # Source photographs and generated artwork are large binaries that git cannot delta-compress, and the raw camera files include unpublished photographs of a real child. The whole directory stays local; finished imagery reaches the site as web-optimised assets under frontend/public/.
 output/**
+# Keep local lossless generation masters out of history; the homepage ships their web-optimised WebP derivatives.
+frontend/public/images/home/*.png
 
 # ---- Browser-automation artefacts ----
 # Debug captures from Playwright runs. Regenerate them rather than version them.
