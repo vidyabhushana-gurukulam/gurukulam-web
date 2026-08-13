@@ -1,113 +1,137 @@
 /*
   src/components/layout/MobileDrawer.tsx
-  Replaces jquery.meanmenu. Slide-in panel with collapsible submenus, a backdrop, and
-  body-scroll locking while open (the theme toggles a `.locked` class for the same reason).
+  Provides an accessible small-screen drawer with temporarily non-interactive sitemap labels, focus management, and keyboard dismissal.
 */
-import { useEffect, useState } from "react";
+
+import { useEffect, useRef } from "react";
 import { NAV } from "@/data/nav";
 import { Logo } from "@/components/ui/Logo";
-import { Button } from "@/components/ui/Button";
 
 type MobileDrawerProps = {
   open: boolean;
   onClose: () => void;
 };
 
-export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
-  const [expanded, setExpanded] = useState<string | null>(null);
+const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-  // Lock background scrolling while the drawer is open, and restore on close/unmount.
+export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
+  const panelRef = useRef<HTMLElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+
+    previouslyFocusedRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const focusFrame = window.requestAnimationFrame(() => closeButtonRef.current?.focus());
+
     return () => {
-      document.body.style.overflow = "";
+      window.cancelAnimationFrame(focusFrame);
+      document.body.style.overflow = previousOverflow;
+      previouslyFocusedRef.current?.focus();
     };
   }, [open]);
 
-  // Escape closes the drawer — meanmenu had no keyboard path at all.
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+      const focusableElements = Array.from(panelRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR) ?? []);
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements.at(-1);
+      if (!firstElement || !lastElement) return;
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [open, onClose]);
 
   return (
     <>
-      <div
-        onClick={onClose}
+      <button
+        type="button"
+        tabIndex={-1}
+        aria-label="Close navigation menu"
         aria-hidden="true"
-        className={`fixed inset-0 z-[60] bg-header/45 transition-opacity duration-(--default-transition-duration) xl:hidden ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
+        onClick={onClose}
+        className={`fixed inset-0 z-[60] bg-header/45 transition-opacity duration-(--default-transition-duration) xl:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
       />
 
       <aside
-        className={`fixed inset-y-0 right-0 z-[70] flex w-[min(340px,88vw)] flex-col overflow-y-auto bg-white p-6 shadow-card transition-transform duration-(--default-transition-duration) xl:hidden ${
-          open ? "translate-x-0" : "translate-x-full"
-        }`}
+        ref={panelRef}
+        id="mobile-navigation"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="mobile-navigation-title"
+        aria-hidden={!open}
+        inert={!open}
+        className={`fixed inset-y-0 right-0 z-[70] flex w-[min(360px,90vw)] flex-col overflow-y-auto border-l border-border/30 bg-bg-panel p-6 shadow-card transition-[transform,visibility] duration-(--default-transition-duration) xl:hidden ${open ? "visible translate-x-0" : "invisible translate-x-full"}`}
       >
-        <div className="mb-8 flex items-center justify-between">
+        <div className="mb-8 flex items-center justify-between gap-4">
           <Logo />
           <button
+            ref={closeButtonRef}
             type="button"
-            aria-label="Close menu"
+            aria-label="Close navigation menu"
             onClick={onClose}
-            className="size-10 rounded-full text-3xl leading-none text-header transition-colors hover:text-theme"
+            className="group/close grid size-10 shrink-0 place-items-center rounded-full border border-border/40 text-header transition-[border-color,transform] duration-(--default-transition-duration) hover:rotate-3 hover:border-theme focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header"
           >
-            ×
+            <svg viewBox="0 0 24 24" className="size-5" aria-hidden="true">
+              <path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+            </svg>
           </button>
         </div>
 
-        <nav className="flex flex-col">
-          {NAV.map((item) => {
-            const isOpen = expanded === item.label;
+        <h2 id="mobile-navigation-title" className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-theme">
+          Menu
+        </h2>
 
-            return (
-              <div key={item.label} className="border-b border-[color-mix(in_srgb,var(--color-header)_10%,white)]">
-                <button
-                  type="button"
-                  onClick={() => (item.children ? setExpanded(isOpen ? null : item.label) : onClose())}
-                  aria-expanded={item.children ? isOpen : undefined}
-                  className="flex w-full items-center justify-between py-4 text-left font-heading text-[17px] font-bold text-header"
-                >
+        <nav aria-label="Mobile navigation">
+          <ul className="flex flex-col">
+            {NAV.map((item) => (
+              <li key={item.label} className="border-b border-border/25">
+                <span aria-disabled="true" className="flex cursor-default items-center py-4 font-heading text-lg font-semibold text-header/75">
                   {item.label}
-                  {item.children && (
-                    <span className={`text-xl transition-transform duration-200 ${isOpen ? "rotate-45 text-theme" : ""}`}>
-                      +
-                    </span>
-                  )}
-                </button>
+                </span>
 
-                {item.children && (
-                  <div
-                    className="grid transition-[grid-template-rows] duration-(--default-transition-duration)"
-                    style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
-                  >
-                    <div className="overflow-hidden">
-                      <div className="flex flex-col pb-3 pl-3">
-                        {item.children.map((child) => (
-                          <a
-                            key={child.label}
-                            href={child.href}
-                            onClick={onClose}
-                            className="py-2 text-[15px] text-text transition-colors hover:text-theme"
-                          >
-                            {child.label}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                {!!item.children?.length && (
+                  <ul className="mb-3 border-l border-border/30 pl-4">
+                    {item.children.map((child) => (
+                      <li key={child.label}>
+                        <span aria-disabled="true" className="block cursor-default py-2 text-[0.95rem] text-text/70">
+                          {child.label}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 )}
-              </div>
-            );
-          })}
+              </li>
+            ))}
+          </ul>
         </nav>
 
-        <Button href="/contact" className="mt-8 justify-center">
-          Get In Touch
-        </Button>
+        <a href="#admissions" onClick={onClose} className="mt-8 inline-flex items-center justify-center rounded-full bg-header px-7 py-4 font-body text-[1.05rem] font-semibold leading-none text-white transition-[transform,box-shadow] duration-(--default-transition-duration) ease-(--ease-out-back) hover:translate-y-(--hover-lift-sm) hover:shadow-(--shadow-hover) focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header">
+          Admission Enquiry
+        </a>
+
+        <p className="mt-auto pt-10 text-sm text-text">Vadodara, Gujarat</p>
       </aside>
     </>
   );

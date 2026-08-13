@@ -1,13 +1,7 @@
 /*
   src/components/motion/SplitHeading.tsx
-  Character-level heading reveal, ported 1:1 from the theme's main.js (lines 961-1038).
-  Two variants exist in the original: "subtitle" (the small script eyebrow) and "title"
-  (the large section heading), which differ in start opacity, direction and trigger point.
-
-  Two behaviours from the original are deliberately preserved:
-  - Gated to >=1200px via gsap.matchMedia. Splitting text on mobile breaks reflow and
-    makes the heading unreadable to screen readers, so small screens get static text.
-  - The split is reverted on cleanup, restoring the original DOM.
+  Provides the character-level reveal used by display headings while preserving readable static text on smaller screens.
+  The split waits for web fonts and is reverted during cleanup so reflow and accessibility remain reliable.
 */
 import { useRef, type ElementType, type ReactNode } from "react";
 import { useGSAP } from "@gsap/react";
@@ -36,10 +30,7 @@ export function SplitHeading({ children, as, className, variant = "title" }: Spl
       mm.add(SPLIT_BREAKPOINT, () => {
         let split: SplitText | null = null;
 
-        /*
-          Split only after webfonts settle. Quicksand loads async, and splitting against
-          the fallback metrics leaves characters visibly misplaced when the real font swaps in.
-        */
+        // Wait for Playfair Display so the split uses the final glyph metrics instead of the fallback serif.
         const run = () => {
           split = new SplitText(el, { type: "lines,words,chars", linesClass: "split-line" });
 
@@ -52,7 +43,11 @@ export function SplitHeading({ children, as, className, variant = "title" }: Spl
           ScrollTrigger.refresh();
         };
 
-        document.fonts?.ready.then(run) ?? run();
+        if (document.fonts) {
+          void document.fonts.ready.then(run);
+        } else {
+          run();
+        }
 
         return () => split?.revert();
       });

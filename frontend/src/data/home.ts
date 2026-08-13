@@ -1,198 +1,339 @@
 /*
   src/data/home.ts
-  All copy and imagery for the home page, in one place. Sections render from these
-  arrays rather than hardcoding content, so swapping Kidzu's placeholder text for
-  Vidyabhushana Gurukulam's real content is an edit here and nowhere else.
-  Copy is transcribed from the Kidzu demo for replica fidelity.
+  Approved homepage content for Vidyabhushana Gurukulam.
+  Keeps institutional claims, curriculum wording, and image attribution in one typed source.
 */
 
-export const HERO = {
-  eyebrow: "A Safe, Joyful Learning Environment.",
-  title: "Nurturing Young Minds\nfor a Bright Future",
-  body: "We are a caring kindergarten & school dedicated to building strong foundations through play-based and academic learning.",
-  primaryCta: { label: "Enroll Now", href: "/contact" },
-  secondaryCta: { label: "Book A Visit", href: "/contact" },
-  image: "/assets/images/hero/hero-3-1.webp",
+export interface ContentLink {
+  label: string;
+  href: string;
+}
+
+export interface SectionItem {
+  title: string;
+  body: string;
+}
+
+export interface SiteContent {
+  name: string;
+  shortName: string;
+  location: string;
+  description: string;
+  admissions: string;
+  contactHref: string;
+  experience: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    stat: string;
+    statLabel: string;
+  };
+}
+
+export interface HeroContent {
+  eyebrow: string;
+  title: string;
+  body: string;
+  primaryCta: ContentLink;
+  secondaryCta: ContentLink;
+  image: string;
+  imageAlt: string;
+}
+
+export interface Pillar extends SectionItem {
+  icon: string;
+}
+
+export interface DailyRhythmContent {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  groups: Array<{
+    label: string;
+    timing: string;
+    note: string;
+  }>;
+  slots: Array<{
+    time: string;
+    title: string;
+    body: string;
+  }>;
+}
+
+export interface PanchaKoshaContent {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  items: Array<{
+    name: string;
+    dimension: string;
+    activities: string;
+    accent: string;
+  }>;
+}
+
+export interface QualitiesContent {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  items: string[];
+  cta: ContentLink;
+}
+
+export interface FarmVisitContent {
+  eyebrow: string;
+  title: string;
+  body: string;
+  note: string;
+}
+
+export interface SubjectGroup {
+  area: string;
+  subjects: string[];
+}
+
+export interface GalleryContent {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  items: Array<{
+    src: string;
+    alt: string;
+    caption: string;
+  }>;
+}
+
+export interface FacilitiesContent {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  available: SectionItem[];
+  planned: SectionItem[];
+}
+
+export interface AdmissionsContent {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  items: Array<SectionItem & { step: string }>;
+}
+
+export interface FinalCtaContent {
+  eyebrow: string;
+  title: string;
+  body: string;
+  primaryCta: ContentLink;
+  secondaryCta: ContentLink;
+}
+
+export interface FooterContent {
+  blurb: string;
+  address: string;
+  links: ContentLink[];
+  admissions: string;
+}
+
+export const SITE: SiteContent = {
+  name: "Vidyabhushana Gurukulam",
+  shortName: "Vidyabhushana",
+  location: "Vadodara, Gujarat, India",
+  description: "An English-medium GSEB day school bringing an NCERT-based academic education together with a Vedic and cultural curriculum.",
+  admissions: "First batch begins June 2027 · Pre-primary to Class 5",
+  contactHref: "#contact",
+  experience: {
+    eyebrow: "The people behind the Gurukulam",
+    title: "Five years of teaching, carried forward with care",
+    body: "Before founding Vidyabhushana Gurukulam, our founding team taught around 300 children in Vadodara over five years through a separately managed Sunday school.",
+    stat: "Around 300",
+    statLabel: "children taught by our founding team over five years",
+  },
 };
 
-export const FEATURES = [
-  { label: "Active Learning", icon: "/assets/icons/icon-1.svg", tint: "var(--color-bg-blush)" },
-  { label: "Expert Teachers", icon: "/assets/icons/icon-2.svg", tint: "var(--color-bg-lavender)" },
-  { label: "100% Safe Campus", icon: "/assets/icons/icon-3.svg", tint: "var(--color-bg-sky)" },
-  { label: "Modern Curriculum", icon: "/assets/icons/icon-4.svg", tint: "var(--color-bg-rose)" },
-];
-
-export const ABOUT = {
-  eyebrow: "About Us",
-  title: "Inspire Growth Through Learning Daily",
-  lead: "We are a caring kindergarten & school dedicated to building strong foundations through play-based and academic learning.",
-  points: ["Child-Friendly Learning Environment", "Focus on child-friendly, safe, & quality education"],
-  body: "At Kidzu, our aim is to give everyone a chance to learn a new language. Our skilled team creates fun and useful lessons so each student can reach their goals. We're here to help you gain skills for both work and life.",
-  cta: { label: "Know More", href: "/about-page-01" },
-  phone: "+11 123 0654 98",
-  image: "/assets/images/about/about-1.webp",
+export const HERO: HeroContent = {
+  eyebrow: "Admission enquiries · First batch June 2027",
+  title: "Vedic knowledge with modern science.",
+  body: "A new English-medium GSEB day school in Vadodara, opening from pre-primary to Class 5.",
+  primaryCta: { label: "Enquire for Admission", href: "#admissions" },
+  secondaryCta: { label: "Explore Our Approach", href: "#approach" },
+  image: "/images/home/hero-child.webp",
+  imageAlt: "A child taught by the Vidyabhushana Gurukulam founding team",
 };
 
-export const PROGRAMS = [
+export const PILLARS: Pillar[] = [
   {
-    title: "Kindergarten Program",
-    age: "10–12 years",
-    body: "Help your child thrive in social situations! This course teaches children how to...",
-    duration: "4 Hours 35 Minutes",
-    image: "/assets/images/programs/program-01.jpg",
-    tint: "var(--color-bg-lavender)",
+    icon: "01",
+    title: "Rooted in Vedic learning",
+    body: "Vedic education, sadhana, scripture, Sanskrit, spiritual culture, and devotional practice provide a grounding for the child's education.",
   },
   {
-    title: "Nursery Program",
-    age: "7–10 years",
-    body: "Consectetur adipisicing elit, sed do eiusmod tempor is incididunt ut labore et dolore...",
-    duration: "5 Hours 30 Minutes",
-    image: "/assets/images/programs/program-02.jpg",
-    tint: "var(--color-bg-cream)",
+    icon: "02",
+    title: "Serious NCERT academics",
+    body: "For Classes 1–5, six hours each day are dedicated to NCERT academics taught for understanding through visual projects and 3D models.",
   },
   {
-    title: "Play Group Program",
-    age: "3–5 years",
-    body: "Get moving and feel amazing! This energetic course introduces children to the importance...",
-    duration: "3 Hours 35 Minutes",
-    image: "/assets/images/programs/program-03.jpg",
-    tint: "var(--color-bg-sky)",
+    icon: "03",
+    title: "Whole-child development",
+    body: "Pancha Kosha Vikas brings the body, energy, mind, intellect, and bliss into one coherent education.",
   },
 ];
 
-export const CHOOSE_US = {
-  eyebrow: "Why Choose Us",
-  title: "Why Choose Our School",
-  tabs: [
-    {
-      label: "Our Facilities",
-      body: "Qualified teachers who understand children's needs and focus on personal attention through play-based and academic learning.",
-      points: [
-        "Experienced & caring teachers",
-        "Safe & friendly environment",
-        "Modern learning methods",
-        "Focus on moral & social values",
-      ],
-    },
-    {
-      label: "Curriculum & Learning",
-      body: "A balanced curriculum blending structured academics with guided play, so children build confidence alongside competence.",
-      points: [
-        "Play-based early years",
-        "Phonics & numeracy foundations",
-        "Creative and physical development",
-        "Regular progress sharing",
-      ],
-    },
-    {
-      label: "Mission & Vision",
-      body: "We want every child to leave us curious, kind and capable — grounded in values and ready for the next stage.",
-      points: [
-        "Character before achievement",
-        "Small class sizes",
-        "Partnership with parents",
-        "Lifelong love of learning",
-      ],
-    },
+export const DAILY_RHYTHM: DailyRhythmContent = {
+  eyebrow: "A day at the Gurukulam",
+  title: "Grounding first. Academics in depth. Movement to close.",
+  lead: "Classes 1–5 follow a full-day rhythm in which Vedic education comes first, NCERT academics receive the largest block, and Kreeda completes the day.",
+  groups: [
+    { label: "Pre-primary", timing: "09:00–12:00", note: "A separate shorter day." },
+    { label: "Classes 1–5", timing: "08:00–17:00", note: "The three-part full-day rhythm shown below." },
   ],
-  cta: { primary: "Enroll Now", secondary: "Book A Visit" },
-};
-
-export const STATS = [
-  { value: 100, suffix: "%", label: "Smart Classrooms", tint: "var(--color-bg-cream)" },
-  { value: 95, suffix: "%", label: "Safe Playground", tint: "var(--color-bg-sky)" },
-  { value: 100, suffix: "%", label: "Child Security", tint: "var(--color-bg-lavender)" },
-  { value: 99, suffix: "%", label: "Clean Environment", tint: "var(--color-bg-blush)" },
-];
-
-export const ACTIVITIES = [
-  {
-    no: "01",
-    title: "Art & Craft",
-    body: "Qualified teachers who understand children's needs and focus on personal attention. through play-based and academic learning.",
-    image: "/assets/images/sections/activities-image-1.jpg",
-  },
-  {
-    no: "02",
-    title: "Music & Dance",
-    body: "Qualified teachers who understand children's needs and focus on personal attention. through play-based and academic learning.",
-    image: "/assets/images/sections/activities-image-2-1.jpg",
-  },
-  {
-    no: "03",
-    title: "Sports & Games",
-    body: "Qualified teachers who understand children's needs and focus on personal attention. through play-based and academic learning.",
-    image: "/assets/images/sections/activities-image-3-1.jpg",
-  },
-];
-
-export const SCHEDULE = {
-  eyebrow: "Daily Schedule",
-  title: "Our Daily Schedule",
-  groups: ["Play Group", "Nursery Group", "Kindergarten (KG)"],
   slots: [
-    { time: "7:00 - 8:00", body: "Amet, in vitae, mauris volutpat. Fermentum rhoncus sed morbi feugiat.", tint: "var(--color-bg-cream)" },
-    { time: "8:00 - 8:30", body: "Amet, in vitae, mauris volutpat. Fermentum rhoncus sed morbi feugiat.", tint: "var(--color-bg-lavender)" },
-    { time: "8:30 - 10:30", body: "Amet, in vitae, mauris volutpat. Fermentum rhoncus sed morbi feugiat.", tint: "var(--color-bg-blush)" },
-    { time: "10:30 - 12:00", body: "Amet, in vitae, mauris volutpat. Fermentum rhoncus sed morbi feugiat.", tint: "var(--color-bg-sky)" },
+    { time: "08:00–10:00", title: "Vedic education", body: "The full day begins with the Gurukulam's Vedic and cultural curriculum." },
+    { time: "10:00–16:00", title: "NCERT academics", body: "Six focused hours taught for understanding, including visual projects and 3D models." },
+    { time: "16:00–17:00", title: "Kreeda / sports", body: "Physical activity completes the day." },
   ],
 };
 
-export const TEACHERS = [
-  { name: "Brian Marsh", role: "Senior Teacher", image: "/assets/images/teachers/team-1.png", tint: "#E8398B" },
-  { name: "Dawson Timms", role: "Sports Teacher", image: "/assets/images/teachers/team-2.png", tint: "#1B5A96" },
-  { name: "Michele Bailey", role: "Principle", image: "/assets/images/teachers/team-3.png", tint: "#4FC3F7" },
-  { name: "Scarlett Audrey", role: "Senior Teacher", image: "/assets/images/teachers/team-5.png", tint: "#D98E56" },
+export const PANCHA_KOSHA: PanchaKoshaContent = {
+  eyebrow: "Pancha Kosha Vikas",
+  title: "Five dimensions of the child's development",
+  lead: "The Gurukulam's organising framework connects every dimension to the subjects, practices, and rhythm of school life.",
+  items: [
+    { name: "Annamaya", dimension: "Body", activities: "Kreeda, Martial Arts, Krishi", accent: "#C9A227" },
+    { name: "Pranamaya", dimension: "Energy", activities: "Yoga, pranayama, daily rhythm", accent: "#1B3057" },
+    { name: "Manomaya", dimension: "Mind", activities: "Sangeet, Nritya, Kala", accent: "#C9A227" },
+    { name: "Vijnanamaya", dimension: "Intellect", activities: "NCERT, Sanskrit, Vedic Mathematics, Scriptures", accent: "#1B3057" },
+    { name: "Anandamaya", dimension: "Bliss", activities: "Sadhana, Seva, kirtan", accent: "#C9A227" },
+  ],
+};
+
+export const QUALITIES: QualitiesContent = {
+  eyebrow: "Character and values",
+  title: "The 30 Qualities of Humans",
+  lead: "The complete stakeholder-supplied framework is preserved here in its canonical wording as part of the Gurukulam's approach to character development.",
+  items: [
+    "Truthfulness",
+    "Mercy",
+    "Austerity (observing fasts on certain days of the month)",
+    "Bathing twice a day",
+    "Tolerance",
+    "Discrimination between right and wrong",
+    "Control of the mind",
+    "Control of the senses",
+    "Non-violence",
+    "Celibacy",
+    "Charity",
+    "Reading of scripture",
+    "Simplicity",
+    "Satisfaction",
+    "Rendering service to saintly persons",
+    "Gradually taking leave of unnecessary engagements",
+    "Observing the futility of the unnecessary activities of human society",
+    "Remaining silent and grave and avoiding unnecessary talk",
+    "Considering whether one is the body or the soul",
+    "Distributing food equally to all living entities (both men and animals)",
+    "Seeing every soul (especially in the human form) as a part of the Supreme Lord",
+    "Hearing about the activities and instructions given by the Supreme Personality of Godhead",
+    "Chanting about these activities and instructions",
+    "Always remembering these activities and instructions",
+    "Trying to render service",
+    "Performing worship",
+    "Offering obeisances",
+    "Becoming a servant",
+    "Becoming a friend",
+    "Surrendering one's whole self",
+  ],
+  cta: { label: "Explore the 30 Qualities", href: "#qualities" },
+};
+
+export const FARM_VISIT: FarmVisitContent = {
+  eyebrow: "Learning through practical service",
+  title: "Once a week, the classroom is a farm",
+  body: "Children take part in Krishi and Gau Seva through a weekly visit to a separate farm.",
+  note: "The farm is off campus; the Gurukulam does not have a goshala or farmland on its school grounds.",
+};
+
+export const SUBJECT_GROUPS: SubjectGroup[] = [
+  { area: "Academic core", subjects: ["NCERT-based syllabus"] },
+  { area: "Languages", subjects: ["Sanskrit", "English", "Gujarati", "Hindi"] },
+  { area: "Mathematics", subjects: ["Vedic Mathematics"] },
+  { area: "Arts", subjects: ["Sangeet", "Nritya", "Kala"] },
+  { area: "Physical", subjects: ["Kreeda", "Martial Arts"] },
+  { area: "Practical / seva", subjects: ["Krishi", "Gau Seva"] },
+  { area: "Character & culture", subjects: ["Spiritual Culture", "Value Based Education"] },
+  { area: "Practice", subjects: ["Sadhana", "Seva", "Sadachar"] },
+  { area: "Frameworks", subjects: ["30 Qualities of Humans", "Pancha Kosha Vikas of the Child"] },
+  { area: "Scriptures", subjects: ["Mahabharata", "Ramayana", "Bhagavad-gita", "Srimad-Bhagavatam"] },
+  { area: "Moral literature", subjects: ["Panchatantra", "Hitopadesha"] },
 ];
 
-export const FAQ = {
-  eyebrow: "Faq",
-  title: "Frequently Ask Question",
-  lead: "Qualified teachers who understand children's needs and focus on personal attention. through play-based and academic learning.",
+export const GALLERY: GalleryContent = {
+  eyebrow: "Learning in view",
+  title: "Children our founding team has taught",
+  lead: "These photographs show children taught by our founding team through their separately managed Sunday-school work in Vadodara; they are not current Vidyabhushana Gurukulam students.",
   items: [
     {
-      q: "What Age Can My Child Enroll?",
-      a: "School runs from morning to early afternoon, Sunday to Thursday. and focus on personal attention. through play-based and academic learning.",
+      src: "/images/home/founding-team-group.webp",
+      alt: "Children taught by the founding team gathered for a group photograph",
+      caption: "Children taught by the founding team during their earlier, separately managed Sunday-school work in Vadodara.",
     },
     {
-      q: "What Is The School Timing?",
-      a: "Classes run from 7:00 in the morning through to early afternoon, with optional extended care available on request.",
+      src: "/images/home/nritya.webp",
+      alt: "Children taught by the founding team taking part in Nritya",
+      caption: "Nritya with children taught by the founding team before the Gurukulam opens.",
     },
     {
-      q: "Is Transportation Service Available?",
-      a: "Yes — we operate supervised transport across the main residential routes, with a dedicated attendant on every vehicle.",
-    },
-    {
-      q: "How Can I Apply For Admission?",
-      a: "Book a visit through the enquiry form, tour the campus, and our admissions team will guide you through the paperwork.",
+      src: "/images/home/kirtan.webp",
+      alt: "Children taught by the founding team taking part in kirtan",
+      caption: "Kirtan with children taught by the founding team before the Gurukulam opens.",
     },
   ],
-  image: "/assets/images/sections/faq-image.webp",
 };
 
-export const TESTIMONIALS = [
-  { name: "Parent of Nursery Student", body: "This school has provided a safe, caring, and joyful environment for my child. The teachers are very supportive and attentive.", avatar: "/assets/images/testimonials/client-1.png" },
-  { name: "Parent of Nursery Student", body: "This school has provided a safe, caring, and joyful environment for my child. The teachers are very supportive and attentive.", avatar: "/assets/images/testimonials/client-2.png" },
-  { name: "Parent of Nursery Student", body: "This school has provided a safe, caring, and joyful environment for my child. The teachers are very supportive and attentive.", avatar: "/assets/images/testimonials/client-3.png" },
-  { name: "Parent of Nursery Student", body: "This school has provided a safe, caring, and joyful environment for my child. The teachers are very supportive and attentive.", avatar: "/assets/images/testimonials/client-4.png" },
-];
-
-export const BLOG = [
-  { title: "Understanding Your Child's Online Life", date: "28 Apr, 2026", comments: 0, image: "/assets/images/blog/blog-post-1.webp" },
-  { title: "What It's Like to Be a Kid on the Internet Today", date: "28 Apr, 2026", comments: 0, image: "/assets/images/blog/blog-post-2.webp" },
-  { title: "That jerk form finance really me", date: "19 Dec, 2025", comments: 0, image: "/assets/images/blog/blog-post-3.webp" },
-];
-
-/* The demo ships no brand-1; its slot is filled by the brand-4-1 variant. */
-export const BRANDS = ["4-1", 2, 3, 4, 5, 6, 7].map((n, i) => ({
-  src: `/assets/images/brands/brand-${n}.png`,
-  hover: `/assets/images/brands/brand-hover-${i + 1}.png`,
-}));
-
-export const FOOTER = {
-  blurb: "This school has provided a safe, caring, and joyful environment for my child. The teachers are very supportive and attentive.",
-  branches: [
-    { name: "New York Branch", flag: "/assets/icons/flag.png", address: "House 25, Road 10, New York, city 652, USA.", phone: "+110 1819-987021", email: "info@example.com" },
-    { name: "Canada Branch", flag: "/assets/icons/flag2.png", address: "House 25, Road 10, New York, city 652, USA.", phone: "+110 1819-987021", email: "info@example.com" },
+export const FACILITIES: FacilitiesContent = {
+  eyebrow: "Facilities and care",
+  title: "What families can expect at launch",
+  lead: "We distinguish what will be available at launch from plans for a future stage.",
+  available: [
+    { title: "Computers", body: "Computers will be available at launch." },
+    { title: "Midday meal prasadam", body: "Midday meal prasadam will be provided." },
+    { title: "Transport", body: "Transport will be provided; coverage areas are still to be confirmed." },
   ],
+  planned: [
+    { title: "Science lab", body: "Planned for a future stage." },
+    { title: "Robotics", body: "Planned for a future stage." },
+    { title: "Smart classes", body: "Planned for a future stage." },
+  ],
+};
+
+export const ADMISSIONS_STEPS: AdmissionsContent = {
+  eyebrow: "Admissions · June 2027",
+  title: "Begin with an admission enquiry",
+  lead: "The first batch begins in June 2027, with admission enquiries for pre-primary through Class 5.",
+  items: [
+    { step: "01", title: "Send an enquiry", body: "Share your details through the admission enquiry form." },
+    { step: "02", title: "The team contacts you", body: "A member of the Gurukulam team will follow up with you." },
+    { step: "03", title: "Attend an explanation session", body: "An explanation session is held with the Gurukulam team." },
+  ],
+};
+
+export const FINAL_CTA: FinalCtaContent = {
+  eyebrow: "First batch · June 2027",
+  title: "Considering Vidyabhushana Gurukulam for your child?",
+  body: "Admission enquiries are open for pre-primary through Class 5 in Vadodara.",
+  primaryCta: { label: "Enquire for Admission", href: "#contact" },
+  secondaryCta: { label: "Explore Our Approach", href: "#approach" },
+};
+
+export const FOOTER: FooterContent = {
+  blurb: "Vidyabhushana Gurukulam is a new English-medium GSEB day school in Vadodara, bringing Vedic learning and NCERT academics together.",
+  address: "Vadodara, Gujarat, India",
+  links: [
+    { label: "Home", href: "/" },
+    { label: "About", href: "#why" },
+    { label: "Our Approach", href: "#approach" },
+    { label: "Curriculum", href: "#curriculum" },
+    { label: "Gallery", href: "#gallery" },
+    { label: "Admissions", href: "#admissions" },
+    { label: "Contact", href: "#contact" },
+  ],
+  admissions: "First batch begins June 2027 · Pre-primary to Class 5",
 };
