@@ -1,0 +1,59 @@
+/*
+  src/index.css
+  Global stylesheet entry. Pulls in Tailwind, the theme tokens, and the base element
+  styles that mirror Kidzu's typography defaults. Section-specific shape helpers live
+  in styles/shapes.css.
+*/
+
+/* Quicksand for headings, Source Sans 3 for body — the theme's own pairing.
+   Must sit above every other rule: CSS requires @import to come first. */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap");
+
+@import "tailwindcss";
+@import "./styles/tokens.css";
+@import "./styles/shapes.css";
+
+@layer base {
+  body {
+    background-color: var(--color-body);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 28px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-header);
+  }
+
+  h1 {
+    font-size: var(--text-hero);
+    line-height: var(--text-hero--line-height);
+    letter-spacing: var(--text-hero--letter-spacing);
+  }
+
+  /* ScrollSmoother needs the wrapper/content pair to be positioned, not scrolled. */
+  #smooth-wrapper {
+    overflow: hidden;
+  }
+
+  /* Honour the OS reduced-motion setting globally; GSAP tweens check it individually. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

@@ -1,0 +1,600 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vidyabhushana Gurukulam — Design Directions</title>
+
+<style>
+/* ============================================================
+   design-prototypes/style-explorer.html
+   Design directions for the Vidyabhushana Gurukulam website.
+   Four use the logo's navy/gold/cream palette on the Soil–Tulsi
+   layout language; three earlier directions are kept for reference.
+   One set of markup, many themes — so only the design varies.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+img, svg { max-width: 100%; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* ---------- Shell (neutral chrome, deliberately quiet) ---------- */
+body { margin: 0; background: #14161a; color: #f2f0ec; font-family: 'Avenir Next', Avenir, 'Segoe UI', system-ui, sans-serif; overflow-x: hidden; }
+.shell-bar { position: sticky; top: 0; z-index: 100; background: #14161a; border-bottom: 1px solid #2b2e35; padding-top: 10px; }
+.shell-brand { margin: 0; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: #8d9099; padding: 0 clamp(12px, 3vw, 28px) 9px; }
+.shell-brand b { color: #f2f0ec; font-weight: 600; }
+.shell-nav { display: flex; align-items: center; gap: 7px; overflow-x: auto; padding: 0 clamp(12px, 3vw, 28px) 11px; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.shell-nav::-webkit-scrollbar { display: none; }
+.shell-nav .fam { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #5f636c; white-space: nowrap; padding-left: 6px; }
+.shell-nav .fam:first-child { padding-left: 0; }
+.shell-nav button { font: inherit; font-size: 13.5px; color: #8d9099; background: transparent; border: 1px solid #2b2e35; border-radius: 999px; padding: 10px 16px; cursor: pointer; white-space: nowrap; scroll-snap-align: start; min-height: 42px; transition: color .18s, border-color .18s, background .18s; }
+.shell-nav button:hover { color: #f2f0ec; border-color: #4a4e57; }
+.shell-nav button:focus-visible { outline: 2px solid #7aa2ff; outline-offset: 2px; }
+.shell-nav button[aria-selected="true"] { background: #f2f0ec; color: #14161a; border-color: #f2f0ec; font-weight: 600; }
+.shell-note { margin: 0; padding: 11px clamp(12px, 3vw, 28px); font-size: 12.5px; color: #8d9099; border-bottom: 1px solid #2b2e35; line-height: 1.6; }
+.shell-note strong { color: #d6d3cc; font-weight: 600; }
+
+/* ============================================================
+   BASE LAYOUT — shared by every theme. Colour, type and shape
+   all come from the token sets further down.
+   ============================================================ */
+.site { background: var(--bg); color: var(--ink); font-family: var(--body); overflow-x: clip; }
+.site .wrap { max-width: var(--measure); margin: 0 auto; }
+.site .pad { padding-inline: clamp(18px, 5vw, 52px); }
+.site h2, .site h3, .site h4 { font-family: var(--display); font-weight: var(--dw); }
+
+/* --- crest ---
+   Note: <use> clones into a shadow tree, so outside selectors like
+   `.crest .gold` never match. Colours are set as inline styles on the
+   symbol's elements instead — custom properties do inherit in. */
+.crest { display: block; flex: none; }
+
+/* --- top bar --- */
+.site .top { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding-block: 15px; background: var(--top-bg); color: var(--top-ink); border-bottom: var(--top-border); }
+.site .brand { display: flex; align-items: center; gap: 11px; }
+.site .brand .crest { width: 40px; height: 40px; }
+.site .brand b { font-family: var(--display); font-size: 15.5px; font-weight: var(--dw); letter-spacing: var(--brand-ls); }
+.site .menu { display: flex; gap: 11px 20px; flex-wrap: wrap; font-size: 13px; color: var(--top-menu); letter-spacing: var(--menu-ls); text-transform: var(--menu-case); }
+
+/* --- hero --- */
+.site .hero { background: var(--hero-bg); padding-block: clamp(38px, 8vw, 84px); text-align: var(--align); }
+.site .hero-in { max-width: var(--hero-measure); margin-inline: var(--hero-margin); }
+.site .hero-crest { display: none; width: 92px; height: 92px; margin: 0 auto 20px; }
+.site .shloka { margin: 0 0 18px; color: var(--accent); font-size: var(--shloka-size); line-height: 1.75; font-family: var(--display); }
+.site .shloka .tr { display: block; font-size: 12.5px; font-style: italic; color: var(--muted); margin-top: 8px; letter-spacing: 0; }
+.site .hero h2 { margin: 0; font-size: clamp(25px, 6.4vw, var(--h1)); line-height: 1.18; color: var(--head); text-wrap: balance; letter-spacing: var(--h-ls); }
+.site .hero p { margin: 18px 0 0; font-size: clamp(15.5px, 2.2vw, 17.5px); line-height: 1.78; color: var(--muted); max-width: 52ch; margin-inline: var(--hero-margin); }
+.site .hero .act { margin-top: 28px; }
+
+/* --- buttons --- */
+.site .btn { display: inline-block; background: var(--accent); color: var(--accent-ink); padding: 15px 30px; text-decoration: none; border: 2px solid var(--accent); border-radius: var(--btn-r); min-height: 48px; font-family: var(--btn-font); font-size: var(--btn-size); font-weight: var(--btn-w); letter-spacing: var(--btn-ls); text-transform: var(--btn-case); transition: background .2s, color .2s, border-color .2s; }
+.site .btn:hover { background: var(--accent2); border-color: var(--accent2); color: var(--accent2-ink); }
+.site .btn:focus-visible { outline: 3px solid var(--head); outline-offset: 3px; }
+
+/* --- sections --- */
+.site .blk { padding-block: clamp(40px, 7vw, 80px); border-top: var(--blk-border); }
+.site .blk.alt { background: var(--band); }
+.site .eyebrow { margin: 0 0 10px; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); text-align: var(--align); }
+.site .blk h3 { margin: 0 0 10px; font-size: clamp(20px, 4.2vw, var(--h2)); color: var(--head); text-align: var(--align); text-wrap: balance; letter-spacing: var(--h-ls); }
+.site .lede { margin: 0 0 30px; color: var(--muted); font-size: 15.5px; line-height: 1.72; max-width: 56ch; text-align: var(--align); margin-inline: var(--hero-margin); }
+
+/* --- photo slots --- */
+.site .photo { background: var(--photo-bg); border: var(--photo-border); border-radius: var(--photo-r); aspect-ratio: 3 / 2; display: grid; place-items: center; text-align: center; padding: 14px; }
+.site .photo span { font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--photo-ink); }
+.site .photo.wide { aspect-ratio: 16 / 7; }
+
+/* --- grids and cards --- */
+.site .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(238px, 1fr)); gap: var(--gap); }
+.site .grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(216px, 1fr)); gap: var(--gap); }
+.site .grid5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(186px, 1fr)); gap: var(--gap); }
+.site .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(176px, 1fr)); gap: var(--gap); }
+.site .card { background: var(--surface); border: var(--card-border); border-radius: var(--radius); padding: var(--card-pad); }
+.site .card .n { margin: 0 0 8px; font-family: var(--display); font-weight: var(--dw); font-size: 18px; color: var(--head); }
+.site .card .d { margin: 0; font-size: 14.5px; color: var(--muted); line-height: 1.68; }
+.site .card .r { margin: 0 0 7px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-variant-numeric: tabular-nums; }
+.site .card .e { margin: 0 0 7px; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+
+/* --- day timetable --- */
+.site .day { display: grid; grid-template-columns: repeat(auto-fit, minmax(226px, 1fr)); gap: var(--gap); }
+.site .day > div { background: var(--day-bg); border: var(--card-border); border-radius: var(--day-r); padding: var(--card-pad); text-align: var(--day-align); color: var(--day-ink); }
+.site .day .t { margin: 0; font-size: 12.5px; letter-spacing: .05em; color: var(--day-time); font-variant-numeric: tabular-nums; font-weight: 600; }
+.site .day .n { margin: 9px 0 7px; font-family: var(--display); font-weight: var(--dw); font-size: 18.5px; color: var(--day-head); }
+.site .day .d { margin: 0; font-size: 14.5px; line-height: 1.62; color: var(--day-body); }
+.site .note { margin: 22px 0 0; font-size: 14px; color: var(--muted); text-align: var(--align); font-style: var(--note-style); }
+
+/* --- feature --- */
+.site .feature { display: grid; grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); gap: 30px; align-items: center; }
+.site .feature h4 { margin: 0 0 12px; font-size: clamp(20px, 3.6vw, 27px); color: var(--head); letter-spacing: var(--h-ls); }
+.site .feature p { margin: 0; color: var(--muted); font-size: 15.5px; line-height: 1.76; }
+
+/* --- chips --- */
+.site .chips { display: flex; flex-wrap: wrap; gap: 9px; justify-content: var(--chip-just); }
+.site .chips span { background: var(--chip-bg); border: var(--chip-border); border-radius: var(--chip-r); padding: 9px 17px; font-size: 14px; color: var(--ink); }
+
+/* --- facilities --- */
+.site .facilities { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(214px, 1fr)); gap: 12px 26px; }
+.site .facilities li { font-size: 15px; padding-left: 22px; position: relative; line-height: 1.6; color: var(--ink); }
+.site .facilities li::before { content: var(--bullet); position: absolute; left: 0; top: 0; color: var(--accent); font-size: 11px; }
+.site .facilities .soon { color: var(--muted); font-style: italic; }
+.site .facilities .soon::before { color: var(--muted); }
+
+/* --- steps --- */
+.site .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(228px, 1fr)); gap: var(--gap); }
+.site .steps > div { background: var(--surface); border: var(--card-border); border-radius: var(--radius); padding: var(--card-pad); }
+.site .steps .num { width: 36px; height: 36px; display: grid; place-items: center; margin-bottom: 12px; border-radius: 50%; background: var(--num-bg); color: var(--num-ink); border: 1px solid var(--accent); font-size: 15px; font-weight: 700; }
+.site .steps .n { margin: 0 0 6px; font-family: var(--display); font-weight: var(--dw); font-size: 17px; color: var(--head); }
+.site .steps .d { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+/* --- cta and footer --- */
+.site .cta { background: var(--cta-bg); color: var(--cta-ink); text-align: center; padding-block: clamp(42px, 7vw, 80px); border-radius: var(--cta-r); }
+.site .cta h3 { margin: 0 0 12px; font-size: clamp(21px, 4.6vw, 33px); color: var(--cta-ink); text-align: center; text-wrap: balance; }
+.site .cta p { margin: 0 0 26px; color: var(--cta-muted); font-size: 15.5px; }
+.site .cta .btn { background: var(--cta-btn); border-color: var(--cta-btn); color: var(--cta-btn-ink); }
+.site .cta .btn:hover { background: transparent; color: var(--cta-ink); border-color: var(--cta-ink); }
+.site .foot { text-align: center; padding: 26px 20px; font-size: 12.5px; color: var(--muted); line-height: 1.9; }
+
+/* ============================================================
+   SHARED STRUCTURE — Soil / Tulsi / logo-palette directions.
+   Arched hero, rounded cards, centred rhythm.
+   ============================================================ */
+.site[data-theme^="so-"], .site[data-theme^="lg-"] {
+  --measure: 1020px; --hero-measure: 46ch; --hero-margin: auto; --align: center;
+  --gap: 18px; --card-pad: 24px 22px; --radius: 20px; --photo-r: 18px;
+  --btn-r: 999px; --chip-r: 999px; --day-r: 110px 110px 18px 18px; --day-align: center;
+  --btn-size: 14.5px; --btn-ls: 0; --btn-case: none; --btn-w: 600;
+  --chip-just: center; --brand-ls: 0; --menu-ls: 0; --menu-case: none;
+  --h-ls: 0; --dw: 600; --note-style: italic; --bullet: "●";
+  --shloka-size: 14px; --blk-border: 0; --btn-font: var(--body);
+  --top-border: 0;
+}
+.site[data-theme^="so-"] .hero, .site[data-theme^="lg-"] .hero { padding-inline: clamp(18px, 5vw, 40px); }
+.site[data-theme^="so-"] .hero-in, .site[data-theme^="lg-"] .hero-in {
+  background: var(--arch-bg); border: 2px solid var(--arch-border);
+  border-radius: 260px 260px 22px 22px;
+  padding: clamp(32px, 6vw, 56px) clamp(22px, 4vw, 44px) 36px; max-width: 660px;
+}
+.site[data-theme^="so-"] .photo.arch, .site[data-theme^="lg-"] .photo.arch { border-radius: 160px 160px 18px 18px; }
+.site[data-theme^="lg-"] .hero-crest { display: block; }
+
+/* ============================================================
+   LOGO PALETTE — navy, gold and cream from the crest.
+   ============================================================ */
+
+/* L1 · Vidya Navy — cream ground, navy heads, gold accents. */
+.site[data-theme="lg-navy"] {
+  --bg: #F6F1E4; --band: #FFFDF6; --surface: #FFFDF6; --ink: #2B2A26; --head: #16264A; --muted: #6A6250;
+  --accent: #16264A; --accent-ink: #F6F1E4; --accent2: #C9A227; --accent2-ink: #16264A;
+  --line: #E0D6BC; --card-border: 1px solid #E0D6BC;
+  --top-bg: #16264A; --top-ink: #F6F1E4; --top-menu: #B8C0D4;
+  --hero-bg: radial-gradient(120% 80% at 50% 0%, #FFFDF6 0%, #F6F1E4 62%);
+  --arch-bg: #FFFDF6; --arch-border: #16264A;
+  --photo-bg: linear-gradient(150deg, #F2EBD9, #E6DCC2); --photo-border: 1px solid #E0D6BC; --photo-ink: #A99C7E;
+  --day-bg: #FFFDF6; --day-time: #C9A227; --day-head: #16264A; --day-body: #6A6250; --day-ink: #2B2A26;
+  --chip-bg: #FFFDF6; --chip-border: 1px solid #E0D6BC;
+  --cta-bg: #16264A; --cta-ink: #F6F1E4; --cta-muted: #B0B9CE; --cta-btn: #C9A227; --cta-btn-ink: #16264A; --cta-r: 0;
+  --num-bg: #C9A227; --num-ink: #16264A;
+  --crest-navy: #16264A; --crest-gold: #C9A227; --crest-field: #FDF8EA; --crest-jewel: #2B6CD4;
+  --display: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --body: 'Avenir Next', Avenir, 'Segoe UI', system-ui, sans-serif;
+  --h1: 44px; --h2: 30px; --bullet: "◆";
+}
+
+/* L2 · Vidya Sage — the liked Soil ground, recoloured to the crest. */
+.site[data-theme="lg-sage"] {
+  --bg: #DDE3D4; --band: #D4DBC9; --surface: #F7F5EA; --ink: #23291F; --head: #16264A; --muted: #5A5A46;
+  --accent: #16264A; --accent-ink: #F7F5EA; --accent2: #C9A227; --accent2-ink: #16264A;
+  --line: #C6CFB8; --card-border: 1px solid #C6CFB8;
+  --top-bg: #16264A; --top-ink: #F7F5EA; --top-menu: #B8C0D4;
+  --hero-bg: radial-gradient(120% 78% at 50% 0%, #E9EDDF 0%, #DDE3D4 62%);
+  --arch-bg: #F7F5EA; --arch-border: #16264A;
+  --photo-bg: linear-gradient(150deg, #E7EBDC, #D3DAC6); --photo-border: 1px solid #C1CBB3; --photo-ink: #85907A;
+  --day-bg: #F7F5EA; --day-time: #C9A227; --day-head: #16264A; --day-body: #5A5A46; --day-ink: #23291F;
+  --chip-bg: #F7F5EA; --chip-border: 1px solid #C6CFB8;
+  --cta-bg: #16264A; --cta-ink: #F7F5EA; --cta-muted: #B0B9CE; --cta-btn: #C9A227; --cta-btn-ink: #16264A; --cta-r: 0;
+  --num-bg: #C9A227; --num-ink: #16264A;
+  --crest-navy: #16264A; --crest-gold: #C9A227; --crest-field: #FBF8EC; --crest-jewel: #2B6CD4;
+  --display: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --body: 'Avenir Next', Avenir, 'Segoe UI', system-ui, sans-serif;
+  --h1: 43px; --h2: 30px; --bullet: "◆";
+}
+
+/* L3 · Vidya Tulsi — the soft one. Light ground, big curves, light header. */
+.site[data-theme="lg-tulsi"] {
+  --bg: #F1F4EA; --band: #E8EEDE; --surface: #FCFDF7; --ink: #2A2E26; --head: #1B3057; --muted: #666F5F;
+  --accent: #1B3057; --accent-ink: #FCFDF7; --accent2: #C9A227; --accent2-ink: #1B3057;
+  --line: #DBE3CE; --card-border: 1px solid #DBE3CE;
+  --top-bg: #FCFDF7; --top-ink: #2A2E26; --top-menu: #666F5F; --top-border: 1px solid #DBE3CE;
+  --hero-bg: radial-gradient(130% 80% at 50% 0%, #FAFCF3 0%, #F1F4EA 60%);
+  --arch-bg: #FCFDF7; --arch-border: #C9A227;
+  --photo-bg: linear-gradient(150deg, #EDF2E4, #DFE8D2); --photo-border: 1px solid #DBE3CE; --photo-ink: #93A088;
+  --day-bg: #FCFDF7; --day-time: #C9A227; --day-head: #1B3057; --day-body: #666F5F; --day-ink: #2A2E26;
+  --chip-bg: #FCFDF7; --chip-border: 1px solid #DBE3CE;
+  --cta-bg: #1B3057; --cta-ink: #F3F6EC; --cta-muted: #A9B4C9; --cta-btn: #C9A227; --cta-btn-ink: #1B3057; --cta-r: 44px 44px 0 0;
+  --num-bg: #F0E6C8; --num-ink: #1B3057;
+  --crest-navy: #1B3057; --crest-gold: #C9A227; --crest-field: #FCFDF7; --crest-jewel: #2B6CD4;
+  --display: Optima, 'Gill Sans', 'Iowan Old Style', Palatino, Georgia, serif;
+  --body: Optima, 'Gill Sans', 'Avenir Next', system-ui, sans-serif;
+  --h1: 45px; --h2: 30px; --dw: 500;
+  --radius: 28px; --photo-r: 28px; --day-r: 28px; --bullet: "◆";
+}
+.site[data-theme="lg-tulsi"] .hero-in { border-width: 1px; border-radius: 300px 300px 28px 28px; }
+
+/* L4 · Vidya Royal — navy-forward. Formal, the closest to the crest itself. */
+.site[data-theme="lg-royal"] {
+  --bg: #F4EFE2; --band: #16264A; --surface: #FFFCF2; --ink: #2B2A26; --head: #16264A; --muted: #6A6250;
+  --accent: #C9A227; --accent-ink: #16264A; --accent2: #16264A; --accent2-ink: #F4EFE2;
+  --line: #DED3B8; --card-border: 1px solid #DED3B8;
+  --top-bg: #16264A; --top-ink: #F4EFE2; --top-menu: #C3A96B; --top-border: 3px solid #C9A227;
+  --hero-bg: #16264A;
+  --arch-bg: transparent; --arch-border: #C9A227;
+  --photo-bg: linear-gradient(150deg, #F0E8D4, #E2D7BC); --photo-border: 1px solid #DED3B8; --photo-ink: #A2957A;
+  --day-bg: #FFFCF2; --day-time: #C9A227; --day-head: #16264A; --day-body: #6A6250; --day-ink: #2B2A26;
+  --chip-bg: #FFFCF2; --chip-border: 1px solid #DED3B8;
+  --cta-bg: #16264A; --cta-ink: #F4EFE2; --cta-muted: #B0B9CE; --cta-btn: #C9A227; --cta-btn-ink: #16264A; --cta-r: 0;
+  --num-bg: #C9A227; --num-ink: #16264A;
+  --crest-navy: #16264A; --crest-gold: #C9A227; --crest-field: #FDF8EA; --crest-jewel: #2B6CD4;
+  --display: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --body: 'Iowan Old Style', Palatino, 'Book Antiqua', Georgia, serif;
+  --h1: 46px; --h2: 30px; --bullet: "◆";
+}
+/* Royal's hero sits on navy, so its type flips to cream. */
+.site[data-theme="lg-royal"] .hero h2 { color: #F4EFE2; }
+.site[data-theme="lg-royal"] .hero p { color: #C6CDDD; }
+.site[data-theme="lg-royal"] .hero .shloka { color: #C9A227; }
+.site[data-theme="lg-royal"] .hero .shloka .tr { color: #A8B2C8; }
+/* Its alternate bands are navy too, so the contents flip with them. */
+.site[data-theme="lg-royal"] .blk.alt h3, .site[data-theme="lg-royal"] .blk.alt h4 { color: #F4EFE2; }
+.site[data-theme="lg-royal"] .blk.alt .lede, .site[data-theme="lg-royal"] .blk.alt .feature p { color: #C6CDDD; }
+.site[data-theme="lg-royal"] .blk.alt .eyebrow { color: #C9A227; }
+.site[data-theme="lg-royal"] .blk.alt .facilities li { color: #EDE6D6; }
+.site[data-theme="lg-royal"] .blk.alt .facilities .soon { color: #A8B2C8; }
+.site[data-theme="lg-royal"] .blk.alt .note { color: #C6CDDD; }
+
+/* ============================================================
+   KEPT FOR REFERENCE — the earlier directions.
+   ============================================================ */
+
+/* R1 · Soil — sage and moss with mustard */
+.site[data-theme="so-soil"] {
+  --bg: #DCE2D3; --band: #D3DBC8; --surface: #F2F4EC; --ink: #1E2A1E; --head: #35502F; --muted: #4A3B2A;
+  --accent: #35502F; --accent-ink: #F2F4EC; --accent2: #C08A1C; --accent2-ink: #1E2A1E;
+  --line: #C6D0BB; --card-border: 1px solid #C6D0BB;
+  --top-bg: #35502F; --top-ink: #F2F4EC; --top-menu: #C3D0BB;
+  --hero-bg: radial-gradient(120% 78% at 50% 0%, #E6EBDD 0%, #DCE2D3 62%);
+  --arch-bg: #F2F4EC; --arch-border: #35502F;
+  --photo-bg: linear-gradient(150deg, #E3E9D9, #CFD8C2); --photo-border: 1px solid #BCC7AE; --photo-ink: #7E8C72;
+  --day-bg: #F2F4EC; --day-time: #C08A1C; --day-head: #35502F; --day-body: #4A3B2A; --day-ink: #1E2A1E;
+  --chip-bg: #F2F4EC; --chip-border: 1px solid #C6D0BB;
+  --cta-bg: #35502F; --cta-ink: #F2F4EC; --cta-muted: #C3D0BB; --cta-btn: #C08A1C; --cta-btn-ink: #1E2A1E; --cta-r: 0;
+  --num-bg: #C08A1C; --num-ink: #1E2A1E;
+  --crest-navy: #35502F; --crest-gold: #C08A1C; --crest-field: #F2F4EC; --crest-jewel: #35502F;
+  --display: 'Superclarendon', 'Rockwell', 'Bookman Old Style', Georgia, serif;
+  --body: 'Avenir Next', Avenir, 'Segoe UI', system-ui, sans-serif;
+  --h1: 42px; --h2: 31px;
+}
+
+/* R2 · Tulsi — soft botanical */
+.site[data-theme="so-tulsi"] {
+  --bg: #EDF1E5; --band: #E2E9D8; --surface: #FAFCF6; --ink: #22301F; --head: #24422C; --muted: #5C6A57;
+  --accent: #24422C; --accent-ink: #FAFCF6; --accent2: #B4763C; --accent2-ink: #FFFFFF;
+  --line: #D2DCC6; --card-border: 1px solid #D2DCC6;
+  --top-bg: #FAFCF6; --top-ink: #22301F; --top-menu: #5C6A57; --top-border: 1px solid #D2DCC6;
+  --hero-bg: radial-gradient(130% 80% at 50% 0%, #F6FAF0 0%, #EDF1E5 60%);
+  --arch-bg: #FAFCF6; --arch-border: #B4763C;
+  --photo-bg: linear-gradient(150deg, #E8EFDF, #D8E3CC); --photo-border: 1px solid #D2DCC6; --photo-ink: #8B9A83;
+  --day-bg: #FAFCF6; --day-time: #B4763C; --day-head: #24422C; --day-body: #5C6A57; --day-ink: #22301F;
+  --chip-bg: #FAFCF6; --chip-border: 1px solid #D2DCC6;
+  --cta-bg: #24422C; --cta-ink: #F2F7EC; --cta-muted: #B3C4AC; --cta-btn: #B4763C; --cta-btn-ink: #FFFFFF; --cta-r: 40px 40px 0 0;
+  --num-bg: #E9F0E0; --num-ink: #24422C;
+  --crest-navy: #24422C; --crest-gold: #B4763C; --crest-field: #FAFCF6; --crest-jewel: #24422C;
+  --display: Optima, 'Gill Sans', 'Iowan Old Style', Palatino, Georgia, serif;
+  --body: Optima, 'Gill Sans', 'Avenir Next', system-ui, sans-serif;
+  --h1: 44px; --h2: 30px; --dw: 500;
+  --radius: 26px; --photo-r: 26px; --day-r: 26px;
+}
+.site[data-theme="so-tulsi"] .hero-in { border-width: 1px; border-radius: 300px 300px 26px 26px; }
+
+/* R3 · Manuscript — text-led, scriptural */
+.site[data-theme="ms-manuscript"] {
+  --measure: 720px; --hero-measure: 52ch; --hero-margin: auto; --align: center;
+  --gap: 0px; --card-pad: 16px 0; --card-border: 0; --surface: transparent;
+  --radius: 0; --photo-r: 0; --btn-r: 0; --chip-r: 0;
+  --day-r: 0; --day-align: left; --day-bg: transparent;
+  --btn-size: 12px; --btn-ls: .18em; --btn-case: uppercase; --btn-w: 400;
+  --chip-just: center; --chip-bg: transparent; --chip-border: 0;
+  --brand-ls: .22em; --menu-ls: .14em; --menu-case: uppercase;
+  --h-ls: 0; --dw: 400; --note-style: italic; --bullet: "❧";
+  --shloka-size: clamp(15.5px, 4.2vw, 23px); --num-bg: transparent;
+  --bg: #E8DCC0; --band: #F3EBD8; --ink: #241C12; --head: #241C12; --muted: #6E6350;
+  --accent: #9E2B25; --accent-ink: #F3EBD8; --accent2: transparent; --accent2-ink: #9E2B25;
+  --line: #D3C6A8; --blk-border: 1px solid #D3C6A8;
+  --top-bg: #F3EBD8; --top-ink: #241C12; --top-menu: #6E6350; --top-border: 3px double #9E2B25;
+  --hero-bg: #E8DCC0; --arch-bg: transparent; --arch-border: transparent;
+  --photo-bg: repeating-linear-gradient(90deg, #E4D8BC 0 3px, #EDE3CB 3px 9px); --photo-border: 1px solid #D3C6A8; --photo-ink: #A2947A;
+  --day-time: #9E2B25; --day-head: #241C12; --day-body: #6E6350; --day-ink: #241C12;
+  --cta-bg: #241C12; --cta-ink: #E8DCC0; --cta-muted: #B6A88C; --cta-btn: #E8DCC0; --cta-btn-ink: #241C12; --cta-r: 0;
+  --num-ink: #9E2B25;
+  --crest-navy: #241C12; --crest-gold: #9E2B25; --crest-field: #F3EBD8; --crest-jewel: #9E2B25;
+  --display: Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, Georgia, serif;
+  --body: Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, Georgia, serif;
+  --btn-font: var(--body); --h1: 44px; --h2: 29px;
+}
+.site[data-theme="ms-manuscript"] .grid3, .site[data-theme="ms-manuscript"] .grid4,
+.site[data-theme="ms-manuscript"] .grid5, .site[data-theme="ms-manuscript"] .day,
+.site[data-theme="ms-manuscript"] .steps { grid-template-columns: 1fr; }
+.site[data-theme="ms-manuscript"] .card, .site[data-theme="ms-manuscript"] .day > div,
+.site[data-theme="ms-manuscript"] .steps > div { border-bottom: 1px dotted #D3C6A8; }
+.site[data-theme="ms-manuscript"] .card:last-child, .site[data-theme="ms-manuscript"] .day > div:last-child,
+.site[data-theme="ms-manuscript"] .steps > div:last-child { border-bottom: 0; }
+.site[data-theme="ms-manuscript"] .gallery { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.site[data-theme="ms-manuscript"] .chips { display: block; text-align: center; line-height: 2.05; font-size: 16px; }
+.site[data-theme="ms-manuscript"] .chips span { padding: 0; }
+.site[data-theme="ms-manuscript"] .chips span::after { content: " · "; color: #9E2B25; }
+.site[data-theme="ms-manuscript"] .chips span:last-child::after { content: ""; }
+.site[data-theme="ms-manuscript"] .top { display: block; text-align: center; }
+.site[data-theme="ms-manuscript"] .brand { justify-content: center; flex-direction: column; gap: 8px; }
+.site[data-theme="ms-manuscript"] .menu { justify-content: center; margin-top: 12px; font-size: 11px; }
+.site[data-theme="ms-manuscript"] .steps .num { display: none; }
+.site[data-theme="ms-manuscript"] .facilities { grid-template-columns: 1fr; }
+</style>
+
+<header class="shell-bar">
+  <p class="shell-brand"><b>Vidyabhushana Gurukulam</b> — design directions</p>
+  <nav class="shell-nav" id="nav" aria-label="Design directions">
+    <span class="fam">Logo palette</span>
+    <button type="button" data-t="lg-navy" aria-selected="true">Vidya Navy</button>
+    <button type="button" data-t="lg-sage" aria-selected="false">Vidya Sage</button>
+    <button type="button" data-t="lg-tulsi" aria-selected="false">Vidya Tulsi</button>
+    <button type="button" data-t="lg-royal" aria-selected="false">Vidya Royal</button>
+    <span class="fam">Earlier</span>
+    <button type="button" data-t="so-soil" aria-selected="false">Soil</button>
+    <button type="button" data-t="so-tulsi" aria-selected="false">Tulsi</button>
+    <button type="button" data-t="ms-manuscript" aria-selected="false">Manuscript</button>
+  </nav>
+</header>
+
+<p class="shell-note" id="note">
+  <strong>Vidya Navy.</strong> The logo's palette on a cream ground — navy headings, gold accents, arched hero.
+  &nbsp;·&nbsp; Same content in every direction, so only the design differs.
+</p>
+
+<!-- The crest, drawn once and reused. It recolours itself per theme. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="crest" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="47" stroke-width="2.6" style="fill: var(--crest-field); stroke: var(--crest-navy)"/>
+    <circle cx="50" cy="50" r="42.5" stroke-width="1" style="fill: none; stroke: var(--crest-gold)"/>
+    <!-- laurel sprigs, mirrored -->
+    <g>
+      <path d="M25,76 C13,66 12,45 23,27" style="fill: none; stroke: var(--crest-gold); stroke-width: 1.2; stroke-linecap: round"/>
+      <g style="fill: var(--crest-gold)">
+        <ellipse cx="21.5" cy="69" rx="2.2" ry="4.6" transform="rotate(-38 21.5 69)"/>
+        <ellipse cx="17.6" cy="60" rx="2.2" ry="4.6" transform="rotate(-22 17.6 60)"/>
+        <ellipse cx="16"   cy="50" rx="2.2" ry="4.6" transform="rotate(-6 16 50)"/>
+        <ellipse cx="17.2" cy="40" rx="2.2" ry="4.6" transform="rotate(12 17.2 40)"/>
+        <ellipse cx="20.6" cy="31" rx="2.2" ry="4.6" transform="rotate(28 20.6 31)"/>
+        <circle cx="24.6" cy="64" r="1.5"/><circle cx="21.4" cy="45" r="1.5"/><circle cx="25" cy="35" r="1.5"/>
+      </g>
+    </g>
+    <g transform="translate(100,0) scale(-1,1)">
+      <path d="M25,76 C13,66 12,45 23,27" style="fill: none; stroke: var(--crest-gold); stroke-width: 1.2; stroke-linecap: round"/>
+      <g style="fill: var(--crest-gold)">
+        <ellipse cx="21.5" cy="69" rx="2.2" ry="4.6" transform="rotate(-38 21.5 69)"/>
+        <ellipse cx="17.6" cy="60" rx="2.2" ry="4.6" transform="rotate(-22 17.6 60)"/>
+        <ellipse cx="16"   cy="50" rx="2.2" ry="4.6" transform="rotate(-6 16 50)"/>
+        <ellipse cx="17.2" cy="40" rx="2.2" ry="4.6" transform="rotate(12 17.2 40)"/>
+        <ellipse cx="20.6" cy="31" rx="2.2" ry="4.6" transform="rotate(28 20.6 31)"/>
+        <circle cx="24.6" cy="64" r="1.5"/><circle cx="21.4" cy="45" r="1.5"/><circle cx="25" cy="35" r="1.5"/>
+      </g>
+    </g>
+    <!-- lotus mandala with the jewel at its centre -->
+    <g transform="translate(50,38)">
+      <g style="fill: var(--crest-gold)">
+        <ellipse cy="-13" rx="3.1" ry="5.4"/>
+        <ellipse cy="-13" rx="3.1" ry="5.4" transform="rotate(30)"/>
+        <ellipse cy="-13" rx="3.1" ry="5.4" transform="rotate(60)"/>
+        <ellipse cy="-13" rx="3.1" ry="5.4" transform="rotate(90)"/>
+        <ellipse cy="-13" rx="3.1" ry="5.4" transform="rotate(120)"/>
+        <ellipse cy="-13" rx="3.1" ry="5.4" transform="rotate(150)"/>
+        <ellipse cy="-13" rx="3.1" ry="5.4" transform="rotate(180)"/>
+        <ellipse cy="-13" rx="3.1" ry="5.4" transform="rotate(210)"/>
+        <ellipse cy="-13" rx="3.1" ry="5.4" transform="rotate(240)"/>
+        <ellipse cy="-13" rx="3.1" ry="5.4" transform="rotate(270)"/>
+        <ellipse cy="-13" rx="3.1" ry="5.4" transform="rotate(300)"/>
+        <ellipse cy="-13" rx="3.1" ry="5.4" transform="rotate(330)"/>
+        <path d="M0,-22 C2.4,-19 2.4,-17 0,-15 C-2.4,-17 -2.4,-19 0,-22 Z"/>
+      </g>
+      <circle r="8.6" style="fill: var(--crest-navy)"/>
+      <path d="M0,-6.4 L5.4,0 L0,6.4 L-5.4,0 Z" style="fill: var(--crest-jewel)"/>
+    </g>
+    <!-- open book -->
+    <g style="fill: var(--crest-gold)">
+      <path d="M23,74 C32,64 44,66 49.2,71.5 L49.2,81 C44,75.5 32,73.5 23,83 Z"/>
+      <path d="M77,74 C68,64 56,66 50.8,71.5 L50.8,81 C56,75.5 68,73.5 77,83 Z"/>
+    </g>
+  </symbol>
+</svg>
+
+<div class="site" data-theme="lg-navy" id="site">
+
+  <div class="top pad">
+    <div class="brand">
+      <svg class="crest" aria-hidden="true"><use href="#crest"></use></svg>
+      <b>Vidyabhushana Gurukulam</b>
+    </div>
+    <nav class="menu"><span>About</span><span>Approach</span><span>Curriculum</span><span>Gallery</span><span>Admissions</span><span>Contact</span></nav>
+  </div>
+
+  <div class="hero pad">
+    <div class="hero-in">
+      <svg class="crest hero-crest" aria-hidden="true"><use href="#crest"></use></svg>
+      <p class="shloka">तद्विद्धि प्रणिपातेन परिप्रश्नेन सेवया
+        <span class="tr">tad viddhi praṇipātena paripraśnena sevayā — Bhagavad-gita 4.34</span>
+      </p>
+      <h2>Vedic knowledge, with modern science</h2>
+      <p>An English-medium day school in Vadodara where the day begins with sadhana and six full hours are given to NCERT academics. Pre-primary to Class 5, opening June 2027.</p>
+      <p class="act"><a class="btn" href="#">Enquire about admission</a></p>
+    </div>
+  </div>
+
+  <section class="blk pad">
+    <div class="wrap"><div class="photo wide"><span>Campus photograph</span></div></div>
+  </section>
+
+  <section class="blk alt pad">
+    <div class="wrap">
+      <p class="eyebrow">Why the gurukulam</p>
+      <h3>An education that shapes character</h3>
+      <p class="lede">Three commitments shape everything we teach and every hour of the school day.</p>
+      <div class="grid3">
+        <div class="card"><p class="n">Vedic and modern together</p><p class="d">Children learn Sanskrit, scripture and sadhana alongside the full NCERT syllabus. Nothing is set aside to make room.</p></div>
+        <div class="card"><p class="n">Learning by doing</p><p class="d">Concepts are taught through models, visual projects and practical work rather than memorisation.</p></div>
+        <div class="card"><p class="n">Teachers who are devotees</p><p class="d">Our teachers are practising devotees and fully qualified academically. The same care runs through both halves of the day.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk pad">
+    <div class="wrap">
+      <p class="eyebrow">A day at the gurukulam</p>
+      <h3>Sadhana first, then studies</h3>
+      <div class="day">
+        <div><p class="t">08:00 — 10:00</p><p class="n">Vedic Education</p><p class="d">Sanskrit, scripture, sadhana and spiritual culture to begin the day.</p></div>
+        <div><p class="t">10:00 — 16:00</p><p class="n">NCERT Academics</p><p class="d">Six hours of core academics, taught through practical work and models.</p></div>
+        <div><p class="t">16:00 — 17:00</p><p class="n">Kreeda</p><p class="d">Games, sport and martial arts on the playground before home.</p></div>
+      </div>
+      <p class="note">Pre-primary children attend from 9:00 to 12:00. Classes 1 to 5 follow the full day.</p>
+    </div>
+  </section>
+
+  <section class="blk alt pad">
+    <div class="wrap">
+      <p class="eyebrow">Pancha Kosha Vikas</p>
+      <h3>Five layers of a child's growth</h3>
+      <p class="lede">Every subject is placed deliberately against one of the five koshas, so that no part of the child is left untended.</p>
+      <div class="grid5">
+        <div class="card"><p class="e">Body</p><p class="n">Annamaya</p><p class="d">Kreeda, Martial Arts, Krishi</p></div>
+        <div class="card"><p class="e">Energy</p><p class="n">Pranamaya</p><p class="d">Yoga, pranayama, daily rhythm</p></div>
+        <div class="card"><p class="e">Mind</p><p class="n">Manomaya</p><p class="d">Sangeet, Nritya, Kala</p></div>
+        <div class="card"><p class="e">Intellect</p><p class="n">Vijnanamaya</p><p class="d">NCERT, Sanskrit, Vedic Mathematics, Scriptures</p></div>
+        <div class="card"><p class="e">Bliss</p><p class="n">Anandamaya</p><p class="d">Sadhana, Seva, kirtan</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk pad">
+    <div class="wrap">
+      <p class="eyebrow">Thirty qualities</p>
+      <h3>The qualities we cultivate</h3>
+      <p class="lede">Thirty qualities of character are woven through the years a child spends here, gathered into four movements.</p>
+      <div class="grid4">
+        <div class="card"><p class="r">Qualities 1 — 9</p><p class="n">Character &amp; Conduct</p><p class="d">Truthfulness, mercy, tolerance, non-violence, control of the mind and senses, and discrimination between right and wrong.</p></div>
+        <div class="card"><p class="r">Qualities 10 — 14</p><p class="n">Discipline &amp; Self-Control</p><p class="d">Celibacy, charity, reading of scripture, simplicity and satisfaction.</p></div>
+        <div class="card"><p class="r">Qualities 15 — 21</p><p class="n">Detachment &amp; Discernment</p><p class="d">Service to saintly persons, avoiding unnecessary talk, considering the self beyond the body, and sharing food with all living beings.</p></div>
+        <div class="card"><p class="r">Qualities 22 — 30</p><p class="n">Devotion</p><p class="d">Hearing, chanting, remembering, serving, worship, offering obeisances and surrender — the nine processes of devotional service.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk alt pad">
+    <div class="wrap feature">
+      <div class="photo arch"><span>Photograph — farm visit</span></div>
+      <div>
+        <h4>Once a week, the classroom is a farm</h4>
+        <p>Krishi and Gau Seva are not learned from a textbook. Every week the children travel to a farm to care for cows and work the soil — the same lessons in patience, responsibility and gratitude that a page cannot teach.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk pad">
+    <div class="wrap">
+      <p class="eyebrow">What we teach</p>
+      <h3>The subjects of the gurukulam</h3>
+      <p class="lede">A curriculum designed by our own team, on the ISKCON gurukula model.</p>
+      <div class="chips">
+        <span>NCERT Syllabus</span><span>Sanskrit</span><span>English</span><span>Gujarati</span><span>Hindi</span><span>Vedic Mathematics</span><span>Sangeet</span><span>Nritya</span><span>Kala</span><span>Kreeda</span><span>Martial Arts</span><span>Krishi</span><span>Gau Seva</span><span>Spiritual Culture</span><span>Value Based Education</span><span>Scriptures</span><span>Panchatantra &amp; Hitopadesha</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk alt pad">
+    <div class="wrap">
+      <p class="eyebrow">Gallery</p>
+      <h3>Life at the gurukulam</h3>
+      <div class="gallery">
+        <div class="photo"><span>Photograph</span></div>
+        <div class="photo"><span>Photograph</span></div>
+        <div class="photo"><span>Photograph</span></div>
+        <div class="photo"><span>Photograph</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk pad">
+    <div class="wrap">
+      <p class="eyebrow">Facilities &amp; care</p>
+      <h3>What the school provides</h3>
+      <p class="lede">What is in place from the first day, and what is planned.</p>
+      <ul class="facilities">
+        <li>Transport provided</li>
+        <li>Midday prasadam served daily</li>
+        <li>Computers</li>
+        <li>Playground and a daily kreeda hour</li>
+        <li>Weekly farm visit for Krishi and Gau Seva</li>
+        <li class="soon">Science laboratory — planned</li>
+        <li class="soon">Smart classrooms — planned</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="blk alt pad">
+    <div class="wrap">
+      <p class="eyebrow">Admissions</p>
+      <h3>How to apply</h3>
+      <p class="lede">Admissions for the first batch open for June 2027. Fees are shared on enquiry.</p>
+      <div class="steps">
+        <div><div class="num">1</div><p class="n">Send an enquiry</p><p class="d">A short form with your details and your child's age.</p></div>
+        <div><div class="num">2</div><p class="n">Our team contacts you</p><p class="d">We call you back to understand what you are looking for.</p></div>
+        <div><div class="num">3</div><p class="n">An explanation session</p><p class="d">We walk you through the curriculum and answer your questions.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta pad">
+    <h3>Admissions open for June 2027</h3>
+    <p>Pre-primary to Class 5 · English medium · Fees shared on enquiry</p>
+    <a class="btn" href="#">Enquire about admission</a>
+  </div>
+
+  <p class="foot">Vidyabhushana Gurukulam · Vadodara, Gujarat · Contact details to be added<br>Design exploration — content and photographs are indicative.</p>
+</div>
+
+<script>
+  // One page, many themes. Switching swaps the data-theme token set.
+  var NOTES = {
+    'lg-navy':  "<strong>Vidya Navy.</strong> The logo's palette on a cream ground — navy headings, gold accents, arched hero.",
+    'lg-sage':  "<strong>Vidya Sage.</strong> Soil's sage ground recoloured to the crest — the calm you liked, in the school's own colours.",
+    'lg-tulsi': "<strong>Vidya Tulsi.</strong> The softest of the four — pale ground, light header, gold arch, very generous curves.",
+    'lg-royal': "<strong>Vidya Royal.</strong> Navy-forward and formal. Dark hero and dark bands, closest in feel to the crest itself.",
+    'so-soil':  "<strong>Soil.</strong> The original — sage and moss with mustard. Kept here for comparison.",
+    'so-tulsi': "<strong>Tulsi.</strong> The original — mint, forest green and copper. Kept here for comparison.",
+    'ms-manuscript': "<strong>Manuscript.</strong> The scriptural direction — ochre leaf with rubric red. Kept here for comparison."
+  };
+  var TAIL = " &nbsp;·&nbsp; Same content in every direction, so only the design differs.";
+
+  var nav = document.getElementById('nav');
+  var site = document.getElementById('site');
+  var note = document.getElementById('note');
+
+  nav.addEventListener('click', function (e) {
+    var btn = e.target.closest('button[data-t]');
+    if (!btn) return;
+    var t = btn.getAttribute('data-t');
+    nav.querySelectorAll('button').forEach(function (b) {
+      b.setAttribute('aria-selected', String(b === btn));
+    });
+    site.setAttribute('data-theme', t);
+    note.innerHTML = NOTES[t] + TAIL;
+    btn.scrollIntoView({ block: 'nearest', inline: 'center' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  });
+</script>

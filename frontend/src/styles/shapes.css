@@ -1,0 +1,82 @@
+/*
+  src/styles/shapes.css
+  The organic shape language that defines Kidzu visually: blob card radii, scalloped
+  section edges and cloud dividers. Kept separate from tokens.css because Phase 2 may
+  keep these geometries while swapping the palette, or replace them wholesale.
+*/
+
+@utility blob-1 {
+  border-radius: var(--radius-blob-1);
+}
+@utility blob-2 {
+  border-radius: var(--radius-blob-2);
+}
+@utility blob-3 {
+  border-radius: var(--radius-blob-3);
+}
+@utility blob-soft {
+  border-radius: var(--radius-blob-soft);
+}
+
+/*
+  Dashed outline that traces a blob — used on the programs wrapper and teacher cards.
+  A pseudo-element rather than a border so the dash follows the organic radius.
+*/
+@utility blob-outline {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -14px;
+    border: 2px dashed var(--color-theme);
+    border-radius: inherit;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+}
+
+/*
+  Scalloped bottom edge (header, hero). Repeating radial gradients rather than an
+  image, so it recolours with the tokens instead of needing a new PNG per theme.
+*/
+@utility scallop-bottom {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -14px;
+    height: 15px;
+    background-image: radial-gradient(circle at 50% 0, var(--scallop-color, #fff) 14px, transparent 15px);
+    background-size: 40px 30px;
+    background-repeat: repeat-x;
+  }
+}
+
+/* Same motif inverted, for sections that sit above a tinted band. */
+@utility scallop-top {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -14px;
+    height: 15px;
+    background-image: radial-gradient(circle at 50% 100%, var(--scallop-color, #fff) 14px, transparent 15px);
+    background-size: 40px 30px;
+    background-repeat: repeat-x;
+  }
+}
+
+/* Decorative doodle layer: absolutely positioned, never intercepts pointer events. */
+@utility doodle {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}

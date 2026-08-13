@@ -1,0 +1,39 @@
+# ---- Dependencies and build output ----
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# ---- Environment and secrets ----
+.env
+.env.*
+!.env.example
+
+# ---- Logs ----
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---- OS and editor cruft ----
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+
+# ---- Generated imagery ----
+# Source photographs and generated artwork are large binaries that git cannot delta-compress, and the raw camera files include unpublished photographs of a real child. The whole directory stays local; finished imagery reaches the site as web-optimised assets under frontend/public/.
+output/**
+
+# ---- Browser-automation artefacts ----
+# Debug captures from Playwright runs. Regenerate them rather than version them.
+playwright-screenshots/
+.playwright-mcp/
+
+# ---- Fetched reference material ----
+# Pulled by frontend/scripts/fetch-reference-css.sh. Third-party theme CSS, not ours to redistribute.
+frontend/reference-css/
