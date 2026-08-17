@@ -40,7 +40,7 @@ function FacilityCard({ title, body, planned }: { title: string; body: string; p
   );
 }
 
-function FacilitiesCare({ facilities }: Pick<ParentGuideSectionsProps, "facilities">) {
+export function FacilitiesCare({ facilities }: Pick<ParentGuideSectionsProps, "facilities">) {
   return (
     <section className="overflow-x-clip bg-bg-panel px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="facilities-title">
       <div className="mx-auto max-w-[1280px]">
@@ -72,7 +72,7 @@ function FacilitiesCare({ facilities }: Pick<ParentGuideSectionsProps, "faciliti
   );
 }
 
-function ParentFaq({ faqs }: Pick<ParentGuideSectionsProps, "faqs">) {
+export function ParentFaq({ faqs }: Pick<ParentGuideSectionsProps, "faqs">) {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (

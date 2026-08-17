@@ -1,6 +1,6 @@
 /*
   src/components/layout/Header.tsx
-  Provides the fixed light site header, working section navigation, admission enquiry action, and mobile navigation trigger.
+  Provides the fixed light site header, route navigation, admission enquiry action, and mobile navigation trigger.
 */
 
 import { useCallback, useState } from "react";
@@ -8,10 +8,12 @@ import { NAV } from "@/data/nav";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { MobileDrawer } from "@/components/layout/MobileDrawer";
+import { getCurrentPath } from "@/lib/path";
 
 export function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const closeDrawer = useCallback(() => setDrawerOpen(false), []);
+  const currentPath = getCurrentPath();
 
   return (
     <>
@@ -25,7 +27,8 @@ export function Header() {
               <a
                 key={item.label}
                 href={item.href}
-                className="relative py-8 font-heading text-[0.95rem] font-semibold text-text/75 transition-colors duration-(--default-transition-duration) after:absolute after:inset-x-0 after:bottom-5 after:h-px after:origin-left after:scale-x-0 after:bg-theme after:transition-transform after:duration-(--default-transition-duration) hover:text-header hover:after:scale-x-100 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header"
+                aria-current={currentPath === item.href ? "page" : undefined}
+                className={`relative py-8 font-heading text-[0.95rem] font-semibold transition-colors duration-(--default-transition-duration) after:absolute after:inset-x-0 after:bottom-5 after:h-px after:origin-left after:bg-theme after:transition-transform after:duration-(--default-transition-duration) hover:text-header hover:after:scale-x-100 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header ${currentPath === item.href ? "text-header after:scale-x-100" : "text-text/75 after:scale-x-0"}`}
               >
                 {item.label}
               </a>
@@ -34,7 +37,7 @@ export function Header() {
 
           <div className="flex items-center gap-3 sm:gap-4">
             <div className="hidden sm:block">
-              <Button href="#admissions" variant="secondary">
+              <Button href="/admissions" variant="secondary">
                 Admission Enquiry
               </Button>
             </div>

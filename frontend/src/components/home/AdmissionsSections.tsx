@@ -20,7 +20,7 @@ export function AdmissionsSections({ admissionsSteps, finalCta }: AdmissionsSect
   );
 }
 
-function AdmissionsSteps({ admissionsSteps }: Pick<AdmissionsSectionsProps, "admissionsSteps">) {
+export function AdmissionsSteps({ admissionsSteps }: Pick<AdmissionsSectionsProps, "admissionsSteps">) {
   return (
     <section id="admissions" className="bg-body px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="admissions-title">
       <div className="mx-auto max-w-[1180px]">
