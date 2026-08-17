@@ -1,6 +1,6 @@
 /*
   src/components/layout/Header.tsx
-  Provides the fixed light site header, temporarily non-interactive sitemap labels, admission enquiry action, and mobile navigation trigger.
+  Provides the fixed light site header, working section navigation, admission enquiry action, and mobile navigation trigger.
 */
 
 import { useCallback, useState } from "react";
@@ -22,13 +22,13 @@ export function Header() {
 
           <nav aria-label="Primary navigation" className="hidden items-center gap-5 xl:flex 2xl:gap-7">
             {NAV.map((item) => (
-              <span
+              <a
                 key={item.label}
-                aria-disabled="true"
-                className="cursor-default py-8 font-heading text-[0.95rem] font-semibold text-text/75"
+                href={item.href}
+                className="relative py-8 font-heading text-[0.95rem] font-semibold text-text/75 transition-colors duration-(--default-transition-duration) after:absolute after:inset-x-0 after:bottom-5 after:h-px after:origin-left after:scale-x-0 after:bg-theme after:transition-transform after:duration-(--default-transition-duration) hover:text-header hover:after:scale-x-100 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header"
               >
                 {item.label}
-              </span>
+              </a>
             ))}
           </nav>
 

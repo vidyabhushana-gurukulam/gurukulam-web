@@ -15,7 +15,6 @@ export const NAV: NavItem[] = [
   { label: "About", href: "#why" },
   { label: "Our Approach", href: "#approach" },
   { label: "Curriculum", href: "#curriculum" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "Parent FAQ", href: "#faq" },
   { label: "Admissions", href: "#admissions" },
-  { label: "Contact", href: "#contact" },
 ];

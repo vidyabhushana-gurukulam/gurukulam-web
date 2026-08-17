@@ -30,6 +30,9 @@ Thumbs.db
 output/**
 # Keep local lossless generation masters out of history; the homepage ships their web-optimised WebP derivatives.
 frontend/public/images/home/*.png
+# Keep chroma-key and lossless cutout review masters local; approved transparent WebPs are the production assets.
+frontend/public/images/children/generated/*.png
+frontend/public/images/children/generated/*-ffmpeg.webp
 
 # ---- Browser-automation artefacts ----
 # Debug captures from Playwright runs. Regenerate them rather than version them.
