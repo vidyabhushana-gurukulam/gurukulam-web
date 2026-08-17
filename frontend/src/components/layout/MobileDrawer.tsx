@@ -1,11 +1,12 @@
 /*
   src/components/layout/MobileDrawer.tsx
-  Provides an accessible small-screen drawer with section links, focus management, and keyboard dismissal.
+  Provides an accessible small-screen drawer with route links, focus management, and keyboard dismissal.
 */
 
 import { useEffect, useRef } from "react";
 import { NAV } from "@/data/nav";
 import { Logo } from "@/components/ui/Logo";
+import { getCurrentPath } from "@/lib/path";
 
 type MobileDrawerProps = {
   open: boolean;
@@ -18,6 +19,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
   const panelRef = useRef<HTMLElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+  const currentPath = getCurrentPath();
 
   useEffect(() => {
     if (!open) return;
@@ -107,7 +109,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
           <ul className="flex flex-col">
             {NAV.map((item) => (
               <li key={item.label} className="border-b border-border/25">
-                <a href={item.href} onClick={onClose} className="flex items-center py-4 font-heading text-lg font-semibold text-header transition-colors duration-(--default-transition-duration) hover:text-theme focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header">
+                <a href={item.href} onClick={onClose} aria-current={currentPath === item.href ? "page" : undefined} className={`flex items-center py-4 font-heading text-lg font-semibold transition-colors duration-(--default-transition-duration) hover:text-theme focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header ${currentPath === item.href ? "text-theme" : "text-header"}`}>
                   {item.label}
                 </a>
 
@@ -127,7 +129,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
           </ul>
         </nav>
 
-        <a href="#admissions" onClick={onClose} className="mt-8 inline-flex items-center justify-center rounded-full bg-header px-7 py-4 font-body text-[1.05rem] font-semibold leading-none text-white transition-[transform,box-shadow] duration-(--default-transition-duration) ease-(--ease-out-back) hover:translate-y-(--hover-lift-sm) hover:shadow-(--shadow-hover) focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header">
+        <a href="/admissions" onClick={onClose} className="mt-8 inline-flex items-center justify-center rounded-full bg-header px-7 py-4 font-body text-[1.05rem] font-semibold leading-none text-white transition-[transform,box-shadow] duration-(--default-transition-duration) ease-(--ease-out-back) hover:translate-y-(--hover-lift-sm) hover:shadow-(--shadow-hover) focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header">
           Admission Enquiry
         </a>
 

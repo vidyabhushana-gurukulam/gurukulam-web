@@ -1,7 +1,7 @@
 /*
   src/data/nav.ts
-  Flat homepage navigation for the approved Vidyabhushana Gurukulam sitemap.
-  Retains the optional children field so existing header consumers remain type-compatible.
+  Primary route navigation for the Vidyabhushana Gurukulam website.
+  Keeps admission as the dedicated header action while informational destinations remain in the menu.
 */
 
 export type NavItem = {
@@ -12,9 +12,9 @@ export type NavItem = {
 
 export const NAV: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "About", href: "#why" },
-  { label: "Our Approach", href: "#approach" },
-  { label: "Curriculum", href: "#curriculum" },
-  { label: "Parent FAQ", href: "#faq" },
-  { label: "Admissions", href: "#admissions" },
+  { label: "About", href: "/about" },
+  { label: "Our Approach", href: "/approach" },
+  { label: "Curriculum", href: "/curriculum" },
+  { label: "Parent Guide", href: "/parent-guide" },
+  { label: "Contact", href: "/contact" },
 ];

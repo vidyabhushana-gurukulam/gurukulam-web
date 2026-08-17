@@ -30,7 +30,7 @@ function QualityItem({ quality, number }: { quality: string; number: number }) {
   );
 }
 
-function Qualities({ qualities }: Pick<CurriculumSectionsProps, "qualities">) {
+export function Qualities({ qualities }: Pick<CurriculumSectionsProps, "qualities">) {
   const previewCount = 6;
 
   return (
@@ -62,7 +62,7 @@ function Qualities({ qualities }: Pick<CurriculumSectionsProps, "qualities">) {
   );
 }
 
-function FarmVisit({ farmVisit }: Pick<CurriculumSectionsProps, "farmVisit">) {
+export function FarmVisit({ farmVisit }: Pick<CurriculumSectionsProps, "farmVisit">) {
   return (
     <section className="bg-body px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="farm-visit-title">
       <Reveal className="mx-auto max-w-[1160px]">
@@ -82,7 +82,7 @@ function FarmVisit({ farmVisit }: Pick<CurriculumSectionsProps, "farmVisit">) {
   );
 }
 
-function SubjectGroups({ subjectGroups }: Pick<CurriculumSectionsProps, "subjectGroups">) {
+export function SubjectGroups({ subjectGroups }: Pick<CurriculumSectionsProps, "subjectGroups">) {
   return (
     <section id="curriculum" className="bg-bg-cream px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="subject-groups-title">
       <div className="mx-auto max-w-[1280px]">

@@ -19,7 +19,7 @@ export function RhythmAndKoshaSections({ dailyRhythm, panchaKosha }: RhythmAndKo
   );
 }
 
-function DailyRhythm({ dailyRhythm }: Pick<RhythmAndKoshaSectionsProps, "dailyRhythm">) {
+export function DailyRhythm({ dailyRhythm }: Pick<RhythmAndKoshaSectionsProps, "dailyRhythm">) {
   return (
     <section className="bg-body px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="daily-rhythm-title">
       <div className="mx-auto max-w-[1280px]">
@@ -53,7 +53,7 @@ function DailyRhythm({ dailyRhythm }: Pick<RhythmAndKoshaSectionsProps, "dailyRh
   );
 }
 
-function PanchaKosha({ panchaKosha }: Pick<RhythmAndKoshaSectionsProps, "panchaKosha">) {
+export function PanchaKosha({ panchaKosha }: Pick<RhythmAndKoshaSectionsProps, "panchaKosha">) {
   return (
     <section id="approach" className="overflow-hidden bg-header px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="pancha-kosha-title">
       <div className="mx-auto max-w-[1280px]">

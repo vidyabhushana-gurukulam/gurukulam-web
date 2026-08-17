@@ -136,7 +136,7 @@ export const SITE: SiteContent = {
   location: "Vadodara, Gujarat, India",
   description: "An English-medium GSEB day school bringing an NCERT-based academic education together with a Vedic and cultural curriculum.",
   admissions: "First batch begins June 2027 · Pre-primary to Class 5",
-  contactHref: "#contact",
+  contactHref: "/contact",
   experience: {
     eyebrow: "The people behind the Gurukulam",
     title: "Five years of teaching, carried forward with care",
@@ -150,8 +150,8 @@ export const HERO: HeroContent = {
   eyebrow: "Admission enquiries · First batch June 2027",
   title: "Vedic knowledge with modern science.",
   body: "A new English-medium GSEB day school in Vadodara, opening from pre-primary to Class 5.",
-  primaryCta: { label: "Enquire for Admission", href: "#admissions" },
-  secondaryCta: { label: "Explore Our Approach", href: "#approach" },
+  primaryCta: { label: "Enquire for Admission", href: "/admissions" },
+  secondaryCta: { label: "Explore Our Approach", href: "/approach" },
 };
 
 export const PILLARS: Pillar[] = [
@@ -331,8 +331,8 @@ export const FINAL_CTA: FinalCtaContent = {
   eyebrow: "First batch · June 2027",
   title: "Considering Vidyabhushana Gurukulam for your child?",
   body: "Admission enquiries are open for pre-primary through Class 5 in Vadodara.",
-  primaryCta: { label: "Enquire for Admission", href: "#contact" },
-  secondaryCta: { label: "Explore Our Approach", href: "#approach" },
+  primaryCta: { label: "Enquire for Admission", href: "/admissions" },
+  secondaryCta: { label: "Explore Our Approach", href: "/approach" },
 };
 
 export const FOOTER: FooterContent = {
@@ -340,12 +340,12 @@ export const FOOTER: FooterContent = {
   address: "Vadodara, Gujarat, India",
   links: [
     { label: "Home", href: "/" },
-    { label: "About", href: "#why" },
-    { label: "Our Approach", href: "#approach" },
-    { label: "Curriculum", href: "#curriculum" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "Admissions", href: "#admissions" },
-    { label: "Contact", href: "#contact" },
+    { label: "About", href: "/about" },
+    { label: "Our Approach", href: "/approach" },
+    { label: "Curriculum", href: "/curriculum" },
+    { label: "Parent Guide", href: "/parent-guide" },
+    { label: "Admissions", href: "/admissions" },
+    { label: "Contact", href: "/contact" },
   ],
   admissions: "First batch begins June 2027 · Pre-primary to Class 5",
 };
