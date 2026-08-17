@@ -1,6 +1,6 @@
 /*
   src/components/layout/MobileDrawer.tsx
-  Provides an accessible small-screen drawer with temporarily non-interactive sitemap labels, focus management, and keyboard dismissal.
+  Provides an accessible small-screen drawer with section links, focus management, and keyboard dismissal.
 */
 
 import { useEffect, useRef } from "react";
@@ -107,17 +107,17 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
           <ul className="flex flex-col">
             {NAV.map((item) => (
               <li key={item.label} className="border-b border-border/25">
-                <span aria-disabled="true" className="flex cursor-default items-center py-4 font-heading text-lg font-semibold text-header/75">
+                <a href={item.href} onClick={onClose} className="flex items-center py-4 font-heading text-lg font-semibold text-header transition-colors duration-(--default-transition-duration) hover:text-theme focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header">
                   {item.label}
-                </span>
+                </a>
 
                 {!!item.children?.length && (
                   <ul className="mb-3 border-l border-border/30 pl-4">
                     {item.children.map((child) => (
                       <li key={child.label}>
-                        <span aria-disabled="true" className="block cursor-default py-2 text-[0.95rem] text-text/70">
+                        <a href={child.href} onClick={onClose} className="block py-2 text-[0.95rem] text-text/70 transition-colors duration-(--default-transition-duration) hover:text-theme">
                           {child.label}
-                        </span>
+                        </a>
                       </li>
                     ))}
                   </ul>

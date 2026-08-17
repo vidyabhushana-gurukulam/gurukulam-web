@@ -1,9 +1,8 @@
 /*
   src/components/home/HeroSection.tsx
-  Introduces the Gurukulam inside the signature Vidya Tulsi arch with real programme photography and a focused admissions path.
+  Introduces the Gurukulam immediately through its official crest, verified school facts, and a focused admissions path.
+  Hero content stays static because it is already visible when the page loads.
 */
-import { Reveal } from "@/components/motion/Reveal";
-import { SplitHeading } from "@/components/motion/SplitHeading";
 import { Button } from "@/components/ui/Button";
 import { Img } from "@/components/ui/Img";
 import { GoldRule } from "@/components/home/SectionIntro";
@@ -14,45 +13,57 @@ type HeroSectionProps = {
 };
 
 export function HeroSection({ site, hero }: HeroSectionProps) {
-  return (
-    <section className="relative overflow-hidden bg-body px-4 pb-20 pt-[132px] sm:px-6 lg:pb-28 lg:pt-[148px]" aria-labelledby="home-hero-title">
-      <div aria-hidden="true" className="absolute left-[4%] top-[22%] size-32 rounded-full border border-theme/20 sm:size-48" />
-      <div aria-hidden="true" className="absolute right-[5%] top-[14%] size-16 rotate-45 rounded-[24px] border border-header/10 sm:size-24" />
+  const schoolFacts = [
+    { label: "School", value: "Day school" },
+    { label: "Board", value: "GSEB" },
+    { label: "Medium", value: "English" },
+    { label: "Opening", value: "June 2027" },
+    { label: "Classes", value: "Pre-primary–Class 5" },
+    { label: "Location", value: "Vadodara" },
+  ];
 
-      <div className="relative mx-auto max-w-[1360px] overflow-hidden rounded-b-[28px] rounded-t-[clamp(150px,24vw,330px)] border border-theme/45 bg-bg-cream px-5 pb-5 pt-20 shadow-[0_28px_90px_-60px_var(--color-header)] sm:px-9 sm:pb-9 sm:pt-32 lg:px-14 lg:pb-14 lg:pt-40">
+  return (
+    <section className="relative overflow-hidden bg-body px-4 pb-16 pt-[116px] sm:px-6 lg:pb-24 lg:pt-[132px]" aria-labelledby="home-hero-title">
+      <div aria-hidden="true" className="absolute -left-20 top-[24%] size-64 rounded-full border border-theme/20 sm:size-80" />
+      <div aria-hidden="true" className="absolute -right-24 top-[16%] size-72 rounded-full border border-header/10 sm:size-96" />
+
+      <div className="relative mx-auto max-w-[1360px] overflow-hidden rounded-b-[28px] rounded-t-[clamp(150px,24vw,330px)] border border-theme/45 bg-bg-cream px-5 pb-7 pt-14 shadow-[0_28px_90px_-60px_var(--color-header)] sm:px-9 sm:pb-9 sm:pt-20 lg:px-14 lg:pb-12 lg:pt-24">
         <div className="mx-auto flex w-full min-w-0 max-w-[920px] flex-col items-center text-center">
-          <Reveal className="hidden sm:block">
-            <span className="inline-flex max-w-full items-center justify-center rounded-full border border-theme/35 bg-white/70 px-4 py-2 text-center font-heading text-sm font-semibold leading-5 tracking-wide whitespace-normal text-header backdrop-blur-sm">
+          <Img src="/brand/vidyabhushana-crest.webp" alt="Vidyabhushana Gurukulam crest" loading="eager" className="h-auto w-[150px] drop-shadow-[0_18px_28px_rgb(27_48_87_/_0.13)] sm:w-[190px] lg:w-[220px]" />
+
+          <div className="hidden sm:block">
+            <span className="mt-4 inline-flex max-w-full items-center justify-center rounded-full border border-theme/35 bg-white/70 px-4 py-2 text-center font-heading text-sm font-semibold leading-5 tracking-wide whitespace-normal text-header backdrop-blur-sm">
               {site.admissions}
             </span>
-          </Reveal>
+          </div>
 
-          <SplitHeading as="span" variant="subtitle" className="mt-4 w-full font-heading text-sm font-semibold uppercase leading-6 tracking-[0.2em] text-theme sm:mt-7">
+          <span className="mt-5 w-full font-heading text-sm font-semibold uppercase leading-6 tracking-[0.2em] text-theme sm:mt-7">
             {hero.eyebrow}
-          </SplitHeading>
-          <SplitHeading as="h1" variant="title" className="mt-4 w-full min-w-0 whitespace-pre-line font-heading text-[clamp(2.65rem,6vw,5.25rem)] font-medium leading-[1.03] tracking-[-0.045em] text-header">
+          </span>
+          <h1 className="mt-4 w-full min-w-0 whitespace-pre-line font-heading text-[clamp(2.55rem,6vw,5rem)] font-medium leading-[1.03] tracking-[-0.045em] text-header">
             <span id="home-hero-title">{hero.title}</span>
-          </SplitHeading>
+          </h1>
           <GoldRule className="my-5 sm:my-6" />
 
-          <Reveal className="w-full" delay={0.08}>
+          <div className="w-full">
             <p className="mx-auto max-w-[730px] text-[18px] leading-8 text-text sm:text-xl">{hero.body}</p>
-          </Reveal>
-          <Reveal delay={0.14}>
+          </div>
+          <div>
             <div className="mt-6 flex flex-wrap justify-center gap-3 sm:mt-8">
               <Button href={hero.primaryCta.href} variant="secondary">{hero.primaryCta.label}</Button>
               <Button href={hero.secondaryCta.href} variant="ghost">{hero.secondaryCta.label}</Button>
             </div>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal className="relative mt-8 overflow-hidden rounded-[28px] bg-header/5 sm:mt-16" y={36}>
-          <Img src={hero.image} alt={hero.imageAlt} loading="eager" className="aspect-[4/5] w-full object-cover object-[50%_22%] sm:aspect-[16/9] lg:aspect-[16/7]" />
-          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-header/75 to-transparent px-5 pb-5 pt-20 text-white sm:px-8 sm:pb-7">
-            <p className="max-w-[520px] text-sm font-medium leading-5 sm:text-base">{site.experience.statLabel}</p>
-            <p className="hidden text-right text-sm text-white/80 sm:block">{site.location}</p>
-          </div>
-        </Reveal>
+        <div className="mt-10 grid grid-cols-2 overflow-hidden rounded-[24px] border border-header/10 bg-white/65 sm:mt-14 sm:grid-cols-3 lg:grid-cols-6">
+          {schoolFacts.map((fact) => (
+            <div key={fact.label} className="border-b border-r border-header/10 p-4 text-center last:border-r-0 sm:p-5 lg:border-b-0">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-text/65">{fact.label}</p>
+              <p className="mt-1.5 font-heading text-base font-semibold leading-5 text-header">{fact.value}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

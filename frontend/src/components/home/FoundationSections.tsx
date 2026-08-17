@@ -1,33 +1,29 @@
 /*
   src/components/home/FoundationSections.tsx
-  Presents the founding team's prior teaching experience and the three educational pillars without attributing that history to the new school.
+  Presents the founding team's prior experience and the three educational pillars without relying on programme photography.
 */
 import { Reveal } from "@/components/motion/Reveal";
-import { Img } from "@/components/ui/Img";
 import { useHoverActive } from "@/hooks/useHoverActive";
 import { SectionIntro } from "@/components/home/SectionIntro";
 
 type FoundationSectionsProps = {
   site: typeof import("@/data/home").SITE;
   pillars: typeof import("@/data/home").PILLARS;
-  gallery: typeof import("@/data/home").GALLERY;
 };
 
-export function FoundationSections({ site, pillars, gallery }: FoundationSectionsProps) {
+export function FoundationSections({ site, pillars }: FoundationSectionsProps) {
   return (
     <>
-      <FoundingExperience site={site} gallery={gallery} />
+      <FoundingExperience site={site} />
       <Pillars pillars={pillars} />
     </>
   );
 }
 
-function FoundingExperience({ site, gallery }: Pick<FoundationSectionsProps, "site" | "gallery">) {
-  const experiencePhotos = gallery.items.slice(0, 3);
-
+function FoundingExperience({ site }: Pick<FoundationSectionsProps, "site">) {
   return (
     <section id="why" className="bg-body px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="founding-experience-title">
-      <div className="mx-auto grid max-w-[1280px] overflow-hidden rounded-[28px] bg-header lg:grid-cols-[0.82fr_1.45fr]">
+      <div className="mx-auto grid max-w-[1280px] overflow-hidden rounded-[28px] bg-header lg:grid-cols-[0.9fr_1.1fr]">
         <Reveal className="flex flex-col justify-center px-7 py-12 text-center sm:px-12 lg:px-14 lg:text-left" x={-24}>
           <p className="font-heading text-sm font-semibold uppercase tracking-[0.18em] text-theme">{site.experience.eyebrow}</p>
           <p className="mt-6 font-heading text-[clamp(3rem,7vw,5.25rem)] font-medium leading-none text-white">{site.experience.stat}</p>
@@ -36,13 +32,27 @@ function FoundingExperience({ site, gallery }: Pick<FoundationSectionsProps, "si
           <p className="mt-5 text-[17px] leading-7 text-white/75">{site.experience.body}</p>
         </Reveal>
 
-        <div className="grid min-h-[430px] grid-cols-2 gap-2 bg-header p-2 sm:grid-cols-[1.15fr_0.85fr]">
-          {experiencePhotos.map((photo, index) => (
-            <Reveal key={photo.src} className={index === 0 ? "relative row-span-2 min-h-[330px] overflow-hidden rounded-[22px]" : "relative min-h-[210px] overflow-hidden rounded-[22px]"} delay={index * 0.06}>
-              <Img src={photo.src} alt={photo.alt} className="size-full object-cover transition-transform duration-(--default-transition-duration) hover:scale-(--hover-zoom)" />
-              <p className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-header/80 to-transparent px-4 pb-4 pt-12 text-sm leading-5 text-white">{photo.caption}</p>
-            </Reveal>
-          ))}
+        <div className="relative grid min-h-[430px] place-items-center overflow-hidden bg-bg-cream p-8 sm:p-12">
+          <div aria-hidden="true" className="absolute -right-20 -top-24 size-72 rounded-full border border-theme/25" />
+          <div aria-hidden="true" className="absolute -bottom-24 -left-20 size-72 rounded-full border border-header/10" />
+          <Reveal className="relative w-full max-w-[520px]" x={24}>
+            <p className="text-center font-heading text-sm font-semibold uppercase tracking-[0.18em] text-theme">One coherent education</p>
+            <div className="mt-7 space-y-3">
+              {[
+                ["01", "Grounded", "Vedic learning and spiritual culture begin the day."],
+                ["02", "Focused", "Six hours of NCERT academics build understanding."],
+                ["03", "Complete", "Kreeda, arts, seva, and practical learning develop the whole child."],
+              ].map(([number, title, body]) => (
+                <div key={number} className="grid grid-cols-[46px_1fr] gap-4 rounded-[22px] border border-header/10 bg-white/75 p-4 sm:p-5">
+                  <span className="grid size-11 place-items-center rounded-full bg-header font-heading text-sm font-semibold text-white">{number}</span>
+                  <div>
+                    <h3 className="font-heading text-xl font-medium text-header">{title}</h3>
+                    <p className="mt-1 text-[15px] leading-6 text-text">{body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

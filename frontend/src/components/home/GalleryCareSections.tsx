@@ -1,44 +1,22 @@
 /*
   src/components/home/GalleryCareSections.tsx
-  Shows the founding team's real programme photographs with precise attribution, then separates launch facilities from future plans.
+  Sets honest expectations about launch facilities and answers parents' essential questions without relying on photography.
 */
+import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { Img } from "@/components/ui/Img";
 import { SectionIntro } from "@/components/home/SectionIntro";
 
-type GalleryCareSectionsProps = {
-  gallery: typeof import("@/data/home").GALLERY;
+type ParentGuideSectionsProps = {
   facilities: typeof import("@/data/home").FACILITIES;
+  faqs: typeof import("@/data/home").FAQS;
 };
 
-export function GalleryCareSections({ gallery, facilities }: GalleryCareSectionsProps) {
+export function ParentGuideSections({ facilities, faqs }: ParentGuideSectionsProps) {
   return (
     <>
-      <PhotoGallery gallery={gallery} />
       <FacilitiesCare facilities={facilities} />
+      <ParentFaq faqs={faqs} />
     </>
-  );
-}
-
-function PhotoGallery({ gallery }: Pick<GalleryCareSectionsProps, "gallery">) {
-  return (
-    <section id="gallery" className="bg-body px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="gallery-title">
-      <div className="mx-auto max-w-[1280px]">
-        <SectionIntro eyebrow={gallery.eyebrow} title={gallery.title} lead={gallery.lead} headingId="gallery-title" />
-
-        <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr]">
-          {gallery.items.map((item, index) => (
-            <Reveal key={item.src} className={index === 0 ? "group relative overflow-hidden rounded-[28px] md:row-span-2" : "group relative overflow-hidden rounded-[28px]"} delay={index * 0.07}>
-              <figure className="relative size-full min-h-[330px] bg-header/5 md:min-h-[290px]">
-                <Img src={item.src} alt={item.alt} className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-(--hover-zoom)" />
-                <div className="absolute inset-0 bg-gradient-to-t from-header/85 via-header/5 to-transparent" />
-                <figcaption className="absolute inset-x-0 bottom-0 px-6 pb-6 pt-16 text-sm leading-6 text-white sm:px-8 sm:pb-8">{item.caption}</figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -62,7 +40,7 @@ function FacilityCard({ title, body, planned }: { title: string; body: string; p
   );
 }
 
-function FacilitiesCare({ facilities }: Pick<GalleryCareSectionsProps, "facilities">) {
+function FacilitiesCare({ facilities }: Pick<ParentGuideSectionsProps, "facilities">) {
   return (
     <section className="overflow-x-clip bg-bg-panel px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="facilities-title">
       <div className="mx-auto max-w-[1280px]">
@@ -88,6 +66,46 @@ function FacilitiesCare({ facilities }: Pick<GalleryCareSectionsProps, "faciliti
               {facilities.planned.map((item) => <FacilityCard key={item.title} title={item.title} body={item.body} planned />)}
             </div>
           </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ParentFaq({ faqs }: Pick<ParentGuideSectionsProps, "faqs">) {
+  const [openIndex, setOpenIndex] = useState(0);
+
+  return (
+    <section id="faq" className="bg-body px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="parent-faq-title">
+      <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+        <div>
+          <SectionIntro eyebrow={faqs.eyebrow} title={faqs.title} lead={faqs.lead} align="left" headingId="parent-faq-title" />
+          <div className="mt-8 rounded-[28px] border border-theme/25 bg-bg-cream p-6">
+            <p className="font-heading text-lg font-medium text-header">Still considering the fit?</p>
+            <p className="mt-2 text-[15px] leading-6 text-text">The admission explanation session is where families can understand the model and ask questions specific to their child.</p>
+          </div>
+        </div>
+
+        <div className="divide-y divide-header/10 border-y border-header/10">
+          {faqs.items.map((item, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <Reveal key={item.question} delay={(index % 4) * 0.035}>
+                <article>
+                  <h3>
+                    <button type="button" aria-expanded={isOpen} aria-controls={`faq-answer-${index}`} onClick={() => setOpenIndex(isOpen ? -1 : index)} className="flex w-full items-center justify-between gap-5 py-6 text-left focus-visible:rounded-lg focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header">
+                      <span className="font-heading text-lg font-medium leading-6 text-header sm:text-xl">{item.question}</span>
+                      <span aria-hidden="true" className={`grid size-9 shrink-0 place-items-center rounded-full border border-theme/35 text-theme transition-transform duration-(--default-transition-duration) ${isOpen ? "rotate-45 bg-theme text-white" : ""}`}>+</span>
+                    </button>
+                  </h3>
+                  <div id={`faq-answer-${index}`} hidden={!isOpen}>
+                    <p className="max-w-[700px] pb-6 pr-12 text-[16px] leading-7 text-text">{item.answer}</p>
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

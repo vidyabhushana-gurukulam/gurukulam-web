@@ -36,8 +36,6 @@ export interface HeroContent {
   body: string;
   primaryCta: ContentLink;
   secondaryCta: ContentLink;
-  image: string;
-  imageAlt: string;
 }
 
 export interface Pillar extends SectionItem {
@@ -92,23 +90,22 @@ export interface SubjectGroup {
   subjects: string[];
 }
 
-export interface GalleryContent {
-  eyebrow: string;
-  title: string;
-  lead: string;
-  items: Array<{
-    src: string;
-    alt: string;
-    caption: string;
-  }>;
-}
-
 export interface FacilitiesContent {
   eyebrow: string;
   title: string;
   lead: string;
   available: SectionItem[];
   planned: SectionItem[];
+}
+
+export interface FaqContent {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  items: Array<{
+    question: string;
+    answer: string;
+  }>;
 }
 
 export interface AdmissionsContent {
@@ -155,8 +152,6 @@ export const HERO: HeroContent = {
   body: "A new English-medium GSEB day school in Vadodara, opening from pre-primary to Class 5.",
   primaryCta: { label: "Enquire for Admission", href: "#admissions" },
   secondaryCta: { label: "Explore Our Approach", href: "#approach" },
-  image: "/images/home/hero-child.webp",
-  imageAlt: "A child taught by the Vidyabhushana Gurukulam founding team",
 };
 
 export const PILLARS: Pillar[] = [
@@ -265,29 +260,6 @@ export const SUBJECT_GROUPS: SubjectGroup[] = [
   { area: "Moral literature", subjects: ["Panchatantra", "Hitopadesha"] },
 ];
 
-export const GALLERY: GalleryContent = {
-  eyebrow: "Learning in view",
-  title: "Children our founding team has taught",
-  lead: "These photographs show children taught by our founding team through their separately managed Sunday-school work in Vadodara; they are not current Vidyabhushana Gurukulam students.",
-  items: [
-    {
-      src: "/images/home/founding-team-group.webp",
-      alt: "Children taught by the founding team gathered for a group photograph",
-      caption: "Children taught by the founding team during their earlier, separately managed Sunday-school work in Vadodara.",
-    },
-    {
-      src: "/images/home/nritya.webp",
-      alt: "Children taught by the founding team taking part in Nritya",
-      caption: "Nritya with children taught by the founding team before the Gurukulam opens.",
-    },
-    {
-      src: "/images/home/kirtan.webp",
-      alt: "Children taught by the founding team taking part in kirtan",
-      caption: "Kirtan with children taught by the founding team before the Gurukulam opens.",
-    },
-  ],
-};
-
 export const FACILITIES: FacilitiesContent = {
   eyebrow: "Facilities and care",
   title: "What families can expect at launch",
@@ -301,6 +273,46 @@ export const FACILITIES: FacilitiesContent = {
     { title: "Science lab", body: "Planned for a future stage." },
     { title: "Robotics", body: "Planned for a future stage." },
     { title: "Smart classes", body: "Planned for a future stage." },
+  ],
+};
+
+export const FAQS: FaqContent = {
+  eyebrow: "Parent guide",
+  title: "The essentials, answered clearly",
+  lead: "Straight answers about the Gurukulam's opening, academics, daily format, and admission process.",
+  items: [
+    {
+      question: "Is Vidyabhushana Gurukulam residential?",
+      answer: "No. Vidyabhushana Gurukulam is a day school, and children return home each day. There is no hostel or residential programme.",
+    },
+    {
+      question: "Which classes will open in June 2027?",
+      answer: "The founding batch will include pre-primary through Class 5. One new class is planned to be added each year as the children progress.",
+    },
+    {
+      question: "Which board and medium will the school follow?",
+      answer: "The school will follow GSEB, use English as the medium of instruction, and teach an NCERT-based academic curriculum.",
+    },
+    {
+      question: "How are academics and Vedic education balanced?",
+      answer: "Classes 1–5 begin with two hours of Vedic education, continue with six hours of NCERT academics, and close with one hour of Kreeda and sports.",
+    },
+    {
+      question: "What are the school timings?",
+      answer: "Pre-primary follows a shorter day from 09:00 to 12:00. Classes 1–5 follow the full-day schedule from 08:00 to 17:00.",
+    },
+    {
+      question: "Will transport and meals be available?",
+      answer: "Transport and midday meal prasadam will be provided. Transport coverage areas are still being finalised.",
+    },
+    {
+      question: "Where do Krishi and Gau Seva take place?",
+      answer: "Children will visit a separate off-campus farm once a week. The school campus does not include farmland or a goshala.",
+    },
+    {
+      question: "How does the admission process begin?",
+      answer: "Parents submit an admission enquiry, the Gurukulam team follows up, and an explanation session is then held with the family. Fees are shared during the enquiry process.",
+    },
   ],
 };
 
