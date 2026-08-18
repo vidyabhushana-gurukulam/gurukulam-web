@@ -1,3 +1,8 @@
+<!--
+gurukulam-web/README.md
+Introduces the website project, its operating constraints, repository layout, and developer starting points.
+-->
+
 # Vidyabhushana Gurukulam — Website
 
 The public website for **Vidyabhushana Gurukulam**, a new day school opening in Vadodara, Gujarat, with its first batch in **June 2027**. The school teaches the NCERT syllabus alongside a Vedic and cultural curriculum based on the ISKCON gurukula model.
@@ -44,8 +49,8 @@ npm run lint
 ```
 docs/                    Project documentation — read these before writing code
 ├── overview.md          What the school is, what the site must achieve, binding content rules
-├── design-direction.md  The approved "Vidya Tulsi" visual identity
-└── kidzu-replica.md     Why a third-party theme replica lives in frontend/
+├── design-direction.md  The canonical visual reference for the implemented website
+└── kidzu-replica.md     Historical record of the motion reference used during development
 
 frontend/                The React application
 ├── src/styles/tokens.css    20 CSS vars — the entire visual theme
@@ -63,17 +68,13 @@ kidzu-cached-assets.json
 
 ## Read this before changing anything
 
-### 1. `frontend/` is currently a replica of a different theme
+### 1. `frontend/` is the implemented Gurukulam website
 
-The frontend is a deliberate, faithful rebuild of the [Kidzu](https://kidzudemo.ex-coders.com/) ThemeForest kindergarten demo. It was built as a **motion reference** — for its scroll and hover behaviour, not its cartoon aesthetic. It is **not** the intended look of the site.
+The active public routes use the approved school copy, brand artwork, navy-gold-cream palette, Playfair Display and DM Sans typography, spacious editorial layouts, and restrained motion. Treat the rendered frontend and `docs/design-direction.md` as the current visual source of truth.
 
-The replica is built token-first specifically so the re-skin is a theme swap rather than a rewrite. No component contains a hex code, a duration, or a sentence of copy. Phase 2 edits three places:
+The earlier Kidzu replica informed selected scroll and hover behavior, but its cartoon aesthetic and placeholder sections are not the current website design. The historical rationale remains in `docs/kidzu-replica.md`.
 
-1. `src/styles/tokens.css` → the Vidya Tulsi palette (`#1B3057` navy, `#F1F4EA` mint, `#C9A227` gold)
-2. `src/data/home.ts` → the gurukulam's own copy and photography
-3. `src/styles/shapes.css` → decide per shape whether the blob/scallop geometry stays
-
-If a component file needs to change for a palette swap, that's a token that leaked — pull it back into `tokens.css`. See `frontend/README.md` for the full technical detail and `docs/kidzu-replica.md` for the reasoning.
+The implementation remains token-first: colors, typography, radii, shadows, and CSS interaction values live in `src/styles/tokens.css`; motion timings live in `src/lib/motion-tokens.ts`; verified public copy and image paths live in `src/data/`; and active page composition lives under `src/components/home/` and `src/components/pages/`. See `frontend/README.md` for developer details and `docs/design-direction.md` for the visual rules.
 
 ### 2. The assets under `frontend/public/assets/` must not ship
 

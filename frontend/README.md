@@ -1,8 +1,11 @@
-# Kidzu replica — Phase 1
+<!--
+gurukulam-web/frontend/README.md
+Developer guide for the implemented Vidyabhushana Gurukulam React frontend and its retained motion foundations.
+-->
 
-A faithful rebuild of the [Kidzu](https://kidzudemo.ex-coders.com/) ThemeForest demo home page
-in React, built **token-first** so Phase 2 (the Vidya Tulsi re-skin) is a theme swap rather
-than a rewrite.
+# Vidyabhushana Gurukulam frontend
+
+The active React application for the Vidyabhushana Gurukulam website. Its current visual source of truth is the rendered frontend together with `../docs/design-direction.md`; an earlier Kidzu replica remains only as the historical source for selected motion patterns.
 
 ```bash
 npm install
@@ -14,15 +17,13 @@ npm run build
 
 ## Why it is built this way
 
-The brief was "replica first, re-skin after". That only pays off if the replica never
-hardcodes a Kidzu value. So:
+The frontend remains token-first so the implemented visual system stays consistent:
 
 - **Every colour, font, radius and shadow** resolves through `src/styles/tokens.css`.
 - **Every animation timing** resolves through `src/lib/motion-tokens.ts`.
 - **Every string and image path** lives in `src/data/`.
 
-No component contains a hex code, a duration, or a sentence of copy. Phase 2 edits those
-three places and the site re-skins.
+Active components draw shared visual values, animation timings, and public content from these central sources.
 
 ---
 
@@ -31,14 +32,14 @@ three places and the site re-skins.
 ```
 src/
 ├── styles/
-│   ├── tokens.css          20 CSS vars — the whole visual theme  ← edit for Phase 2
+│   ├── tokens.css          palette, typography, radii, shadows, and CSS interaction values
 │   └── shapes.css          blob radii, scallop edges, doodle helper
 ├── lib/
 │   ├── gsap.ts             plugin registration + reduced-motion helper
 │   └── motion-tokens.ts    every duration/ease/stagger, sourced from the theme's main.js
 ├── data/
 │   ├── nav.ts              menu tree
-│   └── home.ts             all home page copy + image paths  ← edit for Phase 2
+│   └── home.ts             verified homepage copy and image paths
 ├── components/
 │   ├── motion/             Reveal · SplitHeading · CountUp · RotateOnScroll
 │   ├── ui/                 Button · Img · Logo · Tabs · Accordion · Marquee · SectionHeading
@@ -128,17 +129,11 @@ rather than extracted from its CSS — see the note below.
 
 ---
 
-## Phase 2 — the re-skin
+## Current visual implementation
 
-1. Replace the values in `src/styles/tokens.css` with the Vidya Tulsi palette
-   (`#1B3057` navy, `#F1F4EA` mint, `#C9A227` gold) and type pairing.
-2. Rewrite `src/data/home.ts` with the gurukulam's copy and photography.
-3. Decide per shape in `src/styles/shapes.css` whether the blob/scallop geometry stays.
-   The scallop and blob radii are pure CSS, so they recolour for free — several of the
-   PNG doodles in `public/assets/shapes/` can be deleted rather than replaced.
+The adaptation is complete. `src/styles/tokens.css` contains the live navy, restrained-gold, cream, and botanical-neutral palette plus the Playfair Display and DM Sans pairing; `src/data/home.ts` contains the Gurukulam's content and imagery; and the active page composition lives under `src/components/home/` and `src/components/pages/`.
 
-No component file should need to change for a palette swap. If one does, that's a token
-that leaked — pull it back into `tokens.css`.
+Use `../docs/design-direction.md` before extending the interface. Keep reusable visual values in `tokens.css`, reusable motion timings in `lib/motion-tokens.ts`, and verified public content in `data/`.
 
 ---
 

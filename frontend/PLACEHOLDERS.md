@@ -1,3 +1,8 @@
+<!--
+gurukulam-web/frontend/PLACEHOLDERS.md
+Tracks third-party development assets that must be replaced before the public website ships.
+-->
+
 # Placeholder assets — replace before production
 
 These files were mirrored from the Kidzu ThemeForest demo (`kidzudemo.ex-coders.com`)
@@ -5,7 +10,7 @@ as **development placeholders**. They are licensed theme/stock assets and must n
 on a public site.
 
 - **Photographs** (`images/**`) — replace with Vidyabhushana Gurukulam photography.
-- **Shapes and doodles** (`shapes/**`) — redraw as SVG in the Vidya Tulsi palette, or
+- **Shapes and doodles** (`shapes/**`) — redraw as SVG in the implemented website palette, or
   drop them; `styles/shapes.css` already reproduces the scallop and blob geometry in CSS,
   so several of these PNGs can be deleted rather than replaced.
 - **Icons** (`icons/**`) — swap for an open-licensed set.

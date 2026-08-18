@@ -1,135 +1,179 @@
 <!--
 docs/design-direction.md
-The chosen visual direction for the Vidyabhushana Gurukulam website — "Vidya Tulsi".
-Records the palette, typography, layout language and page structure agreed during design exploration.
+Canonical visual reference for the implemented Vidyabhushana Gurukulam website and related communications.
+Records the current palette, typography, layout language, interactions, imagery, and brand-asset rules from the frontend.
 -->
 
-# Design Direction — Vidya Tulsi
+# Vidyabhushana Gurukulam — Design Direction
 
-**Chosen:** 8 August 2026
-**Prototype:** `design-prototypes/style-explorer.html`
-**Status:** Still the design for the site. Unchanged by the Kidzu work below.
-
-> **On the Kidzu replica in `frontend/`.** A faithful rebuild of a kindergarten theme was
-> added on 12 August 2026 as a **motion reference** — for its scroll and hover behaviour,
-> not its cartoon aesthetic. It does not replace this direction. Phase 2 of that work
-> re-skins it into the Vidya Tulsi palette below. See [kidzu-replica.md](./kidzu-replica.md).
+**Last Updated:** 18 August 2026
+**Status:** Active and implemented
+**Type:** Design Overview
+**Target Platforms:** Responsive web and related admissions communications
+**Implementation:** `frontend/src/`
 
 ---
 
-## The idea
+## Source of truth
 
-Take the **calm, soft layout** of the Tulsi direction and dress it in the **logo's own colours** — navy, gold and cream.
+The current website is the approved visual reference. When this document and the rendered frontend differ, inspect the active implementation before extending the design, then update this document if the change is intentional.
 
-The result is a school website that feels settled and unhurried rather than loud. Arches instead of boxes, generous curves, plenty of light space, and the crest carrying the identity. It reads as a serious school without reading as a corporate one, and as a devotional place without reading as a temple pamphlet.
+The core implementation references are:
 
-The strategic line the whole design serves: **Vedic knowledge, with modern science.** Parents are not being asked to trade their child's future for tradition.
+| Concern | Source |
+|---|---|
+| Palette, typography, radii, shadows, and interaction values | `frontend/src/styles/tokens.css:7` |
+| Global type and accessibility behavior | `frontend/src/index.css:11` |
+| Loaded font families and weights | `frontend/index.html:10` |
+| Header and navigation treatment | `frontend/src/components/layout/Header.tsx:18` |
+| Hero composition | `frontend/src/components/home/HeroSection.tsx:25` |
+| Shared section-heading rhythm | `frontend/src/components/home/SectionIntro.tsx:17` |
+| Buttons and hover behavior | `frontend/src/components/ui/Button.tsx:25` |
+| Responsive public routes | `frontend/src/components/pages/PageRouter.tsx:22` |
+
+The earlier exploration remains in `design-prototypes/style-explorer.html` as project history, not as an instruction source.
 
 ---
 
-## How we got here
+## Design philosophy
 
-| Round | Shown | Outcome |
+The site presents a serious, established school through a warm editorial interface. It combines classical educational dignity with approachable, child-centered softness: restrained color, generous space, curved architectural forms, readable content systems, authentic photography, and clear admission actions.
+
+**Visual character:** Calm, trustworthy, warm, devotional, academically serious, and welcoming.
+
+**Avoid:** Loud kindergarten graphics, dense promotional layouts, neon colors, excessive saffron, generic school clip art, visual clutter, and anything that reads as a temple pamphlet or coaching-class advertisement.
+
+The strategic line the visual hierarchy supports is **“Vedic knowledge with modern science.”** Tradition and academic rigor must appear complementary.
+
+---
+
+## Color system
+
+The implemented palette comes from the approved crest and quiet natural surfaces in `frontend/src/styles/tokens.css:7`.
+
+| Token | Value | Role |
 |---|---|---|
-| 1 | Crest · Clarity · Soil · Manuscript · Marigold | Liked Manuscript, Soil, Marigold |
-| 2 | Nine directions across three families | Narrowed to **Soil** and **Tulsi** |
-| 3 | Soil/Tulsi layout recoloured to the logo | **Vidya Tulsi** chosen |
+| `--color-theme` | `#C9A227` | Restrained gold accent, rules, labels, borders, and highlights |
+| `--color-theme-secondary` | `#1B3057` | Secondary brand color |
+| `--color-header` | `#1B3057` | Headings, primary buttons, dark panels, and navigation emphasis |
+| `--color-title` | `#142543` | Strong title ink |
+| `--color-text` | `#586254` | Body copy and secondary navigation |
+| `--color-border` | `#DBE3CE` | Quiet borders and dividers |
+| `--color-body` | `#F1F4EA` | Pale green page ground |
+| `--color-bg-cream` | `#F8F3E5` | Warm cream hero and feature surfaces |
+| `--color-bg-sky` | `#EDF2E4` | Soft alternate surface |
+| `--color-bg-blush` | `#F4EEE2` | Warm alternate surface |
+| `--color-bg-lavender` | `#E8EEDE` | Muted green alternate band |
+| `--color-bg-rose` | `#F7F1E5` | Warm neutral alternate band |
+| `--color-bg-soft` / `--color-bg-panel` | `#FCFDF7` | Header, footer, cards, and quiet panels |
 
----
-
-## Palette
-
-| Role | Colour | Use |
-|---|---|---|
-| Ground | `#F1F4EA` pale mint | Page background |
-| Band | `#E8EEDE` | Alternating sections |
-| Surface | `#FCFDF7` | Cards, arch panel, header |
-| Heading | `#1B3057` navy | All headings, buttons |
-| Accent | `#C9A227` gold | Eyebrows, arch outline, timings, bullets |
-| Body text | `#2A2E26` | Running text |
-| Muted | `#666F5F` | Secondary text |
-| Line | `#DBE3CE` | Borders |
-
-Navy and gold come straight from the crest. Gold is used sparingly — it only reads as gold in small amounts or against navy, never as large fills.
+Gold is an accent rather than a field color. Use it for small high-value details against cream, white, or navy; do not fill large areas with gold.
 
 ---
 
 ## Typography
 
-- **Display and body:** Optima / Gill Sans — a humanist face, soft-edged but not rounded. Carries warmth without looking childish.
-- **Headline size:** up to 45px on desktop, scaling down fluidly on phones.
-- **Weight:** 500 for headings — light enough to feel calm.
-- Sanskrit is set in Devanagari with transliteration beneath it in italics.
+The live site loads **Playfair Display** for headings and **DM Sans** for body copy in `frontend/index.html:10` and assigns them through `frontend/src/styles/tokens.css:29`.
+
+- **Headings:** Playfair Display, medium weight, deep navy, with tight display tracking.
+- **Body and controls:** DM Sans, regular to semibold, muted green-gray or white on dark panels.
+- **Hero scale:** Fluid display type reaches `4rem` through the shared token, while the homepage hero uses a responsive `clamp()` up to `5rem` at `frontend/src/components/home/HeroSection.tsx:43`.
+- **Section headings:** Fluid `2rem` to `3.25rem`, centered by default, at `frontend/src/components/home/SectionIntro.tsx:23`.
+- **Body base:** `18px` with `28px` line height at `frontend/src/index.css:12`.
+- **Eyebrows:** Small uppercase serif labels with wide tracking and restrained gold.
+
+Do not substitute rounded, cartoonish, or highly decorative display fonts. The type pairing should retain the current contrast between classical headings and clean contemporary body text.
 
 ---
 
-## Layout language
+## Layout and shape language
 
-- **Arched hero** — the content sits inside a dome-topped panel outlined in gold, echoing temple architecture.
-- **Soft corners** — 28px radius on cards, photos and timetable blocks.
-- **Light header** — white-ish bar rather than a dark one, which is what makes this the softest of the four logo-palette options.
-- **Centred rhythm** — headings, ledes and section labels centre-aligned throughout.
-- **Rounded buttons** — full-pill, navy fill.
+The site uses generous whitespace, centered editorial rhythm, and large architectural curves rather than dense boxes.
 
----
+- **Hero:** A tall cream panel with a dome-like top, a fine gold border, the colored crest, centered admissions hierarchy, and spacious breathing room. The implementation is at `frontend/src/components/home/HeroSection.tsx:26`.
+- **Page width:** Primary sections use centered containers around `1280px`; the header uses `1400px`, as shown at `frontend/src/components/home/FoundationSections.tsx:25` and `frontend/src/components/layout/Header.tsx:22`.
+- **Cards:** Rounded corners generally use `24–28px`; selected educational cards use pronounced arched tops, as implemented at `frontend/src/components/home/FoundationSections.tsx:70`.
+- **Section rhythm:** Gold eyebrow, large navy heading, optional lead, and generous vertical spacing. The shared composition is at `frontend/src/components/home/SectionIntro.tsx:17`.
+- **Dark bands:** Navy sections create occasional contrast for frameworks such as Pancha Kosha while retaining translucent, softly bordered cards at `frontend/src/components/home/RhythmAndKoshaSections.tsx:56`.
+- **Decorative geometry:** Fine circles, rules, soft curves, and restrained organic forms may support hierarchy. Decorations must never compete with content or imitate cartoon doodles.
 
-## Page structure
-
-```
-Header (crest + menu)
-Hero — crest, shloka, headline, CTA
-Campus photograph (wide)
-Why the gurukulam — 3 pillars
-A day at the gurukulam — timetable
-Pancha Kosha Vikas — 5 layers
-The 30 Qualities — 4 clusters
-Once a week, the classroom is a farm
-Subjects
-Gallery
-Facilities & care
-Admissions — 3 steps
-Closing CTA
-Footer
-```
+The website is responsive: content stacks on narrow screens, navigation moves into a mobile drawer, and typography scales fluidly. Preserve the mobile hierarchy rather than shrinking the desktop composition uniformly.
 
 ---
 
-## The crest
+## Components and interaction
 
-Rebuilt as vector SVG following the logo: double ring, laurel sprigs, twelve-petal gold lotus, blue jewel, open book.
+### Header
 
-- **40px** in the header
-- **92px** inside the hero arch
-- Recolours itself from the theme, so it works on any background
+The fixed header uses a near-white panel, subtle lower border, filtered navy horizontal logo, centered desktop navigation, and a navy admission action. See `frontend/src/components/layout/Header.tsx:20` and `frontend/src/components/ui/Logo.tsx:11`.
 
-**Still needed:** the designer's proper vector files — full crest, a horizontal lockup for the header, and a simplified jewel-only mark for the favicon, all on transparent backgrounds. The detailed crest becomes a smudge below about 32px, so the simplified mark is not optional.
+### Buttons
 
----
+Buttons are full pills with semibold DM Sans labels and a circled arrow. The primary accent variant uses gold, the main admission variant uses navy, and ghost actions remain transparent. Hover behavior combines a small lift, light sweep, arrow shift, and restrained shadow at `frontend/src/components/ui/Button.tsx:25`.
 
-## Content rules carried into the design
+### Cards
 
-These are honesty guardrails, not style preferences. Parents verify claims on a campus visit.
+Cards use warm-white or cream surfaces, quiet navy or botanical borders, generous internal padding, and subtle elevation. Hover states may lift a card slightly or strengthen its border, but should not introduce bouncy or toy-like motion.
 
-1. **Positive only.** Never compare against other schools.
-2. **No health claims.** Describe the environment — screen-free, small classes, settled rhythm — not outcomes like curing anxiety.
-3. **Planned is labelled planned.** Science lab and smart classrooms appear greyed and italicised, separate from what exists.
-4. **The farm is off-campus.** Always "a weekly Gau Seva and Krishi visit", never an on-campus goshala.
-5. **The Sunday school belongs to the team.** "Our teachers have taught 300+ children over five years" — never attributed to the gurukulam.
+### Motion
+
+Motion is supportive and calm: reveal transitions, split headings on large screens, smooth scrolling, modest hover lifts, and arrow movement. Shared timings live in `frontend/src/lib/motion-tokens.ts`; CSS hover values live in `frontend/src/styles/tokens.css:44`.
+
+All effects must honor `prefers-reduced-motion`, enforced globally at `frontend/src/index.css:54` and within the GSAP helpers.
 
 ---
 
-## Open items
+## Logo and brand assets
 
-- Real photographs — the design leans on them heavily; slots are placeholders today
-- Designer's vector logo files
-- Contact details, transport areas, safety arrangements, festival list
-- All technical decisions (hosting, forms, SEO, analytics) — deferred to a separate session
+Use the supplied official colored logo from the repository's `document/logo/` folder for banners and admissions artwork. For the website, the active brand files live under `frontend/public/brand/`, including the horizontal header lockup and colored crest used in the hero.
+
+The crest or lockup must be placed as an original supplied asset. Do not redraw, regenerate, recolor, crop, distort, simplify, replace, or modify its Sanskrit, typography, jewel, tilak, lotus, book, gold ornamentation, or school name. Maintain its proportions and clear space.
+
+The website uses the colored crest prominently in the hero at `frontend/src/components/home/HeroSection.tsx:32` and the horizontal lockup in shared chrome at `frontend/src/components/ui/Logo.tsx:15`.
 
 ---
 
-## Fixes applied during review
+## Photography and illustration
 
-Two bugs found by opening the prototype in a browser rather than trusting the code:
+Prefer authentic, dignified images of Indian children learning, reading, making, discussing, practicing arts, serving, or engaging with nature. Photography should show natural expressions, modest clothing, realistic skin and hands, and a believable educational context.
 
-- **Missing `<meta charset>`** — the Devanagari shloka and every em dash rendered as mojibake. Critical for a page carrying Sanskrit.
-- **Crest rendered solid black** — `<use>` clones into a shadow tree, so outside CSS selectors never matched it. Colours are now inline styles on the symbol's elements, which custom properties do inherit into.
+Do not depict an identifiable campus or facility unless an approved photograph exists. Do not imply an on-campus farm, goshala, science laboratory, robotics facility, smart classroom, or hostel unless current project documentation verifies it.
+
+Avoid Western classroom stock, AI-generated text inside images, cartoon mascots, fake institutional scenes, and decorative visuals that overpower the school identity.
+
+---
+
+## Content hierarchy for admissions artwork
+
+For banners and other conversion-focused communications, preserve this order:
+
+1. Official colored logo and school identity.
+2. Admissions status and academic year.
+3. The main parent-facing promise or strategic line.
+4. The strongest educational benefits.
+5. Class, board, syllabus, and programme facts.
+6. Contact information and call to action.
+7. A clearly reserved, high-contrast QR-code area when required.
+
+Keep text readable at the final viewing distance. Reserve blank space for the real QR code instead of generating a decorative or fake code.
+
+---
+
+## Content and honesty guardrails
+
+These rules come from the project overview and apply to every visual execution:
+
+1. Use positive framing and never criticize other schools.
+2. Describe a screen-free, attentive, values-led environment without promising medical or psychological outcomes.
+3. Label planned facilities as planned.
+4. Describe Gau Seva and Krishi as a weekly visit to a separate off-campus farm.
+5. Attribute prior Sunday-school experience to the founding team, not to Vidyabhushana Gurukulam.
+6. Do not present pre-primary as following the Classes 1–5 full-day schedule.
+
+See `docs/overview.md` and `../../document/philosophy.md` for the approved facts and communication boundaries.
+
+---
+
+## Maintenance rule
+
+Extend the system from the current implementation rather than from the archived prototype or unused replica components. Any intentional change to palette, typography, layout language, imagery, or interaction behavior should be reflected here after it is implemented.

@@ -1,12 +1,12 @@
 <!--
 docs/overview.md
 Project overview for the Vidyabhushana Gurukulam website. Single source of truth for what the school is, what the website must achieve, and which decisions are settled versus still open.
-Written from stakeholder discovery completed 8 August 2026, before any code exists.
+Written from stakeholder discovery completed 8 August 2026 and updated as settled implementation decisions change.
 -->
 
 # Vidyabhushana Gurukulam — Project Overview
 
-**Document status:** Discovery complete (8 August 2026) · No code written yet
+**Document status:** Active project overview · Frontend implemented
 **Deliverable:** Public-facing informational website with an admission enquiry form
 **Domain:** `vidyabhushanagurukulam.com` (purchased)
 
@@ -295,7 +295,7 @@ The logo **design is approved**. It currently exists as an AI-generated raster i
 - Simplified jewel-only mark for the favicon
 - Transparent background on all variants
 
-**Site visual direction:** Deferred. Reference points named by the stakeholder are the Vrindavan gurukula, Mayapur gurukula, and other ISKCON gurukula websites.
+**Site visual direction:** Implemented. The current frontend is the approved visual reference, and `design-direction.md` records its palette, typography, layout language, imagery, and interaction rules with implementation references.
 
 ---
 
@@ -331,7 +331,6 @@ These are not oversights. Several will need answers before the corresponding **w
 | **Transport coverage areas** | Parents filter schools by whether pickup reaches their area, often before reading anything else |
 | **Public contact details** | Phone, WhatsApp, email — required for the Contact page and footer |
 | **Festival and event list** | Content for the events section |
-| **Visual and design direction** | Colours, typography, overall feel |
 | **Hosting** | Not yet purchased |
 | **All technical decisions** | Hosting, form handling and spam protection, analytics, SEO implementation, performance, Google Business Profile — deferred to a dedicated technical session |
 | **Testimonials** | Parent quotes, if obtainable |

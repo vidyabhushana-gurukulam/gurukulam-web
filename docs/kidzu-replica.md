@@ -1,10 +1,10 @@
 <!--
 docs/kidzu-replica.md
-Why a replica of the Kidzu ThemeForest theme lives in frontend/, and how it becomes the
-Vidyabhushana Gurukulam site. Companion to design-direction.md, which it does not replace.
+Historical record of the Kidzu ThemeForest motion reference used while building the frontend.
+Explains which interaction patterns remain useful without defining the current website's visual identity.
 -->
 
-# Kidzu Replica — Phase 1
+# Kidzu Motion Reference — Development History
 
 **Built:** 12 August 2026
 **Lives in:** `frontend/`
@@ -12,6 +12,8 @@ Vidyabhushana Gurukulam site. Companion to design-direction.md, which it does no
 **Reference:** [Kidzu demo](https://kidzudemo.ex-coders.com/) · [ThemeForest listing](https://themeforest.net/item/kidzu-kindergarten-school-wordpress-theme/64152688)
 
 ---
+
+**Status:** Historical reference; the active frontend is the implemented Gurukulam website.
 
 ## Why this exists
 
@@ -21,27 +23,27 @@ Two ways to get that were on the table:
 
 | Option | Trade |
 |---|---|
-| Re-skin Kidzu's motion into Vidya Tulsi directly | Faster, but no baseline to check the motion against |
-| **Faithful replica first, then fork and re-skin** | ~1.4× the work, but you can verify the motion feels right before changing anything else |
+| Apply Kidzu's motion directly to the planned Gurukulam design | Faster, but no baseline to check the motion against |
+| **Faithful replica first, then adapt the active site** | ~1.4× the work, but the motion could be verified before the visual system changed |
 
-The second was chosen. Phase 1 is the faithful replica. Phase 2 forks it into Vidya Tulsi.
+The second approach was chosen during development. That transition is complete: the active routes now use the Gurukulam's approved content, brand assets, and implemented visual system.
 
-> **This does not supersede [design-direction.md](./design-direction.md).** Vidya Tulsi remains the design for the actual site. The replica is a reference build that happens to share the repo.
+> **This does not supersede [design-direction.md](./design-direction.md).** The rendered frontend and that document define the current website; this file records the earlier motion-reference work.
 
 ---
 
-## What makes Phase 2 cheap
+## What made the adaptation maintainable
 
 The replica is built **token-first**. No component contains a hex code, a duration, or a sentence of copy — all three resolve through one of:
 
-| Layer | File | Phase 2 action |
+| Layer | File | Current role |
 |---|---|---|
-| Colour, type, radius, shadow | `frontend/src/styles/tokens.css` | Replace values with Vidya Tulsi |
+| Colour, type, radius, shadow | `frontend/src/styles/tokens.css` | Current website tokens |
 | Animation timings | `frontend/src/lib/motion-tokens.ts` | Keep as-is — this is the thing worth having |
-| Copy and images | `frontend/src/data/home.ts` | Replace with gurukulam content |
-| Shape geometry | `frontend/src/styles/shapes.css` | Decide per shape whether blobs/scallops stay |
+| Copy and images | `frontend/src/data/home.ts` | Verified Gurukulam content and assets |
+| Shape geometry | `frontend/src/styles/shapes.css` | Shared organic geometry retained from the exploration |
 
-This was verified, not assumed: overriding only the token values at runtime re-skinned the entire page to navy/mint/gold without touching a single component. The one thing that did **not** re-skin was the raster doodles — bee, rainbow, pencil, car — because they are PNGs. Redrawing those as SVG is the real Phase 2 work.
+The token-first structure made it possible to apply the current palette consistently. Raster doodles do not inherit tokens and remain third-party placeholders that must not ship.
 
 If a component ever needs editing for a palette change, that is a token that leaked. Pull it back into `tokens.css`.
 
@@ -59,10 +61,11 @@ frontend/src/
     ├── motion/              Reveal · SplitHeading · CountUp · RotateOnScroll
     ├── ui/                  Button · Img · Logo · Tabs · Accordion · Marquee · CloudDivider
     ├── layout/              Header · MobileDrawer · Footer · SmoothScrollProvider
-    └── sections/            14 home page sections
+    ├── home/                active homepage sections
+    └── pages/               active inner pages and route mapping
 ```
 
-Stack is Vite + React 19 + TypeScript + Tailwind v4 + GSAP. Vite rather than Next because the replica is a reference build; **if this becomes the real site, revisit that** — a school site wants SSR for SEO and a server route for the admission enquiry form.
+The active stack is Vite + React 19 + TypeScript + Tailwind v4 + GSAP. Production hosting, form handling, and any future SSR requirement remain separate architecture decisions.
 
 ---
 
@@ -89,7 +92,7 @@ Measured in a real browser, not assumed:
 | ScrollSmoother `smooth: 2` | 90ms after a 1500px jump, content had moved 373px, settling to 1500px |
 | SplitText | `split-line` nodes present in the hero `<h1>` |
 | Hover system | lift `-3px`, duration `0.4s`, overshoot easing, wash sweep, arrow nudge `4px` |
-| Token-only re-skin | Whole page recoloured with zero component edits |
+| Token-only palette test | Whole reference page recoloured with zero component edits |
 
 **Approximated:** hover distances, easings and shadow values. The demo host IP-banned the build machine during the asset mirror, so its stylesheet was never obtained — those values are matched by eye against `playwright-screenshots/`. They are all in `tokens.css`; see `frontend/README.md` for the ruled-out retrieval routes and the `fetch-reference-css.sh` script that closes it.
 
@@ -108,8 +111,8 @@ Measured in a real browser, not assumed:
 - **Theme CSS never retrieved** — blocks exact hover values. Run `frontend/scripts/fetch-reference-css.sh` from an unblocked network, or take the CSS from the ThemeForest zip.
 - **Custom cursor not implemented** — `main.js:868` ships a dual-ring cursor. It only initialises when a `.mouseCursor` element exists and we could not confirm the demo home page includes one. Verify before building it; adding it on a guess would be a regression.
 - **3 blog thumbnails + 1 icon missing** — render as labelled placeholders, not broken images.
-- **Doodles are raster** — redraw as SVG for Phase 2 so they take the palette.
-- **Framework choice** — Vite is right for a reference build, wrong for the live site. Decide before Phase 2 starts.
+- **Doodles are raster** — replace or remove them before production because they do not inherit the current palette.
+- **Framework choice** — Vite remains the active frontend framework; revisit it only if the production architecture requires SSR or server routes.
 
 ---
 
