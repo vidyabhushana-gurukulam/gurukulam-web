@@ -1,8 +1,7 @@
 /*
   src/styles/shapes.css
-  The organic shape language that defines Kidzu visually: blob card radii, scalloped
-  section edges and cloud dividers. Kept separate from tokens.css because Phase 2 may
-  keep these geometries while swapping the palette, or replace them wholesale.
+  Defines the reusable organic geometry used by cards, section edges, and decorative layers.
+  Keeps structural shapes separate from palette and typography tokens.
 */
 
 @utility blob-1 {

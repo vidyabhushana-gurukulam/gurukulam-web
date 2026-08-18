@@ -1,6 +1,6 @@
 /*
   src/components/home/HomePage.tsx
-  Composes the complete Vidya Tulsi homepage from approved copy, brand artwork, diagrams, and parent guidance.
+  Composes the complete homepage from approved copy, brand artwork, diagrams, and parent guidance.
 */
 import { AdmissionsSections } from "@/components/home/AdmissionsSections";
 import { CurriculumSections } from "@/components/home/CurriculumSections";

@@ -2,10 +2,8 @@
   src/components/ui/CloudDivider.tsx
   The puffy cloud edge between sections.
 
-  The theme ships these as PNGs, but every mirrored one is tinted lavender because they
-  were cut for the lavender bands — there is no white variant to reuse for the hero. So
-  the shape is drawn as SVG instead: it takes any token colour, stretches to any width
-  without resampling, and costs nothing to re-theme in Phase 2.
+  The original reference supplied only lavender PNGs, so the divider is drawn as SVG.
+  It accepts any token colour and stretches to any width without resampling.
 
   `color` should be the colour of the section the divider hands off TO, since the clouds
   read as that section pushing up into this one.
