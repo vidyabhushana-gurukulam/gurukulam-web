@@ -15,6 +15,7 @@ export const NAV: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Our Approach", href: "/approach" },
+  { label: "Inspiration", href: "/inspiration" },
   { label: "Curriculum", href: "/curriculum" },
   { label: "Parent Guide", href: "/parent-guide" },
   { label: "Admissions", href: "/admissions" },

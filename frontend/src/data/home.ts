@@ -184,7 +184,7 @@ export const SITE: SiteContent = {
 
 export const HERO: HeroContent = {
   eyebrow: "Quality education · Cultural roots · All-round development",
-  title: "Where learning meets strong values.",
+  title: "Where learning meets strong values",
   subtitle: { lead: "Give your child a", accent: "complete education." },
   // The headline renders the admission hoarding's Hindi tagline in English. The lead keeps
   // "Vedic knowledge with modern science" verbatim because document/philosophy.md names it
