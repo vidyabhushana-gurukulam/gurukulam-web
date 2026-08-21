@@ -97,17 +97,30 @@ export interface FacilitiesContent {
   title: string;
   lead: string;
   available: SectionItem[];
-  planned: SectionItem[];
+}
+
+export interface FaqItem {
+  question: string;
+  /** Single-paragraph answer. */
+  answer?: string;
+  /** Bulleted answer, kept as separate points because the handbook sets them as a list. */
+  points?: string[];
+  /** Aside printed after the answer, such as the fee confirmation note. */
+  note?: string;
+}
+
+export interface FaqGroup {
+  /** Section letter from the handbook, A through F. */
+  letter: string;
+  title: string;
+  items: FaqItem[];
 }
 
 export interface FaqContent {
   eyebrow: string;
   title: string;
   lead: string;
-  items: Array<{
-    question: string;
-    answer: string;
-  }>;
+  groups: FaqGroup[];
 }
 
 export interface AdmissionsContent {
@@ -290,79 +303,138 @@ export const SUBJECT_GROUPS: SubjectGroup[] = [
 export const FACILITIES: FacilitiesContent = {
   eyebrow: "Facilities and care",
   title: "What families can expect at launch",
-  lead: "We distinguish what will be available at launch from plans for a future stage.",
+  lead: "The facilities and daily care arrangements confirmed for the first batch.",
   available: [
     { title: "Computers", body: "Computers will be available at launch." },
     { title: "Lunch and snacks", body: "Lunch and snacks are provided as vegetarian, sattvik, nutritious prasadam." },
     { title: "Transport contacts", body: "Transport is arranged by parents; the Gurukulam shares transport contacts and the expense is borne by parents." },
   ],
-  planned: [
-    { title: "Science lab", body: "Planned for a future stage." },
-    { title: "Robotics", body: "Planned for a future stage." },
-    { title: "Smart classes", body: "Planned for a future stage." },
-  ],
 };
 
 export const FAQS: FaqContent = {
   eyebrow: "Parent guide",
-  title: "The essentials, answered clearly",
-  lead: "Straight answers about the Gurukulam's format, academics, daily routine, fees, facilities, and admission process, drawn from the Parent Handbook.",
-  items: [
+  title: "Frequently asked questions",
+  lead: "Admissions, structure, academics, fees and facilities — answered in brief, exactly as they appear in the Parent Handbook.",
+  groups: [
     {
-      question: "Is Vidyabhushana Gurukulam residential, and is it open to both boys and girls?",
-      answer: "It is a day school, so children return home each day; there is no hostel or residential programme. Admission is open to both boys and girls.",
+      letter: "A",
+      title: "Admission & eligibility",
+      items: [
+        {
+          question: "What is the admission process?",
+          points: [
+            "Step 1 — Fill Form: complete the admission form.",
+            "Step 2 — Orientation: attend the Gurukulam orientation.",
+            "Step 3 — Parent's Interview: an interaction with the parents.",
+            "Step 4 — Student's Evaluation: an assessment of the child.",
+            "Step 5 — Admission: confirmation of admission.",
+          ],
+        },
+        {
+          question: "Is the Gurukulam open to both boys and girls?",
+          answer: "Yes. Admission is open to both boys and girls.",
+        },
+        {
+          question: "What is the age group / age limit for admission?",
+          points: ["Minimum age: 3 years.", "Admissions are open for Nursery to Class 5."],
+        },
+      ],
     },
     {
-      question: "Which classes are offered, and what is the minimum age?",
-      answer: "Admissions are open from Nursery through Class 5. The minimum age for admission is 3 years.",
+      letter: "B",
+      title: "Gurukulam structure & daily routine",
+      items: [
+        {
+          question: "Is the Gurukulam residential, a day school, or both?",
+          answer: "It is a day school.",
+        },
+        {
+          question: "What is the daily schedule of students?",
+          points: ["Nursery to Senior KG: 3 – 5 hours a day.", "Class 1 to Class 5: 8 – 10 hours a day."],
+        },
+      ],
     },
     {
-      question: "Which syllabus, board, and medium does the Gurukulam follow?",
-      answer: "The syllabus is NCERT, the affiliation is with the Gujarat State Board, and the medium of instruction is English.",
+      letter: "C",
+      title: "Education & curriculum",
+      items: [
+        {
+          question: "Does Gurukulam education cover modern academics as well?",
+          answer: "Yes. Modern academics are a core part of the curriculum, alongside values, culture and spiritual education.",
+        },
+        {
+          question: "What will my child learn at the Gurukulam?",
+          points: [
+            "Academics: Science, Mathematics, Languages (English, Sanskrit, Hindi, Gujarati), Social Science and activity-based learning.",
+            "Arts & movement: Yoga, music, dance, drama, art and craft.",
+            "Values and culture.",
+            "Spiritual education: Bhagavad Gita, Ramayana, Mahabharata, Srimad Bhagavatam and biographies of the great Acharyas.",
+            "Life skills: communication, management, finance, Kali-yuga compatibility skills, implications of social media, and handling peer pressure and addiction.",
+          ],
+        },
+        {
+          question: "Which syllabus does the Gurukulam follow, which board is it affiliated with, and what is the medium of instruction?",
+          points: ["Syllabus: NCERT.", "Affiliation: Gujarat State Board.", "Medium of instruction: English."],
+        },
+        {
+          question: "Who will teach my child?",
+          answer: "Well-qualified devotee teachers.",
+        },
+        {
+          question: "Will my child need additional tuition?",
+          answer: "No. Gurukulam studies are sufficient; no outside tuition is required.",
+        },
+      ],
     },
     {
-      question: "Does the Gurukulam cover modern academics, and what will my child learn?",
-      answer: "Modern academics are a core part of the curriculum, taught alongside values, culture, and spiritual education. Children study Science, Mathematics, Languages (English, Sanskrit, Hindi, Gujarati), Social Science, and activity-based learning; yoga, music, dance, drama, and art and craft; values and culture; scripture including the Bhagavad Gita, Ramayana, Mahabharata, Srimad Bhagavatam, and the biographies of the great Acharyas; and life skills such as communication, management, finance, the implications of social media, and handling peer pressure and addiction.",
+      letter: "D",
+      title: "Academic & career opportunities",
+      items: [
+        {
+          question: "Can Gurukulam graduates pursue mainstream professional careers such as medicine and engineering?",
+          answer: "Yes. Students are prepared to pursue mainstream professional careers.",
+        },
+        {
+          question: "What certification does the child receive on completing Gurukulam education?",
+          answer: "Gujarat State Board certification.",
+        },
+      ],
     },
     {
-      question: "What are the school timings?",
-      answer: "Nursery to Senior KG attend 3 to 5 hours a day, following a shorter morning from 09:00 to 12:00. Classes 1 to 5 attend 8 to 10 hours a day, following the full-day schedule from 08:00 to 17:00.",
+      letter: "E",
+      title: "Fees & parent engagement",
+      items: [
+        {
+          question: "What is the fee structure of the Gurukulam?",
+          answer: "₹30,000 – ₹90,000, which includes academics and tuition fee, lunch and snacks, extra-curricular activities and special skill classes.",
+          note: "Please confirm the exact fee applicable to your child's class with the Gurukulam office.",
+        },
+        {
+          question: "What is the payment schedule for fees?",
+          points: ["Primary (Class 1 – 5): quarterly.", "Pre-primary (Nursery – Sr. KG): half-yearly."],
+        },
+        {
+          question: "Is there a formal mechanism for parent participation and feedback?",
+          answer: "Yes — a monthly Parent-Teacher Meeting (PTM) is held.",
+        },
+      ],
     },
     {
-      question: "How are academics and Vedic education balanced across the day?",
-      answer: "Classes 1–5 begin with two hours of Vedic education, continue with six hours of NCERT academics, and close with one hour of Kreeda and sports.",
-    },
-    {
-      question: "Who will teach my child, and will additional tuition be needed?",
-      answer: "Children are taught by well-qualified devotee teachers. No outside tuition is required; Gurukulam studies are sufficient on their own.",
-    },
-    {
-      question: "Can Gurukulam students go on to careers such as medicine and engineering?",
-      answer: "Yes. Students are prepared to pursue mainstream professional careers, and they receive Gujarat State Board certification on completing their Gurukulam education.",
-    },
-    {
-      question: "What is the fee structure, and how is it paid?",
-      answer: "Fees range from ₹30,000 to ₹90,000 and cover academics and tuition, lunch and snacks, extra-curricular activities, and special skill classes. Fees are paid quarterly for Classes 1–5 and half-yearly for pre-primary (Nursery to Senior KG). Please confirm the exact fee applicable to your child's class with the Gurukulam office.",
-    },
-    {
-      question: "How do parents stay involved?",
-      answer: "A Parent-Teacher Meeting is held every month, giving families a regular, formal point for participation and feedback.",
-    },
-    {
-      question: "Is transport provided?",
-      answer: "Transport to and from the Gurukulam is arranged by parents. The Gurukulam shares transport contacts to help families make arrangements, but the expense is borne by parents.",
-    },
-    {
-      question: "What food is served during the day?",
-      answer: "Lunch and snacks are provided. All food is vegetarian, sattvik, nutritious prasadam.",
-    },
-    {
-      question: "Where do Krishi and Gau Seva take place?",
-      answer: "Children will visit a separate off-campus farm once a week. The school campus does not include farmland or a goshala.",
-    },
-    {
-      question: "How does the admission process work?",
-      answer: "There are five steps: complete the admission form, attend the Gurukulam orientation, take part in an interaction with the parents, complete an assessment of the child, and then receive confirmation of admission.",
+      letter: "F",
+      title: "Facilities",
+      items: [
+        {
+          question: "What transportation facilities are available?",
+          points: [
+            "Transport to and from the Gurukulam is arranged by parents.",
+            "The Gurukulam provides transport contacts; the expense is borne by parents.",
+          ],
+        },
+        {
+          question: "What arrangements are made for prasadam, and what food is served?",
+          points: ["Lunch and snacks are provided.", "All food is vegetarian, sattvik, nutritious prasadam."],
+        },
+      ],
     },
   ],
 };
