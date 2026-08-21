@@ -12,7 +12,7 @@ import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin, SplitText);
 
-// Kidzu silences warnings for triggers that aren't on every page (main.js:942).
+// Triggers are not present on every page, so silence the warnings rather than log noise.
 gsap.config({ nullTargetWarn: false });
 
 /** True when the visitor has asked for reduced motion; every scroll effect checks this. */

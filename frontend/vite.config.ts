@@ -1,6 +1,6 @@
 /*
   vite.config.ts
-  Vite setup for the Kidzu replica. Registers the React and Tailwind v4 plugins and
+  Vite setup for the Vidyabhushana Gurukulam site. Registers the React and Tailwind v4 plugins and
   the `@/` path alias used across src/.
 */
 import { defineConfig } from "vite";
