@@ -1,7 +1,8 @@
 /*
   src/data/nav.ts
   Primary route navigation for the Vidyabhushana Gurukulam website.
-  Keeps admission as the dedicated header action while informational destinations remain in the menu.
+  The header action now opens the external enquiry form, so the Admissions page is listed in the menu
+  to keep its intake details, fees, and five-step journey reachable.
 */
 
 export type NavItem = {
@@ -16,5 +17,6 @@ export const NAV: NavItem[] = [
   { label: "Our Approach", href: "/approach" },
   { label: "Curriculum", href: "/curriculum" },
   { label: "Parent Guide", href: "/parent-guide" },
+  { label: "Admissions", href: "/admissions" },
   { label: "Contact", href: "/contact" },
 ];

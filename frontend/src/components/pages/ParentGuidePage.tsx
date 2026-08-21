@@ -12,7 +12,7 @@ export function ParentGuidePage() {
       <PageHero eyebrow="Parent Guide" title="The practical details families need first" lead="Find clear answers about the school format, classes, timings, transport, meals, facilities, and the first step in admissions." />
       <FacilitiesCare facilities={FACILITIES} />
       <ParentFaq faqs={FAQS} />
-      <PageCta title="Ready to take the next step?" body="Begin with an admission enquiry for the June 2027 intake, from pre-primary through Class 5." />
+      <PageCta title="Ready to take the next step?" body="Begin with an admission enquiry for the 2027–28 intake, from Nursery through Class 5." />
     </>
   );
 }

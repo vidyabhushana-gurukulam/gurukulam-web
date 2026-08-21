@@ -130,12 +130,33 @@ export interface FooterContent {
   admissions: string;
 }
 
+/**
+ * Published contact routes. The Drive link is a folder of parent documents rather than a single
+ * PDF, so anything linking to it should say "documents" instead of promising one download.
+ */
+export const CONTACT = {
+  phoneDisplay: "+91 9512512600",
+  phoneHref: "tel:+919512512600",
+  email: "vidyabhushanagurukulam@gmail.com",
+  emailHref: "mailto:vidyabhushanagurukulam@gmail.com",
+  instagram: "https://www.instagram.com/vidyabhushana_gurukulam/",
+  instagramHandle: "@vidyabhushana_gurukulam",
+  handbook: "https://drive.google.com/drive/folders/1WKcrvZLHvx94MBwxzwkPmliF_ze9JkCq",
+} as const;
+
+/**
+ * The live admission enquiry form. Every "enquire" action on the site points here, so the
+ * destination changes in one place if the form is ever replaced. Internal /admissions links
+ * are navigation to the page that explains the process, and deliberately stay internal.
+ */
+export const ENQUIRY_FORM_URL = "https://forms.gle/bSYpaLipMfCHneZeA";
+
 export const SITE: SiteContent = {
   name: "Vidyabhushana Gurukulam",
   shortName: "Vidyabhushana",
   location: "Vadodara, Gujarat, India",
   description: "An English-medium GSEB day school bringing an NCERT-based academic education together with a Vedic and cultural curriculum.",
-  admissions: "First batch begins June 2027 · Pre-primary to Class 5",
+  admissions: "Admissions open for 2027–28 · Nursery to Class 5",
   contactHref: "/contact",
   experience: {
     eyebrow: "The people behind the Gurukulam",
@@ -147,10 +168,13 @@ export const SITE: SiteContent = {
 };
 
 export const HERO: HeroContent = {
-  eyebrow: "Admission enquiries · First batch June 2027",
-  title: "Vedic knowledge with modern science.",
-  body: "A new English-medium GSEB day school in Vadodara, opening from pre-primary to Class 5.",
-  primaryCta: { label: "Enquire for Admission", href: "/admissions" },
+  eyebrow: "Quality education · Cultural roots · All-round development",
+  title: "Where learning meets strong values.",
+  // The headline renders the admission hoarding's Hindi tagline in English. The lead keeps
+  // "Vedic knowledge with modern science" verbatim because document/philosophy.md names it
+  // the strategic anchor of the whole project.
+  body: "Vedic knowledge with modern science, at a new English-medium GSEB day school in Vadodara, from Nursery to Class 5.",
+  primaryCta: { label: "Enquire for Admission", href: ENQUIRY_FORM_URL },
   secondaryCta: { label: "Explore Our Approach", href: "/approach" },
 };
 
@@ -266,8 +290,8 @@ export const FACILITIES: FacilitiesContent = {
   lead: "We distinguish what will be available at launch from plans for a future stage.",
   available: [
     { title: "Computers", body: "Computers will be available at launch." },
-    { title: "Midday meal prasadam", body: "Midday meal prasadam will be provided." },
-    { title: "Transport", body: "Transport will be provided; coverage areas are still to be confirmed." },
+    { title: "Lunch and snacks", body: "Lunch and snacks are provided as vegetarian, sattvik, nutritious prasadam." },
+    { title: "Transport contacts", body: "Transport is arranged by parents; the Gurukulam shares transport contacts and the expense is borne by parents." },
   ],
   planned: [
     { title: "Science lab", body: "Planned for a future stage." },
@@ -279,59 +303,85 @@ export const FACILITIES: FacilitiesContent = {
 export const FAQS: FaqContent = {
   eyebrow: "Parent guide",
   title: "The essentials, answered clearly",
-  lead: "Straight answers about the Gurukulam's opening, academics, daily format, and admission process.",
+  lead: "Straight answers about the Gurukulam's format, academics, daily routine, fees, facilities, and admission process, drawn from the Parent Handbook.",
   items: [
     {
-      question: "Is Vidyabhushana Gurukulam residential?",
-      answer: "No. Vidyabhushana Gurukulam is a day school, and children return home each day. There is no hostel or residential programme.",
+      question: "Is Vidyabhushana Gurukulam residential, and is it open to both boys and girls?",
+      answer: "It is a day school, so children return home each day; there is no hostel or residential programme. Admission is open to both boys and girls.",
     },
     {
-      question: "Which classes will open in June 2027?",
-      answer: "The founding batch will include pre-primary through Class 5. One new class is planned to be added each year as the children progress.",
+      question: "Which classes are offered, and what is the minimum age?",
+      answer: "Admissions are open from Nursery through Class 5. The minimum age for admission is 3 years.",
     },
     {
-      question: "Which board and medium will the school follow?",
-      answer: "The school will follow GSEB, use English as the medium of instruction, and teach an NCERT-based academic curriculum.",
+      question: "Which syllabus, board, and medium does the Gurukulam follow?",
+      answer: "The syllabus is NCERT, the affiliation is with the Gujarat State Board, and the medium of instruction is English.",
     },
     {
-      question: "How are academics and Vedic education balanced?",
-      answer: "Classes 1–5 begin with two hours of Vedic education, continue with six hours of NCERT academics, and close with one hour of Kreeda and sports.",
+      question: "Does the Gurukulam cover modern academics, and what will my child learn?",
+      answer: "Modern academics are a core part of the curriculum, taught alongside values, culture, and spiritual education. Children study Science, Mathematics, Languages (English, Sanskrit, Hindi, Gujarati), Social Science, and activity-based learning; yoga, music, dance, drama, and art and craft; values and culture; scripture including the Bhagavad Gita, Ramayana, Mahabharata, Srimad Bhagavatam, and the biographies of the great Acharyas; and life skills such as communication, management, finance, the implications of social media, and handling peer pressure and addiction.",
     },
     {
       question: "What are the school timings?",
-      answer: "Pre-primary follows a shorter day from 09:00 to 12:00. Classes 1–5 follow the full-day schedule from 08:00 to 17:00.",
+      answer: "Nursery to Senior KG attend 3 to 5 hours a day, following a shorter morning from 09:00 to 12:00. Classes 1 to 5 attend 8 to 10 hours a day, following the full-day schedule from 08:00 to 17:00.",
     },
     {
-      question: "Will transport and meals be available?",
-      answer: "Transport and midday meal prasadam will be provided. Transport coverage areas are still being finalised.",
+      question: "How are academics and Vedic education balanced across the day?",
+      answer: "Classes 1–5 begin with two hours of Vedic education, continue with six hours of NCERT academics, and close with one hour of Kreeda and sports.",
+    },
+    {
+      question: "Who will teach my child, and will additional tuition be needed?",
+      answer: "Children are taught by well-qualified devotee teachers. No outside tuition is required; Gurukulam studies are sufficient on their own.",
+    },
+    {
+      question: "Can Gurukulam students go on to careers such as medicine and engineering?",
+      answer: "Yes. Students are prepared to pursue mainstream professional careers, and they receive Gujarat State Board certification on completing their Gurukulam education.",
+    },
+    {
+      question: "What is the fee structure, and how is it paid?",
+      answer: "Fees range from ₹30,000 to ₹90,000 and cover academics and tuition, lunch and snacks, extra-curricular activities, and special skill classes. Fees are paid quarterly for Classes 1–5 and half-yearly for pre-primary (Nursery to Senior KG). Please confirm the exact fee applicable to your child's class with the Gurukulam office.",
+    },
+    {
+      question: "How do parents stay involved?",
+      answer: "A Parent-Teacher Meeting is held every month, giving families a regular, formal point for participation and feedback.",
+    },
+    {
+      question: "Is transport provided?",
+      answer: "Transport to and from the Gurukulam is arranged by parents. The Gurukulam shares transport contacts to help families make arrangements, but the expense is borne by parents.",
+    },
+    {
+      question: "What food is served during the day?",
+      answer: "Lunch and snacks are provided. All food is vegetarian, sattvik, nutritious prasadam.",
     },
     {
       question: "Where do Krishi and Gau Seva take place?",
       answer: "Children will visit a separate off-campus farm once a week. The school campus does not include farmland or a goshala.",
     },
     {
-      question: "How does the admission process begin?",
-      answer: "Parents submit an admission enquiry, the Gurukulam team follows up, and an explanation session is then held with the family. Fees are shared during the enquiry process.",
+      question: "How does the admission process work?",
+      answer: "There are five steps: complete the admission form, attend the Gurukulam orientation, take part in an interaction with the parents, complete an assessment of the child, and then receive confirmation of admission.",
     },
   ],
 };
 
 export const ADMISSIONS_STEPS: AdmissionsContent = {
-  eyebrow: "Admissions · June 2027",
-  title: "Begin with an admission enquiry",
-  lead: "The first batch begins in June 2027, with admission enquiries for pre-primary through Class 5.",
+  eyebrow: "Admissions · 2027–28",
+  title: "The admission journey, step by step",
+  lead: "Admissions are open from Nursery through Class 5 for the 2027–28 academic year, which begins in June 2027.",
   items: [
-    { step: "01", title: "Send an enquiry", body: "Share your details through the admission enquiry form." },
-    { step: "02", title: "The team contacts you", body: "A member of the Gurukulam team will follow up with you." },
-    { step: "03", title: "Attend an explanation session", body: "An explanation session is held with the Gurukulam team." },
+    { step: "01", title: "Fill form", body: "Complete the Gurukulam admission form." },
+    { step: "02", title: "Orientation", body: "Attend the Gurukulam orientation." },
+    { step: "03", title: "Parent's interview", body: "An interaction is held with the parents." },
+    { step: "04", title: "Student's evaluation", body: "An assessment of the child is carried out." },
+    { step: "05", title: "Admission", body: "Admission is confirmed for your child." },
   ],
 };
 
 export const FINAL_CTA: FinalCtaContent = {
   eyebrow: "First batch · June 2027",
   title: "Considering Vidyabhushana Gurukulam for your child?",
-  body: "Admission enquiries are open for pre-primary through Class 5 in Vadodara.",
-  primaryCta: { label: "Enquire for Admission", href: "/admissions" },
+  body: "Admission enquiries are open for Nursery through Class 5 in Vadodara.",
+  primaryCta: { label: "Enquire for Admission", href: ENQUIRY_FORM_URL },
   secondaryCta: { label: "Explore Our Approach", href: "/approach" },
 };
 
@@ -347,5 +397,5 @@ export const FOOTER: FooterContent = {
     { label: "Admissions", href: "/admissions" },
     { label: "Contact", href: "/contact" },
   ],
-  admissions: "First batch begins June 2027 · Pre-primary to Class 5",
+  admissions: "Admissions open for 2027–28 · Nursery to Class 5",
 };

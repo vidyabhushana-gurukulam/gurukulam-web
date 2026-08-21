@@ -6,15 +6,15 @@ import { FoundationSections } from "@/components/home/FoundationSections";
 import { PageCta, PageHero } from "@/components/pages/InnerPage";
 import { SectionIntro } from "@/components/home/SectionIntro";
 import { Reveal } from "@/components/motion/Reveal";
-import { PILLARS, SITE } from "@/data/home";
+import { ENQUIRY_FORM_URL, PILLARS, SITE } from "@/data/home";
 
 const SCHOOL_FACTS = [
   ["School format", "English-medium GSEB day school"],
   ["Opening", "First batch begins June 2027"],
-  ["Classes", "Pre-primary through Class 5"],
+  ["Classes", "Nursery through Class 5"],
   ["Location", "Vadodara, Gujarat"],
   ["Growth", "One new class added as children progress"],
-  ["Daily care", "Transport and midday prasadam will be provided"],
+  ["Daily care", "Lunch and snacks provided; transport arranged by parents"],
 ];
 
 export function AboutPage() {
@@ -39,7 +39,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      <PageCta title="See how the Gurukulam approaches the whole child" body="Explore the five dimensions of Pancha Kosha Vikas and the practices that shape each school day." primaryLabel="Explore Our Approach" primaryHref="/approach" secondaryLabel="Admission Enquiry" secondaryHref="/admissions" />
+      <PageCta title="See how the Gurukulam approaches the whole child" body="Explore the five dimensions of Pancha Kosha Vikas and the practices that shape each school day." primaryLabel="Explore Our Approach" primaryHref="/approach" secondaryLabel="Admission Enquiry" secondaryHref={ENQUIRY_FORM_URL} />
     </>
   );
 }

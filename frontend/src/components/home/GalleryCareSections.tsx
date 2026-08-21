@@ -5,6 +5,8 @@
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionIntro } from "@/components/home/SectionIntro";
+import { DocumentIcon } from "@/components/ui/Icon";
+import { CONTACT } from "@/data/home";
 
 type ParentGuideSectionsProps = {
   facilities: typeof import("@/data/home").FACILITIES;
@@ -82,7 +84,12 @@ export function ParentFaq({ faqs }: Pick<ParentGuideSectionsProps, "faqs">) {
           <SectionIntro eyebrow={faqs.eyebrow} title={faqs.title} lead={faqs.lead} align="left" headingId="parent-faq-title" />
           <div className="mt-8 rounded-[28px] border border-theme/25 bg-bg-cream p-6">
             <p className="font-heading text-lg font-medium text-header">Still considering the fit?</p>
-            <p className="mt-2 text-[15px] leading-6 text-text">The admission explanation session is where families can understand the model and ask questions specific to their child.</p>
+            <p className="mt-2 text-[15px] leading-6 text-text">The Gurukulam orientation is where families can understand the model, and the parent interview that follows is the place to ask questions specific to their child.</p>
+            <a href={CONTACT.handbook} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2.5 font-heading text-[15px] font-semibold text-header underline decoration-theme/45 underline-offset-4 transition-colors duration-(--default-transition-duration) hover:text-theme focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header">
+              <DocumentIcon className="text-theme" />
+              Read the full Parent Handbook
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
           </div>
         </div>
 

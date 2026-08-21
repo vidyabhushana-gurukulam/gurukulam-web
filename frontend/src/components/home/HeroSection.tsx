@@ -1,11 +1,14 @@
 /*
   src/components/home/HeroSection.tsx
   Introduces the Gurukulam immediately through its official crest, verified school facts, and a focused admissions path.
-  Hero content stays static because it is already visible when the page loads.
+  The headline block stays static because it is already visible on load; the photograph beneath it carries the motion.
 */
 import { Button } from "@/components/ui/Button";
 import { Img } from "@/components/ui/Img";
+import { PhotoFrame } from "@/components/ui/PhotoFrame";
+import { FloatingChild } from "@/components/motion/FloatingChild";
 import { GoldRule } from "@/components/home/SectionIntro";
+import { CHILDREN, SCENES } from "@/data/media";
 
 type HeroSectionProps = {
   site: typeof import("@/data/home").SITE;
@@ -18,7 +21,7 @@ export function HeroSection({ site, hero }: HeroSectionProps) {
     { label: "Board", value: "GSEB" },
     { label: "Medium", value: "English" },
     { label: "Opening", value: "June 2027" },
-    { label: "Classes", value: "Pre-primary–Class 5" },
+    { label: "Classes", value: "Nursery–Class 5" },
     { label: "Location", value: "Vadodara" },
   ];
 
@@ -56,13 +59,23 @@ export function HeroSection({ site, hero }: HeroSectionProps) {
           </div>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 overflow-hidden rounded-[24px] border border-header/10 bg-white/65 sm:mt-14 sm:grid-cols-3 lg:grid-cols-6">
-          {schoolFacts.map((fact) => (
-            <div key={fact.label} className="border-b border-r border-header/10 p-4 text-center last:border-r-0 sm:p-5 lg:border-b-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-text/65">{fact.label}</p>
-              <p className="mt-1.5 font-heading text-base font-semibold leading-5 text-header">{fact.value}</p>
+        {/* The photograph and the fact strip read as one plinth: image above, verified detail beneath. */}
+        <div className="relative mx-auto mt-12 max-w-[1240px] sm:mt-16">
+          <FloatingChild media={CHILDREN.readingRaisedHand} className="-bottom-2 left-0 w-[128px] xl:w-[148px]" drift={-34} />
+          <FloatingChild media={CHILDREN.wateringSapling} className="-bottom-2 right-0 w-[136px] xl:w-[156px]" drift={-22} />
+
+          <div className="mx-auto max-w-[980px]">
+            <PhotoFrame media={SCENES.courtyardWalk} eager className="aspect-[7/5] w-full rounded-t-[clamp(60px,9vw,120px)] rounded-b-[6px] border border-theme/30" />
+
+            <div className="grid grid-cols-2 overflow-hidden rounded-b-[24px] border border-t-0 border-header/10 bg-white/70 sm:grid-cols-3 lg:grid-cols-6">
+              {schoolFacts.map((fact) => (
+                <div key={fact.label} className="border-b border-r border-header/10 p-4 text-center last:border-r-0 sm:p-5 lg:border-b-0">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-text/65">{fact.label}</p>
+                  <p className="mt-1.5 font-heading text-base font-semibold leading-5 text-header">{fact.value}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

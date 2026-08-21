@@ -4,6 +4,8 @@
 */
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionIntro } from "@/components/home/SectionIntro";
+import { PhotoFrame } from "@/components/ui/PhotoFrame";
+import { SCENES } from "@/data/media";
 
 type CurriculumSectionsProps = {
   qualities: typeof import("@/data/home").QUALITIES;
@@ -66,16 +68,20 @@ export function FarmVisit({ farmVisit }: Pick<CurriculumSectionsProps, "farmVisi
   return (
     <section className="bg-body px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="farm-visit-title">
       <Reveal className="mx-auto max-w-[1160px]">
-        <div className="relative overflow-hidden rounded-[28px] bg-header px-7 py-14 text-center sm:px-14 sm:py-20 lg:px-24">
-          <div aria-hidden="true" className="absolute -left-20 -top-20 size-64 rounded-full border border-theme/30" />
-          <div aria-hidden="true" className="absolute -bottom-24 -right-20 size-72 rounded-full border border-white/10" />
-          <svg aria-hidden="true" viewBox="0 0 120 120" className="relative mx-auto size-20 text-theme">
-            <path d="M62 99C60 72 62 48 82 25M61 71C42 65 29 52 25 34c18 0 34 10 40 28M67 56c17-4 29-15 34-32-17-1-32 8-39 23" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <p className="relative mt-7 font-heading text-sm font-semibold uppercase tracking-[0.18em] text-theme">{farmVisit.eyebrow}</p>
-          <h2 id="farm-visit-title" className="relative mx-auto mt-4 max-w-[750px] font-heading text-[clamp(2.1rem,5vw,4rem)] font-medium leading-[1.08] text-white">{farmVisit.title}</h2>
-          <p className="relative mx-auto mt-6 max-w-[650px] text-lg leading-8 text-white/80">{farmVisit.body}</p>
-          <p className="relative mx-auto mt-7 max-w-[680px] rounded-full border border-white/15 bg-white/[0.06] px-5 py-3 text-sm leading-6 text-white/65">{farmVisit.note}</p>
+        {/* Split rather than centred: the weekly farm visit is the one section where a photograph carries the claim. */}
+        <div className="relative grid overflow-hidden rounded-[28px] bg-header lg:grid-cols-[0.82fr_1.18fr]">
+          <PhotoFrame media={SCENES.natureStudy} className="min-h-[300px] w-full sm:min-h-[380px] lg:min-h-full" />
+
+          <div className="relative px-7 py-14 text-center sm:px-12 sm:py-16 lg:px-14 lg:py-20 lg:text-left">
+            <div aria-hidden="true" className="absolute -bottom-24 -right-20 size-72 rounded-full border border-white/10" />
+            <svg aria-hidden="true" viewBox="0 0 120 120" className="relative mx-auto size-16 text-theme lg:mx-0">
+              <path d="M62 99C60 72 62 48 82 25M61 71C42 65 29 52 25 34c18 0 34 10 40 28M67 56c17-4 29-15 34-32-17-1-32 8-39 23" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <p className="relative mt-6 font-heading text-sm font-semibold uppercase tracking-[0.18em] text-theme">{farmVisit.eyebrow}</p>
+            <h2 id="farm-visit-title" className="relative mt-4 font-heading text-[clamp(2rem,4vw,3.4rem)] font-medium leading-[1.08] text-white">{farmVisit.title}</h2>
+            <p className="relative mt-6 max-w-[560px] text-lg leading-8 text-white/80 max-lg:mx-auto">{farmVisit.body}</p>
+            <p className="relative mt-7 max-w-[560px] rounded-[20px] border border-white/15 bg-white/[0.06] px-5 py-3 text-sm leading-6 text-white/65 max-lg:mx-auto">{farmVisit.note}</p>
+          </div>
         </div>
       </Reveal>
     </section>
