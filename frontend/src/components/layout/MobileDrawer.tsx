@@ -7,6 +7,8 @@ import { useEffect, useRef } from "react";
 import { NAV } from "@/data/nav";
 import { Logo } from "@/components/ui/Logo";
 import { getCurrentPath } from "@/lib/path";
+import { CONTACT, ENQUIRY_FORM_URL } from "@/data/home";
+import { InstagramIcon, MailIcon, PhoneIcon } from "@/components/ui/Icon";
 
 type MobileDrawerProps = {
   open: boolean;
@@ -129,9 +131,32 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
           </ul>
         </nav>
 
-        <a href="/admissions" onClick={onClose} className="mt-8 inline-flex items-center justify-center rounded-full bg-header px-7 py-4 font-body text-[1.05rem] font-semibold leading-none text-white transition-[transform,box-shadow] duration-(--default-transition-duration) ease-(--ease-out-back) hover:translate-y-(--hover-lift-sm) hover:shadow-(--shadow-hover) focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header">
+        <a href={ENQUIRY_FORM_URL} target="_blank" rel="noopener noreferrer" onClick={onClose} className="mt-8 inline-flex items-center justify-center rounded-full bg-header px-7 py-4 font-body text-[1.05rem] font-semibold leading-none text-white transition-[transform,box-shadow] duration-(--default-transition-duration) ease-(--ease-out-back) hover:translate-y-(--hover-lift-sm) hover:shadow-(--shadow-hover) focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header">
           Admission Enquiry
+          <span className="sr-only"> (opens in a new tab)</span>
         </a>
+
+        <ul className="mt-6 flex flex-col gap-3 text-[0.95rem]">
+          <li>
+            <a href={CONTACT.phoneHref} onClick={onClose} className="inline-flex items-center gap-2.5 font-semibold text-header transition-colors duration-(--default-transition-duration) hover:text-theme">
+              <PhoneIcon className="text-theme" />
+              {CONTACT.phoneDisplay}
+            </a>
+          </li>
+          <li>
+            <a href={CONTACT.emailHref} onClick={onClose} className="inline-flex items-center gap-2.5 break-all text-text transition-colors duration-(--default-transition-duration) hover:text-theme">
+              <MailIcon className="text-theme" />
+              {CONTACT.email}
+            </a>
+          </li>
+          <li>
+            <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" onClick={onClose} className="inline-flex items-center gap-2.5 text-text transition-colors duration-(--default-transition-duration) hover:text-theme">
+              <InstagramIcon className="text-theme" />
+              {CONTACT.instagramHandle}
+              <span className="sr-only"> on Instagram (opens in a new tab)</span>
+            </a>
+          </li>
+        </ul>
 
         <p className="mt-auto pt-10 text-sm text-text">Vadodara, Gujarat</p>
       </aside>

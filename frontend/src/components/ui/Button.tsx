@@ -77,9 +77,18 @@ export function Button({
   );
 
   if (href) {
+    // Detected rather than passed as a prop, so an off-site destination can never ship
+    // without rel="noopener" just because a call site forgot to flag it.
+    const isExternal = /^https?:\/\//.test(href);
+
     return (
-      <a href={href} className={classes}>
+      <a
+        href={href}
+        className={classes}
+        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
         {content}
+        {isExternal && <span className="sr-only"> (opens in a new tab)</span>}
       </a>
     );
   }

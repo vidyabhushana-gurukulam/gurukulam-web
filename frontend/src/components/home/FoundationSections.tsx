@@ -1,15 +1,21 @@
 /*
   src/components/home/FoundationSections.tsx
-  Presents the founding team's prior experience and the three educational pillars without relying on programme photography.
+  Presents the founding team's prior experience and the three educational pillars.
+  Each pillar is introduced by an arched photograph so the section repeats the hero's dome language.
 */
 import { Reveal } from "@/components/motion/Reveal";
 import { useHoverActive } from "@/hooks/useHoverActive";
 import { SectionIntro } from "@/components/home/SectionIntro";
+import { PhotoFrame } from "@/components/ui/PhotoFrame";
+import { SCENES } from "@/data/media";
 
 type FoundationSectionsProps = {
   site: typeof import("@/data/home").SITE;
   pillars: typeof import("@/data/home").PILLARS;
 };
+
+/** Positional map from the approved pillar order to its illustrating scene. */
+const PILLAR_SCENES = [SCENES.classroomDiscussion, SCENES.geometryClass, SCENES.handsOnLearning];
 
 export function FoundationSections({ site, pillars }: FoundationSectionsProps) {
   return (
@@ -73,13 +79,18 @@ function Pillars({ pillars }: Pick<FoundationSectionsProps, "pillars">) {
 
             return (
               <Reveal key={pillar.title} delay={index * 0.07}>
-                <article {...hoverProps(index)} tabIndex={0} className={`group flex min-h-[370px] flex-col items-center rounded-b-[28px] rounded-t-[150px] border px-7 pb-9 pt-12 text-center outline-none transition-[transform,background-color,box-shadow,border-color] duration-(--default-transition-duration) ease-(--ease-out-back) focus-visible:ring-2 focus-visible:ring-theme ${isActive ? "-translate-y-1.5 border-theme/45 bg-white shadow-hover" : "border-header/10 bg-white/55"}`}>
-                  <span className={`grid size-24 place-items-center rounded-full font-heading text-3xl font-medium transition-colors duration-(--default-transition-duration) ${isActive ? "bg-bg-cream text-theme" : "bg-body text-header/45"}`}>
-                    {pillar.icon}
-                  </span>
-                  <span className="mt-8 h-px w-10 bg-theme/55" />
-                  <h3 className="mt-6 font-heading text-2xl font-medium leading-tight text-header">{pillar.title}</h3>
-                  <p className="mt-4 text-[16px] leading-7 text-text">{pillar.body}</p>
+                <article {...hoverProps(index)} tabIndex={0} className={`group flex h-full flex-col overflow-hidden rounded-b-[28px] rounded-t-[150px] border text-center outline-none transition-[transform,background-color,box-shadow,border-color] duration-(--default-transition-duration) ease-(--ease-out-back) focus-visible:ring-2 focus-visible:ring-theme ${isActive ? "-translate-y-1.5 border-theme/45 bg-white shadow-hover" : "border-header/10 bg-white/55"}`}>
+                  <PhotoFrame media={PILLAR_SCENES[index]} className="aspect-[4/3] w-full shrink-0" scrim="soft">
+                    <span className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full border border-white/25 bg-header/65 px-4 py-1.5 font-heading text-xs font-semibold tracking-[0.22em] text-white backdrop-blur-sm">
+                      {pillar.icon}
+                    </span>
+                  </PhotoFrame>
+
+                  <div className="flex flex-1 flex-col items-center px-7 pb-9 pt-7">
+                    <span className="h-px w-10 bg-theme/55" />
+                    <h3 className="mt-6 font-heading text-2xl font-medium leading-tight text-header">{pillar.title}</h3>
+                    <p className="mt-4 text-[16px] leading-7 text-text">{pillar.body}</p>
+                  </div>
                 </article>
               </Reveal>
             );

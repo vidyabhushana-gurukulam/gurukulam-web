@@ -40,7 +40,7 @@ export function CurriculumPage() {
 
       <SubjectGroups subjectGroups={SUBJECT_GROUPS} />
       <FarmVisit farmVisit={FARM_VISIT} />
-      <PageCta title="Want to understand how this curriculum may fit your child?" body="The admission process includes an explanation session where families can understand the Gurukulam's model and ask their questions." />
+      <PageCta title="Want to understand how this curriculum may fit your child?" body="The admission process includes a Gurukulam orientation where families can understand the model, followed by an interview in which parents can ask their questions." />
     </>
   );
 }

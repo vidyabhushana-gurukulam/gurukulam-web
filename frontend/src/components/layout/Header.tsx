@@ -9,6 +9,7 @@ import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { MobileDrawer } from "@/components/layout/MobileDrawer";
 import { getCurrentPath } from "@/lib/path";
+import { ENQUIRY_FORM_URL } from "@/data/home";
 
 export function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -37,7 +38,7 @@ export function Header() {
 
           <div className="flex items-center gap-3 sm:gap-4">
             <div className="hidden sm:block">
-              <Button href="/admissions" variant="secondary">
+              <Button href={ENQUIRY_FORM_URL} variant="secondary">
                 Admission Enquiry
               </Button>
             </div>

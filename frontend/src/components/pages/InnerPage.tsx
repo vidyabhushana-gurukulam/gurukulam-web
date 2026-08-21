@@ -5,6 +5,7 @@
 */
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/Button";
+import { ENQUIRY_FORM_URL } from "@/data/home";
 
 type PageHeroProps = {
   eyebrow: string;
@@ -37,7 +38,7 @@ type PageCtaProps = {
   secondaryHref?: string;
 };
 
-export function PageCta({ eyebrow = "First batch · June 2027", title, body, primaryLabel = "Enquire for Admission", primaryHref = "/admissions", secondaryLabel, secondaryHref }: PageCtaProps) {
+export function PageCta({ eyebrow = "First batch · June 2027", title, body, primaryLabel = "Enquire for Admission", primaryHref = ENQUIRY_FORM_URL, secondaryLabel, secondaryHref }: PageCtaProps) {
   return (
     <section className="bg-body px-5 py-20 sm:px-8 lg:py-28">
       <div className="relative mx-auto max-w-[1180px] overflow-hidden rounded-[28px] bg-header px-7 py-14 text-center sm:px-14 sm:py-18 lg:px-24">

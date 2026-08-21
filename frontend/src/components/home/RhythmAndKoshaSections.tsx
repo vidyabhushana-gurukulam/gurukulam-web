@@ -4,6 +4,11 @@
 */
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionIntro } from "@/components/home/SectionIntro";
+import { PhotoFrame } from "@/components/ui/PhotoFrame";
+import { SCENES } from "@/data/media";
+
+/** Positional map from the approved three-part school day to its illustrating scene. */
+const RHYTHM_SCENES = [SCENES.outdoorDiscussion, SCENES.abacusMaths, SCENES.yogaClass];
 
 type RhythmAndKoshaSectionsProps = {
   dailyRhythm: typeof import("@/data/home").DAILY_RHYTHM;
@@ -36,11 +41,15 @@ export function DailyRhythm({ dailyRhythm }: Pick<RhythmAndKoshaSectionsProps, "
           ))}
         </div>
 
-        <ol className="relative mt-12 grid gap-5 before:absolute before:left-[16.66%] before:right-[16.66%] before:top-12 before:hidden before:h-px before:bg-theme/35 before:content-[''] lg:grid-cols-3 lg:before:block">
+        <ol className="relative mt-12 grid gap-5 before:absolute before:left-[16.66%] before:right-[16.66%] before:top-[88px] before:hidden before:h-px before:bg-theme/35 before:content-[''] lg:grid-cols-3 lg:before:block">
           {dailyRhythm.slots.map((slot, index) => (
             <Reveal as="li" key={slot.time} className="relative" delay={index * 0.08}>
-              <article className="group h-full rounded-[28px] border border-header/10 bg-white px-7 pb-8 pt-7 text-center transition-[transform,box-shadow,border-color] duration-(--default-transition-duration) ease-(--ease-out-back) hover:-translate-y-1 hover:border-theme/35 hover:shadow-hover sm:px-9">
-                <span className="relative z-10 mx-auto grid size-11 place-items-center rounded-full border border-theme/30 bg-bg-cream font-heading text-sm font-semibold text-theme">0{index + 1}</span>
+              <article className="group h-full rounded-[28px] border border-header/10 bg-white px-7 pb-8 pt-8 text-center transition-[transform,box-shadow,border-color] duration-(--default-transition-duration) ease-(--ease-out-back) hover:-translate-y-1 hover:border-theme/35 hover:shadow-hover sm:px-9">
+                {/* The photograph sits on the timeline rule, so the three slots read as beads on one thread. */}
+                <div className="relative z-10 mx-auto w-fit">
+                  <PhotoFrame media={RHYTHM_SCENES[index]} className="size-[112px] rounded-full border-2 border-white shadow-[0_14px_34px_-16px_var(--color-header)]" />
+                  <span className="absolute -bottom-1 -right-1 grid size-8 place-items-center rounded-full border border-theme/35 bg-bg-cream font-heading text-xs font-semibold text-theme">0{index + 1}</span>
+                </div>
                 <p className="mt-6 font-heading text-lg font-semibold text-theme">{slot.time}</p>
                 <h3 className="mt-3 font-heading text-2xl font-medium text-header">{slot.title}</h3>
                 <p className="mt-4 text-[16px] leading-7 text-text">{slot.body}</p>
