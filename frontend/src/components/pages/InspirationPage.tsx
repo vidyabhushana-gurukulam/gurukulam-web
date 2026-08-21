@@ -110,7 +110,7 @@ function Baladeva() {
         </Reveal>
 
         <Reveal x={24} className="mx-auto w-full max-w-[420px] lg:order-2">
-          <div className="overflow-hidden rounded-b-[28px] rounded-t-[clamp(120px,20vw,200px)] border border-theme/35 bg-white shadow-card">
+          <div className="overflow-hidden rounded-b-[28px] rounded-t-[72px] border border-theme/35 bg-white shadow-card">
             <Img src={INSPIRATION.baladeva.src} alt={INSPIRATION.baladeva.alt} className="h-auto w-full" />
           </div>
         </Reveal>
