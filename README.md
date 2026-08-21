@@ -155,12 +155,10 @@ The child cutouts are AI-assisted derivatives of real programme photographs. Gua
 
 ## Open items
 
-Confirmed since the original discovery: public contact details, the fee range, the five-step admission journey, transport arrangements, hosting, and the favicon mark. See `docs/overview.md` §15 for the full original list.
+Confirmed since the original discovery: public contact details, the fee range, the five-step admission journey, transport arrangements, hosting, and the favicon mark. The Baladeva illustration is AI-generated, so it carries no third-party licence. The linked Drive folder is public by intent and is where further parent documents and images will be added. See `docs/overview.md` §15 for the full original list.
 
 Still outstanding:
 
-- **Licensing for the Baladeva Vidyabhushana painting** on `/inspiration`, sourced from Wikimedia Commons — confirm the licence and any attribution requirement before the site is publicised.
-- **Sharing settings on the linked Google Drive folder**, which is reachable from the footer, the Contact page and the FAQ. Anything in that folder is public to anyone with the link.
 - **Campus details and build status** → blocks any campus content and the exact address on `/contact`.
 - **Safety and care arrangements** → the first question parents ask, given Nursery is the entry class.
 - **Analytics and spam protection** → the enquiry form is a Google Form; no analytics are installed.

@@ -47,7 +47,11 @@ export const SCENES = {
   },
 } as const satisfies Record<string, MediaAsset>;
 
-/** Portraits for the Our Inspiration page. */
+/**
+ * Portraits for the Our Inspiration page. The Baladeva image is an AI-generated
+ * illustration rather than a historical artwork, so its alt text says "illustration"
+ * and must not describe it as a traditional or period painting.
+ */
 export const INSPIRATION = {
   prabhupada: {
     src: "/images/inspiration/srila-prabhupada.webp",
@@ -55,7 +59,7 @@ export const INSPIRATION = {
   },
   baladeva: {
     src: "/images/inspiration/baladeva-vidyabhushana.webp",
-    alt: "Traditional painting of Srila Baladeva Vidyabhushana writing on palm leaves with a peacock-feather quill, a temple behind him",
+    alt: "Illustration of Srila Baladeva Vidyabhushana writing on palm leaves with a peacock-feather quill, a temple behind him",
   },
 } as const satisfies Record<string, MediaAsset>;
 
