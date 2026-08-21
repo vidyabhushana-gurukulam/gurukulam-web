@@ -1,6 +1,6 @@
 <!--
 gurukulam-web/README.md
-Introduces the website project, its operating constraints, repository layout, and developer starting points.
+Introduces the website project, its operating constraints, repository layout, deployment, and developer starting points.
 -->
 
 # Vidyabhushana Gurukulam — Website
@@ -11,8 +11,9 @@ The site's job is to exist before the school does — to introduce a school with
 
 | | |
 |---|---|
-| **Domain** | `vidyabhushanagurukulam.com` (purchased, not yet hosted) |
-| **Scope** | Informational site + one admission enquiry form |
+| **Domain** | `vidyabhushanagurukulam.com` |
+| **Hosting** | GitHub Pages, deployed from `main` by GitHub Actions |
+| **Scope** | Informational site + a linked Google Form for admission enquiries |
 | **Explicitly out of scope** | Fee payment, parent login, attendance, results, LMS, donations |
 | **Language** | English only |
 | **Maintenance** | Developer-maintained. No CMS. |
@@ -36,11 +37,43 @@ Jun 2027            first batch begins
 cd frontend
 npm install
 npm run dev        # http://localhost:5173
-npm run build
+npm run build      # typecheck, bundle, then prerender one HTML file per route
 npm run lint
 ```
 
 **Stack:** React 19 · Vite 8 · TypeScript · Tailwind v4 · GSAP (ScrollSmoother, SplitText, ScrollTrigger).
+
+There is no routing library. `src/components/pages/PageRouter.tsx` maps `window.location.pathname` to a page component, and navigation is plain `<a href>` — every click is a full page load.
+
+---
+
+## Deployment
+
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds `frontend/` and publishes `frontend/dist` to GitHub Pages. `dev` is the working branch; merge it into `main` to release.
+
+### Why the build emits one HTML file per route
+
+Because navigation is real page loads, a static host with no rewrite rules returns **404** for `/about` unless a file exists at that path. `scripts/prerender-routes.mjs` runs after `vite build` and writes `dist/about/index.html`, `dist/contact/index.html` and so on, so every route returns 200 and the client router takes over from the correct location.
+
+This was chosen over a catch-all `404.html` redirect because each copy also carries its own `<title>`, description and canonical URL — which a redirect cannot provide, and which matters for parents searching locally.
+
+The same script emits `404.html`, `.nojekyll` (Pages otherwise runs the output through Jekyll), `sitemap.xml` and `robots.txt`.
+
+**Adding a page** means three edits: a component under `src/components/pages/`, an entry in `src/data/routes.json` (title + description), and an entry in the `PAGES` map in `PageRouter.tsx`. Add it to `src/data/nav.ts` if it belongs in the menu. The prerender step picks it up from `routes.json` automatically.
+
+### DNS
+
+`frontend/public/CNAME` pins the custom domain across deploys. The apex record set:
+
+```
+A       @       185.199.108.153
+A       @       185.199.109.153
+A       @       185.199.110.153
+A       @       185.199.111.153
+CNAME   www     vidyabhushana-gurukulam.github.io
+```
+
+GitHub provisions the HTTPS certificate automatically once DNS resolves; **Enforce HTTPS** can then be enabled in repository settings.
 
 ---
 
@@ -49,42 +82,44 @@ npm run lint
 ```
 docs/                    Project documentation — read these before writing code
 ├── overview.md          What the school is, what the site must achieve, binding content rules
-├── design-direction.md  The canonical visual reference for the implemented website
-└── kidzu-replica.md     Historical record of the motion reference used during development
+└── design-direction.md  The canonical visual reference for the implemented website
 
 frontend/                The React application
-├── src/styles/tokens.css    20 CSS vars — the entire visual theme
-├── src/lib/motion-tokens.ts every duration, ease and stagger
-├── src/data/                all copy and image paths
-├── public/assets/           mirrored demo assets (placeholders — see below)
-└── scripts/                 asset mirroring and recovery utilities
+├── index.html               Metadata template — prerender rewrites its title/description per route
+├── src/styles/tokens.css    The entire visual theme, as CSS variables
+├── src/lib/motion-tokens.ts Every duration, ease and stagger
+├── src/data/                All copy, route metadata, image paths and contact details
+├── public/images/           Web-optimised WebP, generated from the masters outside this repo
+└── scripts/
+    ├── optimize-images.sh   Masters → sized WebP + the social share card
+    ├── make-favicons.py     Crest master → .ico, 32px, and apple-touch icons
+    └── prerender-routes.mjs Post-build: one HTML file per route, plus sitemap and robots
 
 design-prototypes/       style-explorer.html — the visual direction exploration
-kidzu-assets.json        Asset manifests consumed by frontend/scripts/
-kidzu-cached-assets.json
+.github/workflows/       deploy.yml — build and publish to Pages from main
 ```
+
+### Where content lives
+
+| Content | File |
+|---|---|
+| Homepage and shared copy, FAQs, admissions steps, facilities | `src/data/home.ts` |
+| Enquiry form URL, phone, email, Instagram, handbook link | `CONTACT` and `ENQUIRY_FORM_URL` in `src/data/home.ts` |
+| Page titles and meta descriptions | `src/data/routes.json` |
+| Navigation | `src/data/nav.ts` |
+| Image paths and alt text | `src/data/media.ts` |
+
+Both the homepage and the Parent Guide render the same `FAQS` and `FACILITIES`, so editing them once updates both.
 
 ---
 
 ## Read this before changing anything
 
-### 1. `frontend/` is the implemented Gurukulam website
-
-The active public routes use the approved school copy, brand artwork, navy-gold-cream palette, Playfair Display and DM Sans typography, spacious editorial layouts, and restrained motion. Treat the rendered frontend and `docs/design-direction.md` as the current visual source of truth.
-
-The earlier Kidzu replica informed selected scroll and hover behavior, but its cartoon aesthetic and placeholder sections are not the current website design. The historical rationale remains in `docs/kidzu-replica.md`.
-
-The implementation remains token-first: colors, typography, radii, shadows, and CSS interaction values live in `src/styles/tokens.css`; motion timings live in `src/lib/motion-tokens.ts`; verified public copy and image paths live in `src/data/`; and active page composition lives under `src/components/home/` and `src/components/pages/`. See `frontend/README.md` for developer details and `docs/design-direction.md` for the visual rules.
-
-### 2. The assets under `frontend/public/assets/` must not ship
-
-They are licensed ThemeForest theme and stock assets, mirrored as **development placeholders only**. The photographs are Western classroom stock and would be replaced with real gurukulam photography regardless. `frontend/PLACEHOLDERS.md` is the replace-before-launch checklist.
-
-### 3. Content accuracy is a hard requirement, not a preference
+### 1. Content accuracy is a hard requirement, not a preference
 
 `docs/overview.md` carries binding rules that exist because parents verify claims on a campus visit, and for a school with no track record, word of mouth is the only marketing that matters. The ones most easily broken by accident:
 
-- **Planned facilities are described as plans.** Science lab, robotics and smart classes do not exist yet. Computers and midday prasadam do.
+- **Transport is arranged by parents.** The Gurukulam shares transport contacts; the expense is borne by parents. The site previously said transport "will be provided", which the Parent Handbook contradicts. Do not reintroduce that.
 - **Krishi and Gau Seva are off-campus** — a weekly visit to a separate farm. Never imply a goshala or farmland on school grounds.
 - **The founding team's Sunday school is a separate organisation.** Credit the experience to the *people* ("our teachers have taught 300+ children over five years"), never to the institution.
 - **Never criticise mainstream or modern schools.** Parents reading the site have children currently enrolled in them. Contrast is communicated by describing what this school offers, never by naming what others lack.
@@ -92,27 +127,41 @@ They are licensed ThemeForest theme and stock assets, mirrored as **development 
 
 Read `docs/overview.md` in full before writing any user-facing copy.
 
+### 2. The FAQ is transcribed from the Parent Handbook, not paraphrased
+
+`FAQS` in `src/data/home.ts` reproduces the handbook's seventeen questions verbatim, in its own A–F grouping, including its bulleted answers. When the handbook changes, retranscribe rather than reword — paraphrasing has already introduced errors once.
+
+### 3. The photography is illustrative, not documentary
+
+The school opens in 2027, so no photograph on the site shows a real Gurukulam class or campus. Alt text in `src/data/media.ts` is written descriptively for this reason and must never assert that a scene is the actual school.
+
+The child cutouts are AI-assisted derivatives of real programme photographs. Guardian approval for identity-preserving derivatives should be confirmed before any further public use.
+
+### 4. Regenerating imagery
+
+`scripts/optimize-images.sh` reads masters from the repository-root `images/` and `document/logo/` directories — **outside this repo** — and writes optimised WebP into `public/images/`. It requires `cwebp` (`brew install webp`) and runs on macOS (`sips`). Rerun it after adding or replacing a master; do not hand-edit the outputs.
+
 ---
 
 ## What is deliberately not in this repository
 
 | Excluded | Why |
 |---|---|
-| `output/` — the whole directory | ~180 MB of raw camera files and generated artwork, including unpublished photographs of a real child. Git cannot delta-compress binaries, and committed history is permanent. The image-generation prompt records under `output/imagegen/` are untracked along with everything else — back them up separately if they matter. |
+| `output/` — the whole directory | ~180 MB of raw camera files and generated artwork, including unpublished photographs of a real child. Git cannot delta-compress binaries, and committed history is permanent. Back it up separately. |
 | `playwright-screenshots/`, `.playwright-mcp/` | Regenerable debugging captures from browser-automation runs. |
-| `frontend/reference-css/` | Third-party theme CSS pulled by a script. Not ours to redistribute. |
-
-Web-ready imagery reaches the site through `frontend/public/`, not through `output/`.
+| Image masters | The originals live in the repository-root `images/` and `document/` folders. Only web-optimised derivatives are committed. |
 
 ---
 
-## Open items blocking content
+## Open items
 
-Several pages cannot be written until these are confirmed — see `docs/overview.md` §15 for the full list.
+Confirmed since the original discovery: public contact details, the fee range, the five-step admission journey, transport arrangements, hosting, and the favicon mark. See `docs/overview.md` §15 for the full original list.
 
-- Campus details and build status → blocks Gallery and any campus content
-- Safety and care arrangements → the first question parents ask, given pre-primary is the entry class
-- Transport coverage areas → parents filter by this before reading anything else
-- Public contact details (phone, WhatsApp, email) → blocks Contact page and footer
-- Hosting, form handling, spam protection, analytics → deferred to a technical session
-- Final logo in vector, with horizontal lockup and favicon mark
+Still outstanding:
+
+- **Licensing for the Baladeva Vidyabhushana painting** on `/inspiration`, sourced from Wikimedia Commons — confirm the licence and any attribution requirement before the site is publicised.
+- **Sharing settings on the linked Google Drive folder**, which is reachable from the footer, the Contact page and the FAQ. Anything in that folder is public to anyone with the link.
+- **Campus details and build status** → blocks any campus content and the exact address on `/contact`.
+- **Safety and care arrangements** → the first question parents ask, given Nursery is the entry class.
+- **Analytics and spam protection** → the enquiry form is a Google Form; no analytics are installed.
+- **`docs/design-direction.md` is out of date** — it documents the pre-photography hero and cites line numbers that have since moved.
