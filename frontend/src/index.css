@@ -1,13 +1,8 @@
 /*
   src/index.css
-  Global stylesheet entry. Pulls in Tailwind, the theme tokens, and the base element
-  styles that mirror Kidzu's typography defaults. Section-specific shape helpers live
-  in styles/shapes.css.
+  Global stylesheet entry for the Vidyabhushana Gurukulam website.
+  Pulls in Tailwind, design tokens, shared shapes, and accessible base styles.
 */
-
-/* Quicksand for headings, Source Sans 3 for body — the theme's own pairing.
-   Must sit above every other rule: CSS requires @import to come first. */
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap");
 
 @import "tailwindcss";
 @import "./styles/tokens.css";
@@ -21,6 +16,7 @@
     font-size: 18px;
     line-height: 28px;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   h1,
@@ -30,7 +26,7 @@
   h5,
   h6 {
     font-family: var(--font-heading);
-    font-weight: 700;
+    font-weight: 500;
     color: var(--color-header);
   }
 
@@ -43,6 +39,16 @@
   /* ScrollSmoother needs the wrapper/content pair to be positioned, not scrolled. */
   #smooth-wrapper {
     overflow: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 104px;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-theme) 32%, transparent);
+    color: var(--color-header);
   }
 
   /* Honour the OS reduced-motion setting globally; GSAP tweens check it individually. */

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run lint:tw-vars && tsc -b && vite build",
+    "build": "npm run lint:tw-vars && tsc -b && vite build && node scripts/prerender-routes.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "lint:tw-vars": "! grep -rEn '\\-\\[--[a-z0-9-]+\\]' src/ || (echo '\\n^ Tailwind v4: use duration-(--x) not duration-[--x] \u2014 bracket form is silently dropped' && exit 1)"

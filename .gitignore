@@ -28,12 +28,11 @@ Thumbs.db
 # ---- Generated imagery ----
 # Source photographs and generated artwork are large binaries that git cannot delta-compress, and the raw camera files include unpublished photographs of a real child. The whole directory stays local; finished imagery reaches the site as web-optimised assets under frontend/public/.
 output/**
+# Keep chroma-key and lossless cutout review masters local; approved transparent WebPs are the production assets.
+frontend/public/images/children/generated/*.png
+frontend/public/images/children/generated/*-ffmpeg.webp
 
 # ---- Browser-automation artefacts ----
 # Debug captures from Playwright runs. Regenerate them rather than version them.
 playwright-screenshots/
 .playwright-mcp/
-
-# ---- Fetched reference material ----
-# Pulled by frontend/scripts/fetch-reference-css.sh. Third-party theme CSS, not ours to redistribute.
-frontend/reference-css/

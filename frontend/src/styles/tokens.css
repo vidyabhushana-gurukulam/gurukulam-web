@@ -1,50 +1,43 @@
 /*
   src/styles/tokens.css
-  Single source of truth for the visual theme. Every colour, radius, shadow and font
-  in the app resolves through these variables — no component hardcodes a hex value.
-  Phase 2 (Vidya Tulsi re-skin) replaces the values in this file and nothing else.
-  Current values are the Kidzu theme's own tokens, read from its live stylesheet.
+  Single source of truth for the implemented website visual system.
+  The palette combines the approved crest colours with calm botanical surfaces.
 */
 
 @theme {
   /* ---- Brand ---------------------------------------------------------- */
-  /* Kidzu ships primary and secondary as the same orange; kept as two tokens
-     so the re-skin can differentiate them without touching component code. */
-  --color-theme: #f39f5f;
-  --color-theme-secondary: #f39f5f;
+  --color-theme: #c9a227;
+  --color-theme-secondary: #1b3057;
 
   /* ---- Ink ------------------------------------------------------------ */
-  --color-header: #385469; /* headings, nav, dark buttons */
-  --color-title: #1c1e30; /* the darker title variant */
-  --color-text: #5c707e; /* body copy */
-  --color-border: #385469;
+  --color-header: #1b3057;
+  --color-title: #142543;
+  --color-text: #586254;
+  --color-border: #dbe3ce;
 
   /* ---- Surfaces ------------------------------------------------------- */
-  --color-body: #fffbfb; /* page background */
-  --color-bg-cream: #fef4de; /* hero */
-  --color-bg-sky: #e1f6fe; /* extra activities */
-  --color-bg-blush: #fedfef;
-  --color-bg-lavender: #e6e8fc; /* programs, blog */
-  --color-bg-rose: #ffeaeb;
-  --color-bg-soft: #ecfffc;
-  /* Pale blue-grey panels: the About card and the FAQ band. */
-  --color-bg-panel: #eff5f8;
-  --color-bg-panel-alt: #e9f2f6;
+  --color-body: #f1f4ea;
+  --color-bg-cream: #f8f3e5;
+  --color-bg-sky: #edf2e4;
+  --color-bg-blush: #f4eee2;
+  --color-bg-lavender: #e8eede;
+  --color-bg-rose: #f7f1e5;
+  --color-bg-soft: #fcfdf7;
+  --color-bg-panel: #fcfdf7;
+  --color-bg-panel-alt: #e8eede;
 
   /* ---- Type ----------------------------------------------------------- */
-  --font-heading: Quicksand, sans-serif;
-  --font-body: "Source Sans 3", sans-serif;
+  --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "DM Sans", "Avenir Next", system-ui, sans-serif;
 
-  /* Kidzu's h1 is 70px/79.8px with -2px tracking. Expressed as a ratio so the
-     scale stays proportional when the re-skin changes the base size. */
-  --text-hero: 4.375rem; /* 70px */
-  --text-hero--line-height: 1.14;
-  --text-hero--letter-spacing: -2px;
-  --text-section: 3rem; /* 48px section headings */
-  --text-section--line-height: 1.16;
+  --text-hero: 4rem;
+  --text-hero--line-height: 1.06;
+  --text-hero--letter-spacing: -0.04em;
+  --text-section: 3.25rem;
+  --text-section--line-height: 1.08;
 
   /* ---- Elevation & shape ---------------------------------------------- */
-  --shadow-card: 0px 1px 14px 0px rgba(0, 0, 0, 0.13);
+  --shadow-card: 0 18px 55px -36px rgb(27 48 87 / 0.35);
   --radius-pill: 50rem;
   --radius-card: 1.5rem;
 
@@ -61,22 +54,22 @@
     captures; centralised here so they can be tuned in one place rather than across
     29 components.
   */
-  --hover-lift: -6px; /* cards and buttons rise on hover */
-  --hover-lift-sm: -3px; /* subtler lift for dense elements */
-  --hover-zoom: 1.06; /* image scale inside a fixed frame */
-  --hover-arrow-shift: 4px; /* trailing arrow nudge */
-  --shadow-hover: 0 18px 34px -12px rgb(56 84 105 / 0.28);
-  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1); /* slight overshoot on lifts */
+  --hover-lift: -6px;
+  --hover-lift-sm: -3px;
+  --hover-zoom: 1.035;
+  --hover-arrow-shift: 4px;
+  --shadow-hover: 0 24px 52px -26px rgb(27 48 87 / 0.4);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /*
-  Organic "blob" radii. Kidzu's cards are irregular squircles rather than
+  Organic "blob" radii. Selected cards are irregular squircles rather than
   uniform rounded rects — this is the single most recognisable trait of the
   design, so the shapes are tokenised too and applied via utility classes.
 */
 @theme {
-  --radius-blob-1: 60% 40% 55% 45% / 45% 55% 45% 55%;
-  --radius-blob-2: 40% 60% 45% 55% / 55% 45% 55% 45%;
-  --radius-blob-3: 50% 50% 40% 60% / 60% 40% 55% 45%;
-  --radius-blob-soft: 2.5rem 2.5rem 2.5rem 0.5rem;
+  --radius-blob-1: 44% 56% 48% 52% / 54% 46% 54% 46%;
+  --radius-blob-2: 54% 46% 58% 42% / 42% 58% 46% 54%;
+  --radius-blob-3: 50% 50% 42% 58% / 58% 42% 54% 46%;
+  --radius-blob-soft: 2rem;
 }

@@ -95,3 +95,31 @@ export const COUNT_UP = {
 
 /** Preloader fade (main.js:1154). */
 export const PRELOADER_FADE_MS = 600;
+
+/* -------------------------------------------------------------------------
+   Gurukulam photography. Unlike everything above, these are not transcribed
+   from Kidzu — the theme had no framed photography. They are tuned to stay
+   inside the site's calm register: slow, scrubbed, and never bouncy.
+   ------------------------------------------------------------------------- */
+
+/**
+ * Slow vertical drift inside a fixed frame. The image is rendered oversized so the
+ * drift never exposes an edge; scrubbing ties it to scroll rather than to a timer.
+ */
+export const PHOTO_DRIFT = {
+  from: { yPercent: -4 },
+  to: { yPercent: 4, ease: "none" },
+  scrollTrigger: { start: "top bottom", end: "bottom top", scrub: 1.2 },
+} as const;
+
+/** First-view wipe for a framed photograph: the frame uncovers its image from the bottom up. */
+export const PHOTO_REVEAL = {
+  from: { clipPath: "inset(100% 0% 0% 0%)" },
+  to: { clipPath: "inset(0% 0% 0% 0%)", duration: 1.15, ease: "power3.out" },
+  scrollTrigger: { start: "top 85%" },
+} as const;
+
+/** Floating child cutouts drift against the page so the composition breathes as it scrolls. */
+export const CUTOUT_FLOAT = {
+  scrollTrigger: { start: "top bottom", end: "bottom top", scrub: 1.4 },
+} as const;
