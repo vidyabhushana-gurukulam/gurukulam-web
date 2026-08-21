@@ -63,7 +63,7 @@
 }
 
 /*
-  Organic "blob" radii. Kidzu's cards are irregular squircles rather than
+  Organic "blob" radii. Selected cards are irregular squircles rather than
   uniform rounded rects — this is the single most recognisable trait of the
   design, so the shapes are tokenised too and applied via utility classes.
 */
