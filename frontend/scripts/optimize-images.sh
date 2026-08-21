@@ -59,6 +59,11 @@ echo "  inspiration/baladeva-vidyabhushana.webp"
 cwebp -quiet -q 86 -resize 900 0 "$SRC/../document/logo/srila-prabhupada.png" -o "$OUT/inspiration/srila-prabhupada.webp"
 echo "  inspiration/srila-prabhupada.webp"
 
+# Open Graph share card. The hoarding already states the school, the intake and the phone
+# number, which is exactly what a WhatsApp preview should show.
+sips -s format jpeg -s formatOptions 82 -Z 1200 "$SRC/banners/hoarding-banner-16x9.jpg" --out "$HERE/../public/social-preview.jpg" >/dev/null
+echo "  social-preview.jpg"
+
 echo "Child cutouts:"
 cutout "boy-reading-raised-hand-v1.webp"       "boy-reading-raised-hand"
 cutout "floral-girl-watering-sapling-v1.webp"  "girl-watering-sapling"
