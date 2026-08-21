@@ -46,7 +46,7 @@ function FoundingExperience({ site }: Pick<FoundationSectionsProps, "site">) {
             <div className="mt-7 space-y-3">
               {[
                 ["01", "Grounded", "Vedic learning and spiritual culture begin the day."],
-                ["02", "Focused", "Six hours of NCERT academics build understanding."],
+                ["02", "Focused", "Five hours of NCERT academics build understanding."],
                 ["03", "Complete", "Kreeda, arts, seva, and practical learning develop the whole child."],
               ].map(([number, title, body]) => (
                 <div key={number} className="grid grid-cols-[46px_1fr] gap-4 rounded-[22px] border border-header/10 bg-white/75 p-4 sm:p-5">

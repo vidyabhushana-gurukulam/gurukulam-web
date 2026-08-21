@@ -69,7 +69,7 @@ export function HeroSection({ site, hero }: HeroSectionProps) {
           <FloatingChild media={CHILDREN.wateringSapling} className="-bottom-2 right-0 w-[136px] xl:w-[156px]" drift={-22} />
 
           <div className="mx-auto max-w-[980px]">
-            <PhotoFrame media={SCENES.courtyardWalk} eager className="aspect-[7/5] w-full rounded-t-[clamp(60px,9vw,120px)] rounded-b-[6px] border border-theme/30" />
+            <PhotoFrame media={SCENES.kidsWalking} eager className="aspect-[7/5] w-full rounded-t-[clamp(60px,9vw,120px)] rounded-b-[6px] border border-theme/30" />
 
             <div className="grid grid-cols-2 overflow-hidden rounded-b-[24px] border border-t-0 border-header/10 bg-white/70 sm:grid-cols-3 lg:grid-cols-6">
               {schoolFacts.map((fact) => (

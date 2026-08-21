@@ -203,7 +203,7 @@ export const PILLARS: Pillar[] = [
   {
     icon: "02",
     title: "Serious NCERT academics",
-    body: "For Classes 1–5, six hours each day are dedicated to NCERT academics taught for understanding through visual projects and 3D models.",
+    body: "For Classes 1–5, five hours each day are dedicated to NCERT academics taught for understanding through visual projects and 3D models.",
   },
   {
     icon: "03",
@@ -217,13 +217,13 @@ export const DAILY_RHYTHM: DailyRhythmContent = {
   title: "Grounding first. Academics in depth. Movement to close.",
   lead: "Classes 1–5 follow a full-day rhythm in which Vedic education comes first, NCERT academics receive the largest block, and Kreeda completes the day.",
   groups: [
-    { label: "Pre-primary", timing: "09:00–12:00", note: "A separate shorter day." },
+    { label: "Pre-primary", timing: "08:00–12:00", note: "A separate shorter day." },
     { label: "Classes 1–5", timing: "08:00–17:00", note: "The three-part full-day rhythm shown below." },
   ],
   slots: [
     { time: "08:00–10:00", title: "Vedic education", body: "The full day begins with the Gurukulam's Vedic and cultural curriculum." },
-    { time: "10:00–16:00", title: "NCERT academics", body: "Six focused hours taught for understanding, including visual projects and 3D models." },
-    { time: "16:00–17:00", title: "Kreeda / sports", body: "Physical activity completes the day." },
+    { time: "10:00–15:00", title: "NCERT academics", body: "Five focused hours taught for understanding, including visual projects and 3D models." },
+    { time: "15:00–17:00", title: "Kreeda / sports", body: "Physical activity, sports, and other activities complete the day." },
   ],
 };
 

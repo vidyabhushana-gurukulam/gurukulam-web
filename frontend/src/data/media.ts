@@ -41,9 +41,9 @@ export const SCENES = {
     src: "/images/school-life/hands-on-learning.webp",
     alt: "A teacher and children exploring counting materials and wooden models around a low table",
   },
-  courtyardWalk: {
-    src: "/images/school-life/courtyard-walk.webp",
-    alt: "Four children in traditional dress walking through a sunlit courtyard carrying books and a globe",
+  kidsWalking: {
+    src: "/images/school-life/kids-walking-together.webp",
+    alt: "Four children in traditional dress walking together through a sunlit courtyard, carrying a globe, a model, and books",
   },
 } as const satisfies Record<string, MediaAsset>;
 

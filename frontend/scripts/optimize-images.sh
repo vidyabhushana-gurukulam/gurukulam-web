@@ -48,9 +48,10 @@ photo "indoor-geometry-construction-class-16x9.png" "geometry-class"       1600
 photo "outdoor-yoga-class-4x3.png"                "yoga-class"             1400
 photo "outdoor-nature-study-4x5.png"              "nature-study"           1200
 photo "gurukulam.png"                             "hands-on-learning"      1500
-# The four children sit at ~55% of the master's width, so the hero crop drops 144px
-# from the left to centre the group, and trims to 7:5 leaving air above heads and below feet.
-photo_crop "ChatGPT Image Aug 20, 2026, 05_47_20 PM.png" "courtyard-walk" "144 120 1304 931"
+# Hero. The group is already centred in this master (spans 17%-83%, midpoint 50%), so the
+# crop keeps the full width and only trims 52px off the top to reach 7:5, which leaves
+# headroom above the children and clear ground beneath their feet.
+photo_crop "kids-walking-together.png" "kids-walking-together" "0 52 1448 1034"
 
 echo "Inspiration portraits:"
 # The Baladeva painting arrives with a printed yellow border; crop it away before resizing.
@@ -61,7 +62,7 @@ echo "  inspiration/srila-prabhupada.webp"
 
 # Open Graph share card. The hoarding already states the school, the intake and the phone
 # number, which is exactly what a WhatsApp preview should show.
-sips -s format jpeg -s formatOptions 82 -Z 1200 "$SRC/banners/hoarding-banner-16x9.jpg" --out "$HERE/../public/social-preview.jpg" >/dev/null
+sips -s format jpeg -s formatOptions 82 -Z 1200 "$SRC/banners/hoarding-banner-4x3.jpg" --out "$HERE/../public/social-preview.jpg" >/dev/null
 echo "  social-preview.jpg"
 
 echo "Child cutouts:"

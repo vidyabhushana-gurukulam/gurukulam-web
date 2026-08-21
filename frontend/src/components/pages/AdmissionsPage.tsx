@@ -11,7 +11,7 @@ import { ADMISSIONS_STEPS } from "@/data/home";
 const ADMISSION_FACTS = [
   ["First intake", "June 2027"],
   ["Entry classes", "Nursery to Class 5"],
-  ["Pre-primary timings", "09:00–12:00"],
+  ["Pre-primary timings", "08:00–12:00"],
   ["Classes 1–5 timings", "08:00–17:00"],
   ["School format", "Day school, not residential"],
   ["Fees", "₹30,000–₹90,000, by class"],
