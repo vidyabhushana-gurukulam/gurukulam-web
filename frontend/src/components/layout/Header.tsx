@@ -23,7 +23,7 @@ export function Header() {
         <div className="mx-auto flex h-[92px] max-w-[1400px] items-center justify-between gap-5 px-5 xl:px-10">
           <Logo />
 
-          <nav aria-label="Primary navigation" className="hidden items-center gap-5 xl:flex 2xl:gap-7">
+          <nav aria-label="Primary navigation" className="hidden items-center gap-4 xl:flex 2xl:gap-7">
             {NAV.map((item) => (
               <a
                 key={item.label}

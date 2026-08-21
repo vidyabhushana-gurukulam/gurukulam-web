@@ -47,6 +47,18 @@ export const SCENES = {
   },
 } as const satisfies Record<string, MediaAsset>;
 
+/** Portraits for the Our Inspiration page. */
+export const INSPIRATION = {
+  prabhupada: {
+    src: "/images/inspiration/srila-prabhupada.webp",
+    alt: "Commemorative medallion of His Divine Grace A. C. Bhaktivedanta Swami Prabhupada, Founder-Acharya of ISKCON",
+  },
+  baladeva: {
+    src: "/images/inspiration/baladeva-vidyabhushana.webp",
+    alt: "Traditional painting of Srila Baladeva Vidyabhushana writing on palm leaves with a peacock-feather quill, a temple behind him",
+  },
+} as const satisfies Record<string, MediaAsset>;
+
 /** Transparent full-figure cutouts used as floating accents. */
 export const CHILDREN = {
   readingRaisedHand: {

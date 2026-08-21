@@ -12,7 +12,7 @@ OUT="$HERE/../public/images"
 
 command -v cwebp >/dev/null || { echo "cwebp not found — install with: brew install webp"; exit 1; }
 
-mkdir -p "$OUT/school-life" "$OUT/children" "$HERE/../public/brand"
+mkdir -p "$OUT/school-life" "$OUT/children" "$OUT/inspiration" "$HERE/../public/brand"
 
 # Wide scene photography. 1600px is twice the largest slot any homepage panel renders it at.
 photo() {
@@ -51,6 +51,13 @@ photo "gurukulam.png"                             "hands-on-learning"      1500
 # The four children sit at ~55% of the master's width, so the hero crop drops 144px
 # from the left to centre the group, and trims to 7:5 leaving air above heads and below feet.
 photo_crop "ChatGPT Image Aug 20, 2026, 05_47_20 PM.png" "courtyard-walk" "144 120 1304 931"
+
+echo "Inspiration portraits:"
+# The Baladeva painting arrives with a printed yellow border; crop it away before resizing.
+cwebp -quiet -q 82 -crop 28 28 976 994 -resize 900 0 "$SRC/inspiration/baladeva-vidyabhushana.jpg" -o "$OUT/inspiration/baladeva-vidyabhushana.webp"
+echo "  inspiration/baladeva-vidyabhushana.webp"
+cwebp -quiet -q 86 -resize 900 0 "$SRC/../document/logo/srila-prabhupada.png" -o "$OUT/inspiration/srila-prabhupada.webp"
+echo "  inspiration/srila-prabhupada.webp"
 
 echo "Child cutouts:"
 cutout "boy-reading-raised-hand-v1.webp"       "boy-reading-raised-hand"

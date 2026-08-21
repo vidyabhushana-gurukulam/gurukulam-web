@@ -10,6 +10,7 @@ import { AdmissionsPage } from "@/components/pages/AdmissionsPage";
 import { ApproachPage } from "@/components/pages/ApproachPage";
 import { ContactPage } from "@/components/pages/ContactPage";
 import { CurriculumPage } from "@/components/pages/CurriculumPage";
+import { InspirationPage } from "@/components/pages/InspirationPage";
 import { NotFoundPage } from "@/components/pages/NotFoundPage";
 import { ParentGuidePage } from "@/components/pages/ParentGuidePage";
 import { getCurrentPath } from "@/lib/path";
@@ -24,6 +25,7 @@ const ROUTES: Record<string, RouteDefinition> = {
   "/about": { title: "About | Vidyabhushana Gurukulam", component: AboutPage },
   "/approach": { title: "Our Approach | Vidyabhushana Gurukulam", component: ApproachPage },
   "/curriculum": { title: "Curriculum | Vidyabhushana Gurukulam", component: CurriculumPage },
+  "/inspiration": { title: "Our Inspiration | Vidyabhushana Gurukulam", component: InspirationPage },
   "/parent-guide": { title: "Parent Guide | Vidyabhushana Gurukulam", component: ParentGuidePage },
   "/admissions": { title: "Admissions | Vidyabhushana Gurukulam", component: AdmissionsPage },
   "/contact": { title: "Contact | Vidyabhushana Gurukulam", component: ContactPage },
