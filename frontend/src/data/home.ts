@@ -33,6 +33,8 @@ export interface SiteContent {
 export interface HeroContent {
   eyebrow: string;
   title: string;
+  /** Supporting line under the headline. Split so the accent half can carry the gold. */
+  subtitle: { lead: string; accent: string };
   body: string;
   primaryCta: ContentLink;
   secondaryCta: ContentLink;
@@ -170,6 +172,7 @@ export const SITE: SiteContent = {
 export const HERO: HeroContent = {
   eyebrow: "Quality education · Cultural roots · All-round development",
   title: "Where learning meets strong values.",
+  subtitle: { lead: "Give your child a", accent: "complete education." },
   // The headline renders the admission hoarding's Hindi tagline in English. The lead keeps
   // "Vedic knowledge with modern science" verbatim because document/philosophy.md names it
   // the strategic anchor of the whole project.

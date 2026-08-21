@@ -46,6 +46,10 @@ export function HeroSection({ site, hero }: HeroSectionProps) {
           <h1 className="mt-4 w-full min-w-0 whitespace-pre-line font-heading text-[clamp(2.55rem,6vw,5rem)] font-medium leading-[1.03] tracking-[-0.045em] text-header">
             <span id="home-hero-title">{hero.title}</span>
           </h1>
+          <p className="mt-5 w-full font-heading text-[clamp(1.3rem,2.4vw,1.95rem)] font-medium leading-snug text-header">
+            {hero.subtitle.lead} <span className="text-theme">{hero.subtitle.accent}</span>
+          </p>
+
           <GoldRule className="my-5 sm:my-6" />
 
           <div className="w-full">
