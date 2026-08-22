@@ -284,9 +284,9 @@ export const QUALITIES: QualitiesContent = {
 // Gau Seva leads this section; Krishi stays named because the same weekly visit covers both.
 // The off-campus note is a hard content rule from docs/overview.md — never imply a goshala on school grounds.
 export const FARM_VISIT: FarmVisitContent = {
-  eyebrow: "Learning through practical service",
-  title: "Once a week, the children care for cows",
-  body: "Each week the children visit a separate farm for Gau Seva, caring for the cows, alongside Krishi and the practical work of the land.",
+  eyebrow: "One day a week, outside the classroom",
+  title: "Every week, a lesson no classroom can teach",
+  body: "Children spend a day at a separate farm, caring for cows through Gau Seva and working the land through Krishi. They learn where food comes from, how living things depend on us, and what it means to be trusted with something that matters.",
   note: "The farm is off campus; the Gurukulam does not have a goshala or farmland on its school grounds.",
 };
 
