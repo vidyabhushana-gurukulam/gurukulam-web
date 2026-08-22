@@ -47,6 +47,7 @@ photo "indoor-abacus-maths-class-16x9.png"        "abacus-maths"           1600
 photo "indoor-geometry-construction-class-16x9.png" "geometry-class"       1600
 photo "outdoor-yoga-class-4x3.png"                "yoga-class"             1400
 photo "outdoor-nature-study-4x5.png"              "nature-study"           1200
+photo "off-campus-gau-seva-cow-feeding-4x5.png"   "gau-seva"               1200
 photo "gurukulam.png"                             "hands-on-learning"      1500
 # Hero. The group is already centred in this master (spans 17%-83%, midpoint 50%), so the
 # crop keeps the full width and only trims 52px off the top to reach 7:5, which leaves

@@ -121,7 +121,7 @@ Both the homepage and the Parent Guide render the same `FAQS` and `FACILITIES`, 
 
 - **Transport is arranged by parents.** The Gurukulam shares transport contacts; the expense is borne by parents. The site previously said transport "will be provided", which the Parent Handbook contradicts. Do not reintroduce that.
 - **Krishi and Gau Seva are off-campus** — a weekly visit to a separate farm. Never imply a goshala or farmland on school grounds.
-- **The founding team's Sunday school is a separate organisation.** Credit the experience to the *people* ("our teachers have taught 300+ children over five years"), never to the institution.
+- **Chaitanya Bala Sankar Kendra is a separate organisation.** The founding team still teaches around 300 children there. Credit it to the *people* ("our founding team teaches around 300 children at Chaitanya Bala Sankar Kendra"), never to the institution, and keep it in the present tense — it is ongoing, not a finished chapter.
 - **Never criticise mainstream or modern schools.** Parents reading the site have children currently enrolled in them. Contrast is communicated by describing what this school offers, never by naming what others lack.
 - **No health claims.** Do not claim the school addresses depression, anxiety or attention disorders. Describe the environment instead — screen-free campus, small classes, a settled daily rhythm.
 

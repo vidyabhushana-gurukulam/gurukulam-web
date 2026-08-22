@@ -18,7 +18,7 @@ const LEARNING_METHODS = [
 export function CurriculumPage() {
   return (
     <>
-      <PageHero eyebrow="Curriculum" title="Vedic learning and academics, given time and depth" lead="The day begins with Vedic education, gives its largest block to NCERT academics, and closes with Kreeda and physical activity." />
+      <PageHero eyebrow="Curriculum" title="Vedic learning and academics, given time and depth" lead="The day begins with Vedic education, gives its largest block to NCERT academics, and closes with two hours of Kreeda and the arts." />
       <DailyRhythm dailyRhythm={DAILY_RHYTHM} />
 
       <section className="bg-bg-panel px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="learning-method-title">

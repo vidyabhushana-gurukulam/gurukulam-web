@@ -37,6 +37,10 @@ export const SCENES = {
     src: "/images/school-life/nature-study.webp",
     alt: "Children examining leaves with a magnifying glass and recording what they observe",
   },
+  gauSeva: {
+    src: "/images/school-life/gau-seva.webp",
+    alt: "Three boys offering an armful of fresh green grass to a cow at an open farm shelter",
+  },
   handsOnLearning: {
     src: "/images/school-life/hands-on-learning.webp",
     alt: "A teacher and children exploring counting materials and wooden models around a low table",

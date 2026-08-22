@@ -42,33 +42,33 @@ The website is **not** a school management system. There is no fee payment, no p
 
 ### Founding team's experience
 
-The founding team has run a **Sunday school in Vadodara for five years, teaching around 300 children**, with spiritual activities and character development.
+The founding team runs **Chaitanya Bala Sankar Kendra in Vadodara, where it teaches around 300 children**, with spiritual activities and character development. It has done so for five years and continues to run today — this is ongoing work, not a finished chapter.
 
-> ⚠️ **Attribution rule.** That Sunday school is a **separate organisation with its own management** and is not part of the gurukulam. The website must credit this experience to the **people**, never to the institution — for example *"our teachers have taught 300+ children over five years"*, never *"our school has taught 300 children"*. It gets no dedicated page. A parent who investigates will find the two are separate, and an overstated claim would damage exactly the trust it was meant to build.
+> ⚠️ **Attribution rule.** Chaitanya Bala Sankar Kendra is a **separate organisation with its own management** and is not part of the gurukulam. The website must credit this teaching to the **people**, never to the institution — for example *"our founding team teaches around 300 children at Chaitanya Bala Sankar Kendra"*, never *"our school teaches 300 children"*. It gets no dedicated page. A parent who investigates will find the two are separate, and an overstated claim would damage exactly the trust it was meant to build.
 
 ---
 
 ## 3. The Educational Model
 
-The defining structure of the school is how the day is divided. Sadhana comes first, academics occupy the largest block, and physical activity closes the day.
+The defining structure of the school is how the day is divided. Sadhana comes first, academics occupy the largest block, and movement and the arts close the day.
 
 ### Daily timetable
 
 ```
 08:00 ── 10:00    Vedic education        (2 hrs)
-10:00 ── 16:00    NCERT academics        (6 hrs)
-16:00 ── 17:00    Kreeda / sports        (1 hr)
+10:00 ── 15:00    NCERT academics        (5 hrs)
+15:00 ── 17:00    Kreeda & Arts          (2 hrs)
 ```
 
 | Group | Timings |
 |---|---|
-| Pre-primary | 09:00 – 12:00 (shorter day) |
+| Pre-primary | 08:00 – 12:00 (shorter day) |
 | Classes 1 – 5 | 08:00 – 17:00 (full day) |
 
 Two things about this schedule matter for how the website is written:
 
 1. **The day begins with sadhana, not with syllabus.** That sequencing is the school's identity in a single fact, and communicates more than any paragraph of philosophy.
-2. **Six full hours go to NCERT academics** — more than many mainstream schools. This directly answers the parent's unspoken fear that a gurukula dilutes "real" studies. It should be stated plainly rather than left to be inferred.
+2. **Five full hours go to NCERT academics.** This directly answers the parent's unspoken fear that a gurukula dilutes "real" studies. It should be stated plainly rather than left to be inferred. State the hours as a fact about this school; do not frame them as a comparison against other schools, which the tone rules forbid.
 
 ### Teaching approach
 
@@ -209,7 +209,7 @@ The stakeholder's motivation, in summary: today's curriculum lacks character and
 
 2. **No health claims.** Do not claim the school solves depression, anxiety, or attention disorders. Reframe as environment rather than cure: a screen-free campus, small classes, personal attention, and a settled daily rhythm. This is more credible and completely honest.
 
-3. **Everything must be literally true.** Parents verify claims on a campus visit. Planned facilities are described as plans. Off-campus activities are described as off-campus. The Sunday school is credited to the team.
+3. **Everything must be literally true.** Parents verify claims on a campus visit. Planned facilities are described as plans. Off-campus activities are described as off-campus. Chaitanya Bala Sankar Kendra is credited to the team.
 
 4. **Name the humans.** Not yet supplied (see Open Items), but a school website with no named people reads as anonymous. Parents want to know who is responsible for their child.
 
@@ -260,7 +260,7 @@ Home                  → the team's five years of teaching · June 2027 admissi
 └── Contact           → Vadodara map, phone, WhatsApp
 ```
 
-A **Sunday School** page appeared in an earlier draft and was **removed** after it emerged that the Sunday school is a separate organisation. Its substance now lives as a paragraph on the About page, attributed to the team.
+A **Sunday School** page appeared in an earlier draft and was **removed** after it emerged that the programme — Chaitanya Bala Sankar Kendra — is a separate organisation. Its substance now lives as a paragraph on the About page, attributed to the team.
 
 ---
 
@@ -351,7 +351,7 @@ These are not oversights. Several will need answers before the corresponding **w
 | Website language | English only |
 | Classes | Pre-primary to Class 5, one added per year |
 | Fees on site | Shared on enquiry, not published |
-| Sunday school reference | Credited to the founding team, not the school |
+| Chaitanya Bala Sankar Kendra reference | Credited to the founding team, not the school; described as ongoing |
 | Tone toward other schools | Positive only, no criticism |
 | Sitemap | Approved (Section 10) |
 | Logo design | Approved, vector in production |

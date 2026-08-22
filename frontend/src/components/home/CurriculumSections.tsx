@@ -70,7 +70,7 @@ export function FarmVisit({ farmVisit }: Pick<CurriculumSectionsProps, "farmVisi
       <Reveal className="mx-auto max-w-[1160px]">
         {/* Split rather than centred: the weekly farm visit is the one section where a photograph carries the claim. */}
         <div className="relative grid overflow-hidden rounded-[28px] bg-header lg:grid-cols-[0.82fr_1.18fr]">
-          <PhotoFrame media={SCENES.natureStudy} className="min-h-[300px] w-full sm:min-h-[380px] lg:min-h-full" />
+          <PhotoFrame media={SCENES.gauSeva} className="min-h-[300px] w-full sm:min-h-[380px] lg:min-h-full" />
 
           <div className="relative px-7 py-14 text-center sm:px-12 sm:py-16 lg:px-14 lg:py-20 lg:text-left">
             <div aria-hidden="true" className="absolute -bottom-24 -right-20 size-72 rounded-full border border-white/10" />
