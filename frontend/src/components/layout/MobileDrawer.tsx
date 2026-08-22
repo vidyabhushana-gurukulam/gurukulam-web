@@ -8,6 +8,8 @@ import { NAV } from "@/data/nav";
 import { Logo } from "@/components/ui/Logo";
 import { getCurrentPath } from "@/lib/path";
 import { CONTACT, ENQUIRY_FORM_URL } from "@/data/home";
+import { X } from "lucide-react";
+
 import { InstagramIcon, MailIcon, PhoneIcon } from "@/components/ui/Icon";
 
 type MobileDrawerProps = {
@@ -97,9 +99,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
             onClick={onClose}
             className="group/close grid size-10 shrink-0 place-items-center rounded-full border border-border/40 text-header transition-[border-color,transform] duration-(--default-transition-duration) hover:rotate-3 hover:border-theme focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header"
           >
-            <svg viewBox="0 0 24 24" className="size-5" aria-hidden="true">
-              <path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-            </svg>
+            <X aria-hidden="true" strokeWidth={1.8} className="size-5" />
           </button>
         </div>
 

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run lint:tw-vars && tsc -b && vite build && node scripts/prerender-routes.mjs",
+    "build": "npm run lint:tw-vars && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender-routes.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "lint:tw-vars": "! grep -rEn '\\-\\[--[a-z0-9-]+\\]' src/ || (echo '\\n^ Tailwind v4: use duration-(--x) not duration-[--x] \u2014 bracket form is silently dropped' && exit 1)"
@@ -13,10 +13,9 @@
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "gsap": "^3.15.0",
+    "lucide-react": "^1.33.0",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "split-type": "^0.3.4",
-    "swiper": "^14.1.0"
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",

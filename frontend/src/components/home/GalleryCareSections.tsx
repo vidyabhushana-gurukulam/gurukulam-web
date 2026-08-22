@@ -6,6 +6,8 @@
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionIntro } from "@/components/home/SectionIntro";
+import { Check } from "lucide-react";
+
 import { DocumentIcon } from "@/components/ui/Icon";
 import { CONTACT } from "@/data/home";
 import type { FaqItem } from "@/data/home";
@@ -35,7 +37,7 @@ export function FacilitiesCare({ facilities }: Pick<ParentGuideSectionsProps, "f
             <Reveal key={item.title} delay={index * 0.06}>
               <article className="h-full rounded-[28px] border border-header/10 bg-white p-6 transition-[transform,border-color,box-shadow] duration-(--default-transition-duration) ease-(--ease-out-back) hover:-translate-y-1 hover:border-theme/35 hover:shadow-hover sm:p-7">
                 <span className="grid size-10 place-items-center rounded-full bg-header text-white">
-                  <svg viewBox="0 0 24 24" className="size-4" aria-hidden="true"><path d="m6 12 4 4 8-9" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  <Check aria-hidden="true" strokeWidth={2.4} className="size-4" />
                 </span>
                 <h3 className="mt-5 font-heading text-xl font-medium text-header">{item.title}</h3>
                 <p className="mt-2 text-[15px] leading-6 text-text">{item.body}</p>

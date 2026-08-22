@@ -7,6 +7,8 @@
 import { NAV } from "@/data/nav";
 import { CONTACT } from "@/data/home";
 import { Logo } from "@/components/ui/Logo";
+import { MapPin } from "lucide-react";
+
 import { DocumentIcon, InstagramIcon, MailIcon, PhoneIcon } from "@/components/ui/Icon";
 
 const LINK_CLASSES = "group/link inline-flex items-center gap-2.5 text-text transition-colors duration-(--default-transition-duration) hover:text-header focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-header";
@@ -19,10 +21,7 @@ export function Footer() {
           <div>
             <Logo />
             <address className="mt-5 flex items-center gap-2 text-[0.95rem] not-italic text-text">
-              <svg viewBox="0 0 24 24" className="size-[18px] shrink-0 text-theme" aria-hidden="true">
-                <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" fill="none" stroke="currentColor" strokeWidth="1.8" />
-                <circle cx="12" cy="10" r="2.4" fill="currentColor" />
-              </svg>
+              <MapPin aria-hidden="true" strokeWidth={1.7} className="size-[18px] shrink-0 text-theme" />
               Vadodara, Gujarat, India
             </address>
           </div>

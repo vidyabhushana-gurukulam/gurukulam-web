@@ -33,9 +33,17 @@ export const SCENES = {
     src: "/images/school-life/yoga-class.webp",
     alt: "Children seated in meditation on mats along an open colonnade",
   },
+  kreedaFootball: {
+    src: "/images/school-life/kreeda-football.webp",
+    alt: "Boys playing a football match on an open grass field beside a goalpost",
+  },
   natureStudy: {
     src: "/images/school-life/nature-study.webp",
     alt: "Children examining leaves with a magnifying glass and recording what they observe",
+  },
+  gauSeva: {
+    src: "/images/school-life/gau-seva.webp",
+    alt: "Three boys offering an armful of fresh green grass to a cow at an open farm shelter",
   },
   handsOnLearning: {
     src: "/images/school-life/hands-on-learning.webp",

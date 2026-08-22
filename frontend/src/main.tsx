@@ -1,10 +1,23 @@
+/*
+  src/main.tsx
+  Browser entry point. Hydrates the markup that scripts/prerender-routes.mjs baked into each page,
+  and falls back to a fresh client render in dev, where index.html still ships an empty root div.
+*/
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 
-createRoot(document.getElementById('root')!).render(
+const container = document.getElementById('root')!
+
+const app = (
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 )
+
+if (container.hasChildNodes()) {
+  hydrateRoot(container, app)
+} else {
+  createRoot(container).render(app)
+}

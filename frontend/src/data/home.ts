@@ -173,12 +173,14 @@ export const SITE: SiteContent = {
   description: "An English-medium GSEB day school bringing an NCERT-based academic education together with a Vedic and cultural curriculum.",
   admissions: "Admissions open for 2027–28 · Nursery to Class 5",
   contactHref: "/contact",
+  // Present tense on purpose: Chaitanya Bala Sankar Kendra is still running. The attribution rule in
+  // docs/overview.md still applies — the teaching belongs to the founding team, never to the Gurukulam.
   experience: {
     eyebrow: "The people behind the Gurukulam",
-    title: "Five years of teaching, carried forward with care",
-    body: "Before founding Vidyabhushana Gurukulam, our founding team taught around 300 children in Vadodara over five years through a separately managed Sunday school.",
+    title: "Five years of teaching, and still teaching today",
+    body: "Our founding team teaches around 300 children in Vadodara through Chaitanya Bala Sankar Kendra, a separately managed initiative they have run for five years and continue to run today.",
     stat: "Around 300",
-    statLabel: "children taught by our founding team over five years",
+    statLabel: "children our founding team teaches today",
   },
 };
 
@@ -214,16 +216,16 @@ export const PILLARS: Pillar[] = [
 
 export const DAILY_RHYTHM: DailyRhythmContent = {
   eyebrow: "A day at the Gurukulam",
-  title: "Grounding first. Academics in depth. Movement to close.",
-  lead: "Classes 1–5 follow a full-day rhythm in which Vedic education comes first, NCERT academics receive the largest block, and Kreeda completes the day.",
+  title: "Grounding first. Academics in depth. Movement and expression to close.",
+  lead: "Classes 1–5 follow a full-day rhythm in which Vedic education comes first, NCERT academics receive the largest block, and two hours of Kreeda and the arts complete the day.",
   groups: [
     { label: "Pre-primary", timing: "08:00–12:00", note: "A separate shorter day." },
     { label: "Classes 1–5", timing: "08:00–17:00", note: "The three-part full-day rhythm shown below." },
   ],
   slots: [
-    { time: "08:00–10:00", title: "Vedic education", body: "The full day begins with the Gurukulam's Vedic and cultural curriculum." },
-    { time: "10:00–15:00", title: "NCERT academics", body: "Five focused hours taught for understanding, including visual projects and 3D models." },
-    { time: "15:00–17:00", title: "Kreeda / sports", body: "Physical activity, sports, and other activities complete the day." },
+    { time: "08:00–10:00", title: "Vedic education", body: "Two hours of sadhana, scripture, Sanskrit, and spiritual culture open the day, so children are settled and grounded before academics begin." },
+    { time: "10:00–15:00", title: "NCERT academics", body: "Five focused hours of NCERT, languages, and Vedic Mathematics, taught for understanding through visual projects and 3D models, not rote learning." },
+    { time: "15:00–17:00", title: "Kreeda & Arts", body: "Two hours close the day in movement and expression — Kreeda and martial arts for the body, and Sangeet, Nritya, and Kala for the mind." },
   ],
 };
 
@@ -279,10 +281,12 @@ export const QUALITIES: QualitiesContent = {
   cta: { label: "Explore the 30 Qualities", href: "#qualities" },
 };
 
+// Gau Seva leads this section; Krishi stays named because the same weekly visit covers both.
+// The off-campus note is a hard content rule from docs/overview.md — never imply a goshala on school grounds.
 export const FARM_VISIT: FarmVisitContent = {
-  eyebrow: "Learning through practical service",
-  title: "Once a week, the classroom is a farm",
-  body: "Children take part in Krishi and Gau Seva through a weekly visit to a separate farm.",
+  eyebrow: "One day a week, outside the classroom",
+  title: "Every week, a lesson no classroom can teach",
+  body: "Children spend a day at a separate farm, caring for cows through Gau Seva and working the land through Krishi. They learn where food comes from, how living things depend on us, and what it means to be trusted with something that matters.",
   note: "The farm is off campus; the Gurukulam does not have a goshala or farmland on its school grounds.",
 };
 
