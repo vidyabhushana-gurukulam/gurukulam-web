@@ -4,6 +4,9 @@
   The title, description, og:title, og:description, og:url and canonical below are the homepage's
   values and the template for every other route: scripts/prerender-routes.mjs rewrites them per page
   after the build. Keep those tags on one line each so the script's replacements keep matching.
+  That script also injects each route's JSON-LD at the end of the head, and the page's rendered markup
+  into the empty root div below. It strips this comment from the built output first, because literal
+  tag text in here would otherwise capture those injections ahead of the real tags.
 -->
 <!doctype html>
 <html lang="en">
