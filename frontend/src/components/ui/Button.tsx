@@ -9,6 +9,8 @@
   - the arrow slides right and its ring fills.
   All distances come from the tokens in styles/tokens.css.
 */
+import { ArrowRight } from "lucide-react";
+
 import type { ReactNode } from "react";
 
 type ButtonProps = {
@@ -33,9 +35,7 @@ function ArrowGlyph() {
     <span className="relative grid size-[22px] shrink-0 place-items-center">
       {/* Ring fills on hover, so the arrow reads as inverting rather than just moving. */}
       <span className="absolute inset-0 rounded-full border-[1.5px] border-current transition-all duration-(--default-transition-duration) group-hover/btn:scale-110 group-hover/btn:bg-white/25" />
-      <svg viewBox="0 0 24 24" aria-hidden="true" className="relative size-3.5 transition-transform duration-(--default-transition-duration) group-hover/btn:translate-x-(--hover-arrow-shift)">
-        <path d="M6 12h11m0 0-4-4M17 12l-4 4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+      <ArrowRight aria-hidden="true" strokeWidth={2.2} className="relative size-3.5 transition-transform duration-(--default-transition-duration) group-hover/btn:translate-x-(--hover-arrow-shift)" />
     </span>
   );
 }
