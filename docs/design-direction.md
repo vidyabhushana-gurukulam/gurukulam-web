@@ -6,7 +6,7 @@ Records the current palette, typography, layout language, interactions, imagery,
 
 # Vidyabhushana Gurukulam — Design Direction
 
-**Last Updated:** 18 August 2026
+**Last Updated:** 23 August 2026
 **Status:** Active and implemented
 **Type:** Design Overview
 **Target Platforms:** Responsive web and related admissions communications
@@ -93,8 +93,9 @@ The site uses generous whitespace, centered editorial rhythm, and large architec
 - **Hero:** A tall cream panel with a dome-like top, a fine gold border, the colored crest, centered admissions hierarchy, and spacious breathing room. The implementation is at `frontend/src/components/home/HeroSection.tsx:26`.
 - **Page width:** Primary sections use centered containers around `1280px`; the header uses `1400px`, as shown at `frontend/src/components/home/FoundationSections.tsx:25` and `frontend/src/components/layout/Header.tsx:22`.
 - **Cards:** Rounded corners generally use `24–28px`; selected educational cards use pronounced arched tops, as implemented at `frontend/src/components/home/FoundationSections.tsx:70`.
-- **Section rhythm:** Gold eyebrow, large navy heading, optional lead, and generous vertical spacing. The shared composition is at `frontend/src/components/home/SectionIntro.tsx:17`.
+- **Section rhythm:** Gold eyebrow, large navy heading, optional lead, and generous vertical spacing. The shared composition is at `frontend/src/components/home/SectionIntro.tsx:17`. The heading block runs up to `900px` wide, with the lead paragraph capped at `820px`, both wider than the original exploration to give the editorial voice more room to breathe.
 - **Dark bands:** Navy sections create occasional contrast for frameworks such as Pancha Kosha while retaining translucent, softly bordered cards at `frontend/src/components/home/RhythmAndKoshaSections.tsx:56`.
+- **Pancha Kosha diagram:** An inline SVG of five concentric discs, outermost Annamaya to innermost Anandamaya, at radii `190/158/126/94/60` in a `400x400` viewBox. Each of the outer four koshas' name and dimension curve along their own arc via `textPath`; Anandamaya is a flat-labelled centre disc rather than a band. Implemented at `frontend/src/components/home/RhythmAndKoshaSections.tsx:69`.
 - **Decorative geometry:** Fine circles, rules, soft curves, and restrained organic forms may support hierarchy. Decorations must never compete with content or imitate cartoon doodles.
 
 The website is responsive: content stacks on narrow screens, navigation moves into a mobile drawer, and typography scales fluidly. Preserve the mobile hierarchy rather than shrinking the desktop composition uniformly.
@@ -126,6 +127,8 @@ All effects must honor `prefers-reduced-motion`, enforced globally at `frontend/
 ## Logo and brand assets
 
 Use the supplied official colored logo from the repository's `document/logo/` folder for banners and admissions artwork. For the website, the active brand files live under `frontend/public/brand/`, including the horizontal header lockup and colored crest used in the hero.
+
+The horizontal lockup asset's viewBox now hugs the artwork rather than carrying the roughly 40% empty vertical padding it previously shipped with. The navbar lockup itself was enlarged accordingly, at `frontend/src/components/ui/Logo.tsx:14`.
 
 The crest or lockup must be placed as an original supplied asset. Do not redraw, regenerate, recolor, crop, distort, simplify, replace, or modify its Sanskrit, typography, jewel, tilak, lotus, book, gold ornamentation, or school name. Maintain its proportions and clear space.
 
@@ -166,7 +169,7 @@ These rules come from the project overview and apply to every visual execution:
 1. Use positive framing and never criticize other schools.
 2. Describe a screen-free, attentive, values-led environment without promising medical or psychological outcomes.
 3. Label planned facilities as planned.
-4. Describe Gau Seva and Krishi as a weekly visit to a separate off-campus farm.
+4. Describe Gau Seva as part of the weekly hands-on skills day held at a dedicated off-campus space, never as a facility on the school campus.
 5. Attribute prior Sunday-school experience to the founding team, not to Vidyabhushana Gurukulam.
 6. Do not present pre-primary as following the Classes 1–5 full-day schedule.
 

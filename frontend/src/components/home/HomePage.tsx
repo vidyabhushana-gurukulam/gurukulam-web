@@ -8,7 +8,7 @@ import { FoundationSections } from "@/components/home/FoundationSections";
 import { ParentGuideSections } from "@/components/home/GalleryCareSections";
 import { HeroSection } from "@/components/home/HeroSection";
 import { RhythmAndKoshaSections } from "@/components/home/RhythmAndKoshaSections";
-import { SITE, HERO, PILLARS, DAILY_RHYTHM, PANCHA_KOSHA, QUALITIES, FARM_VISIT, SUBJECT_GROUPS, FACILITIES, FAQS, ADMISSIONS_STEPS, FINAL_CTA } from "@/data/home";
+import { SITE, HERO, PILLARS, DAILY_RHYTHM, PANCHA_KOSHA, QUALITIES, FARM_VISIT, SUBJECT_GROUPS, FAQS, ADMISSIONS_STEPS, FINAL_CTA } from "@/data/home";
 
 export function HomePage() {
   return (
@@ -17,7 +17,7 @@ export function HomePage() {
       <FoundationSections site={SITE} pillars={PILLARS} />
       <RhythmAndKoshaSections dailyRhythm={DAILY_RHYTHM} panchaKosha={PANCHA_KOSHA} />
       <CurriculumSections qualities={QUALITIES} farmVisit={FARM_VISIT} subjectGroups={SUBJECT_GROUPS} />
-      <ParentGuideSections facilities={FACILITIES} faqs={FAQS} />
+      <ParentGuideSections faqs={FAQS} />
       <AdmissionsSections admissionsSteps={ADMISSIONS_STEPS} finalCta={FINAL_CTA} />
     </>
   );

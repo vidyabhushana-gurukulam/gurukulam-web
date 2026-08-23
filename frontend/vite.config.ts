@@ -13,4 +13,8 @@ export default defineConfig({
   resolve: {
     alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) },
   },
+  server: {
+    // Vite rejects unknown Host headers, which blocks every tunnelled request until the domain is allow-listed.
+    allowedHosts: [".ngrok-free.app", ".ngrok.app", ".ngrok-free.dev"],
+  },
 });

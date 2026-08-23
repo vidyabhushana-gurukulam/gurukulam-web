@@ -20,7 +20,7 @@ export function SectionIntro({ eyebrow, title, lead, align = "center", className
   const bodyColor = inverted ? "text-white/75" : "text-text";
 
   return (
-    <div className={`flex max-w-[760px] flex-col gap-4 ${alignment} ${className}`}>
+    <div className={`flex max-w-[900px] flex-col gap-4 ${alignment} ${className}`}>
       {eyebrow && (
         <SplitHeading as="span" variant="subtitle" className="font-heading text-sm font-semibold uppercase tracking-[0.18em] text-theme">
           {eyebrow}
@@ -29,7 +29,7 @@ export function SectionIntro({ eyebrow, title, lead, align = "center", className
       <SplitHeading as="h2" variant="title" className={`font-heading text-[clamp(2rem,4vw,3.25rem)] font-medium leading-[1.12] tracking-[-0.025em] ${headingColor}`}>
         <span id={headingId}>{title}</span>
       </SplitHeading>
-      {lead && <p className={`max-w-[680px] text-[17px] leading-7 ${bodyColor}`}>{lead}</p>}
+      {lead && <p className={`max-w-[820px] text-[17px] leading-7 ${bodyColor}`}>{lead}</p>}
     </div>
   );
 }

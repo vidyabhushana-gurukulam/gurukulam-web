@@ -42,19 +42,24 @@ function FoundingExperience({ site }: Pick<FoundationSectionsProps, "site">) {
           <div aria-hidden="true" className="absolute -right-20 -top-24 size-72 rounded-full border border-theme/25" />
           <div aria-hidden="true" className="absolute -bottom-24 -left-20 size-72 rounded-full border border-header/10" />
           <Reveal className="relative w-full max-w-[520px]" x={24}>
-            <p className="text-center font-heading text-sm font-semibold uppercase tracking-[0.18em] text-theme">One coherent education</p>
-            <div className="mt-7 space-y-3">
+            <p className="text-center font-heading text-sm font-semibold uppercase tracking-[0.18em] text-theme">The academic backbone</p>
+
+            {/* The syllabus is the reassurance parents scan for, so it takes the panel's largest type. */}
+            <div className="mt-7 rounded-[24px] border border-theme/35 bg-white px-6 py-7 text-center">
+              <p className="font-heading text-[clamp(2.6rem,6vw,3.6rem)] font-medium leading-none tracking-[0.08em] text-header">NCERT</p>
+              <p className="mt-3 text-sm font-semibold uppercase tracking-[0.14em] text-text">Syllabus followed in full</p>
+              <p className="mt-4 text-[15px] leading-6 text-text">Taught for understanding through visual projects and 3D models, not rote learning.</p>
+            </div>
+
+            <div className="mt-3 space-y-3">
               {[
-                ["01", "Grounded", "Vedic learning and spiritual culture begin the day."],
-                ["02", "Focused", "Five hours of NCERT academics build understanding."],
-                ["03", "Complete", "Kreeda, arts, seva, and practical learning develop the whole child."],
-              ].map(([number, title, body]) => (
-                <div key={number} className="grid grid-cols-[46px_1fr] gap-4 rounded-[22px] border border-header/10 bg-white/75 p-4 sm:p-5">
-                  <span className="grid size-11 place-items-center rounded-full bg-header font-heading text-sm font-semibold text-white">{number}</span>
-                  <div>
-                    <h3 className="font-heading text-xl font-medium text-header">{title}</h3>
-                    <p className="mt-1 text-[15px] leading-6 text-text">{body}</p>
-                  </div>
+                ["5 hours", "of NCERT academics every school day, Classes 1\u20135"],
+                ["GSEB", "Gujarat State Board affiliation"],
+                ["English", "Medium of instruction"],
+              ].map(([label, body]) => (
+                <div key={label} className="grid grid-cols-[104px_1fr] items-center gap-4 rounded-[22px] border border-header/10 bg-white/75 p-4 sm:p-5">
+                  <span className="grid place-items-center rounded-full bg-header px-3 py-2 font-heading text-sm font-semibold text-white">{label}</span>
+                  <p className="text-[15px] leading-6 text-text">{body}</p>
                 </div>
               ))}
             </div>

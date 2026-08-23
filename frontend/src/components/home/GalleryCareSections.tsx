@@ -6,48 +6,17 @@
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionIntro } from "@/components/home/SectionIntro";
-import { Check } from "lucide-react";
 
 import { DocumentIcon } from "@/components/ui/Icon";
 import { CONTACT } from "@/data/home";
 import type { FaqItem } from "@/data/home";
 
 type ParentGuideSectionsProps = {
-  facilities: typeof import("@/data/home").FACILITIES;
   faqs: typeof import("@/data/home").FAQS;
 };
 
-export function ParentGuideSections({ facilities, faqs }: ParentGuideSectionsProps) {
-  return (
-    <>
-      <FacilitiesCare facilities={facilities} />
-      <ParentFaq faqs={faqs} />
-    </>
-  );
-}
-
-export function FacilitiesCare({ facilities }: Pick<ParentGuideSectionsProps, "facilities">) {
-  return (
-    <section className="overflow-x-clip bg-bg-panel px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="facilities-title">
-      <div className="mx-auto max-w-[1280px]">
-        <SectionIntro eyebrow={facilities.eyebrow} title={facilities.title} lead={facilities.lead} headingId="facilities-title" />
-
-        <div className="mt-14 grid gap-4 md:grid-cols-3">
-          {facilities.available.map((item, index) => (
-            <Reveal key={item.title} delay={index * 0.06}>
-              <article className="h-full rounded-[28px] border border-header/10 bg-white p-6 transition-[transform,border-color,box-shadow] duration-(--default-transition-duration) ease-(--ease-out-back) hover:-translate-y-1 hover:border-theme/35 hover:shadow-hover sm:p-7">
-                <span className="grid size-10 place-items-center rounded-full bg-header text-white">
-                  <Check aria-hidden="true" strokeWidth={2.4} className="size-4" />
-                </span>
-                <h3 className="mt-5 font-heading text-xl font-medium text-header">{item.title}</h3>
-                <p className="mt-2 text-[15px] leading-6 text-text">{item.body}</p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+export function ParentGuideSections({ faqs }: ParentGuideSectionsProps) {
+  return <ParentFaq faqs={faqs} />;
 }
 
 /** Renders one answer, which the handbook writes either as a sentence or as a bullet list. */
