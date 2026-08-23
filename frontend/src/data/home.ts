@@ -92,13 +92,6 @@ export interface SubjectGroup {
   subjects: string[];
 }
 
-export interface FacilitiesContent {
-  eyebrow: string;
-  title: string;
-  lead: string;
-  available: SectionItem[];
-}
-
 export interface FaqItem {
   question: string;
   /** Single-paragraph answer. */
@@ -170,7 +163,7 @@ export const SITE: SiteContent = {
   name: "Vidyabhushana Gurukulam",
   shortName: "Vidyabhushana",
   location: "Vadodara, Gujarat, India",
-  description: "An English-medium GSEB day school bringing an NCERT-based academic education together with a Vedic and cultural curriculum.",
+  description: "An English-medium GSEB day school bringing an NCERT academic education together with a Vedic and cultural curriculum.",
   admissions: "Admissions open for 2027–28 · Nursery to Class 5",
   contactHref: "/contact",
   // Present tense on purpose: Chaitanya Bala Sankar Kendra is still running. The attribution rule in
@@ -178,7 +171,7 @@ export const SITE: SiteContent = {
   experience: {
     eyebrow: "The people behind the Gurukulam",
     title: "Five years of teaching, and still teaching today",
-    body: "Our founding team teaches around 300 children in Vadodara through Chaitanya Bala Sankar Kendra, a separately managed initiative they have run for five years and continue to run today.",
+    body: "Our founding team teaches around 300 children through Chaitanya Bala Sankar Kendra, a separately managed initiative they have run for five years and continue to run today across seven centres in Vadodara.",
     stat: "Around 300",
     statLabel: "children our founding team teaches today",
   },
@@ -186,12 +179,12 @@ export const SITE: SiteContent = {
 
 export const HERO: HeroContent = {
   eyebrow: "Quality education · Cultural roots · All-round development",
-  title: "Where learning meets strong values",
+  title: "Where learning meets core values",
   subtitle: { lead: "Give your child a", accent: "complete education." },
   // The headline renders the admission hoarding's Hindi tagline in English. The lead keeps
   // "Vedic knowledge with modern science" verbatim because document/philosophy.md names it
   // the strategic anchor of the whole project.
-  body: "Vedic knowledge with modern science, at a new English-medium GSEB day school in Vadodara, from Nursery to Class 5.",
+  body: "Get your child enrolled at a new English-medium GSEB day school in Vadodara, from Nursery to Class 5.",
   primaryCta: { label: "Enquire for Admission", href: ENQUIRY_FORM_URL },
   secondaryCta: { label: "Explore Our Approach", href: "/approach" },
 };
@@ -234,32 +227,32 @@ export const PANCHA_KOSHA: PanchaKoshaContent = {
   title: "Five dimensions of the child's development",
   lead: "The Gurukulam's organising framework connects every dimension to the subjects, practices, and rhythm of school life.",
   items: [
-    { name: "Annamaya", dimension: "Body", activities: "Kreeda, Martial Arts, Krishi", accent: "#C9A227" },
-    { name: "Pranamaya", dimension: "Energy", activities: "Yoga, pranayama, daily rhythm", accent: "#1B3057" },
-    { name: "Manomaya", dimension: "Mind", activities: "Sangeet, Nritya, Kala", accent: "#C9A227" },
-    { name: "Vijnanamaya", dimension: "Intellect", activities: "NCERT, Sanskrit, Vedic Mathematics, Scriptures", accent: "#1B3057" },
-    { name: "Anandamaya", dimension: "Bliss", activities: "Sadhana, Seva, kirtan", accent: "#C9A227" },
+    { name: "Annamaya", dimension: "Body", activities: "Kreeda, Martial Arts, Gross Motor Activities, Fine Motor Activities", accent: "#C9A227" },
+    { name: "Pranamaya", dimension: "Energy", activities: "Yoga, Pranayam, Dincharya", accent: "#1B3057" },
+    { name: "Manomaya", dimension: "Mind", activities: "Sangeet, Nritya, Japa & Kala", accent: "#C9A227" },
+    { name: "Vijnanamaya", dimension: "Intellect", activities: "Academics, Vedic Scriptures, Sloka Recitation", accent: "#1B3057" },
+    { name: "Anandamaya", dimension: "Bliss", activities: "Sadhana, Seva, Kirtan", accent: "#C9A227" },
   ],
 };
 
 export const QUALITIES: QualitiesContent = {
   eyebrow: "Character and values",
   title: "The 30 Qualities of Humans",
-  lead: "The complete stakeholder-supplied framework is preserved here in its canonical wording as part of the Gurukulam's approach to character development.",
+  lead: "The 30 qualities of a human being is stated by Nārada Muni in the Śrīmad-Bhāgavatam (Canto 7, Chapter 11, Verses 8–12). According to the scripture, cultivating these foundational characteristics is essential to satisfy the Supreme Lord and live a civilized human life.",
   items: [
     "Truthfulness",
     "Mercy",
-    "Austerity (observing fasts on certain days of the month)",
-    "Bathing twice a day",
+    "Control of the mind",
+    "Simplicity",
     "Tolerance",
     "Discrimination between right and wrong",
-    "Control of the mind",
+    "Austerity",
+    "Bathing twice a day",
     "Control of the senses",
     "Non-violence",
     "Celibacy",
     "Charity",
     "Reading of scripture",
-    "Simplicity",
     "Satisfaction",
     "Rendering service to saintly persons",
     "Gradually taking leave of unnecessary engagements",
@@ -268,52 +261,40 @@ export const QUALITIES: QualitiesContent = {
     "Considering whether one is the body or the soul",
     "Distributing food equally to all living entities (both men and animals)",
     "Seeing every soul (especially in the human form) as a part of the Supreme Lord",
-    "Hearing about the activities and instructions given by the Supreme Personality of Godhead",
-    "Chanting about these activities and instructions",
-    "Always remembering these activities and instructions",
-    "Trying to render service",
-    "Performing worship",
-    "Offering obeisances",
-    "Becoming a servant",
-    "Becoming a friend",
-    "Surrendering one's whole self",
+    "Shravanam",
+    "Kirtanam",
+    "Smaranam",
+    "Pada-sevanam",
+    "Archanam",
+    "Vandanam",
+    "Daasyam",
+    "Sakhyam",
+    "Atma-nivedanam",
   ],
   cta: { label: "Explore the 30 Qualities", href: "#qualities" },
 };
 
-// Gau Seva leads this section; Krishi stays named because the same weekly visit covers both.
 // The off-campus note is a hard content rule from docs/overview.md — never imply a goshala on school grounds.
 export const FARM_VISIT: FarmVisitContent = {
-  eyebrow: "One day a week, outside the classroom",
-  title: "Every week, a lesson no classroom can teach",
-  body: "Children spend a day at a separate farm, caring for cows through Gau Seva and working the land through Krishi. They learn where food comes from, how living things depend on us, and what it means to be trusted with something that matters.",
-  note: "The farm is off campus; the Gurukulam does not have a goshala or farmland on its school grounds.",
+  eyebrow: "Beyond books: weekly hands-on learning",
+  title: "Every week, a day dedicated to real-world skills",
+  body: "Every week, children swap textbooks for hands-on tools. Dedicated entirely to experiential learning, this day immerses students in practical arts like carpentry, pottery, science projects, textile crafts, and agricultural care. By creating and experimenting with their own hands, they develop tangible life skills, creative resilience, and deep real-world understanding that no standard classroom can provide.",
+  note: "Held off campus at a dedicated space, where every craft has the room, tools, and materials it needs.",
 };
 
 export const SUBJECT_GROUPS: SubjectGroup[] = [
-  { area: "Academic core", subjects: ["NCERT-based syllabus"] },
+  { area: "Academic core", subjects: ["NCERT syllabus", "Practical learning", "Scientific craft"] },
   { area: "Languages", subjects: ["Sanskrit", "English", "Gujarati", "Hindi"] },
   { area: "Mathematics", subjects: ["Vedic Mathematics"] },
-  { area: "Arts", subjects: ["Sangeet", "Nritya", "Kala"] },
-  { area: "Physical", subjects: ["Kreeda", "Martial Arts"] },
-  { area: "Practical / seva", subjects: ["Krishi", "Gau Seva"] },
+  { area: "Arts", subjects: ["Sangeet", "Nritya", "Kala", "Rangoli", "Art and craft", "Pottery"] },
+  { area: "Physical activity", subjects: ["Kreeda", "Martial Arts"] },
+  { area: "Practical / seva", subjects: ["Gau Seva", "Carpentry", "Knitting", "Crochet", "Hand embroidery", "Beading", "Garland making"] },
   { area: "Character & culture", subjects: ["Spiritual Culture", "Value Based Education"] },
   { area: "Practice", subjects: ["Sadhana", "Seva", "Sadachar"] },
   { area: "Frameworks", subjects: ["30 Qualities of Humans", "Pancha Kosha Vikas of the Child"] },
   { area: "Scriptures", subjects: ["Mahabharata", "Ramayana", "Bhagavad-gita", "Srimad-Bhagavatam"] },
   { area: "Moral literature", subjects: ["Panchatantra", "Hitopadesha"] },
 ];
-
-export const FACILITIES: FacilitiesContent = {
-  eyebrow: "Facilities and care",
-  title: "What families can expect at launch",
-  lead: "The facilities and daily care arrangements confirmed for the first batch.",
-  available: [
-    { title: "Computers", body: "Computers will be available at launch." },
-    { title: "Lunch and snacks", body: "Lunch and snacks are provided as vegetarian, sattvik, nutritious prasadam." },
-    { title: "Transport contacts", body: "Transport is arranged by parents; the Gurukulam shares transport contacts and the expense is borne by parents." },
-  ],
-};
 
 export const FAQS: FaqContent = {
   eyebrow: "Parent guide",
@@ -438,6 +419,14 @@ export const FAQS: FaqContent = {
           question: "What arrangements are made for prasadam, and what food is served?",
           points: ["Lunch and snacks are provided.", "All food is vegetarian, sattvik, nutritious prasadam."],
         },
+        {
+          question: "Will computers be available?",
+          answer: "Yes. Computers will be available at launch.",
+        },
+        {
+          question: "Is the campus monitored for security?",
+          answer: "Yes. The campus will be covered by CCTV cameras.",
+        },
       ],
     },
   ],
@@ -445,21 +434,21 @@ export const FAQS: FaqContent = {
 
 export const ADMISSIONS_STEPS: AdmissionsContent = {
   eyebrow: "Admissions · 2027–28",
-  title: "The admission journey, step by step",
-  lead: "Admissions are open from Nursery through Class 5 for the 2027–28 academic year, which begins in June 2027.",
+  title: "The admission procedure",
+  lead: "Admissions are open from Nursery through Class 5 from the academic year 2027-28.",
   items: [
-    { step: "01", title: "Fill form", body: "Complete the Gurukulam admission form." },
-    { step: "02", title: "Orientation", body: "Attend the Gurukulam orientation." },
-    { step: "03", title: "Parent's interview", body: "An interaction is held with the parents." },
-    { step: "04", title: "Student's evaluation", body: "An assessment of the child is carried out." },
-    { step: "05", title: "Admission", body: "Admission is confirmed for your child." },
+    { step: "01", title: "Fill the form", body: "Complete the Gurukulam admission form." },
+    { step: "02", title: "Orientation", body: "Attend the Gurukulam orientation session." },
+    { step: "03", title: "Parent's interview", body: "An interaction & briefing with the parents." },
+    { step: "04", title: "Student's evaluation", body: "An assessment of the child." },
+    { step: "05", title: "Admission", body: "Enrollment in gurukulam." },
   ],
 };
 
 export const FINAL_CTA: FinalCtaContent = {
   eyebrow: "First batch · June 2027",
-  title: "Considering Vidyabhushana Gurukulam for your child?",
-  body: "Admission enquiries are open for Nursery through Class 5 in Vadodara.",
+  title: "Interested in Vidyabhushana Gurukulam for your child?",
+  body: "Admission enquiries are open for Nursery through Class 5.",
   primaryCta: { label: "Enquire for Admission", href: ENQUIRY_FORM_URL },
   secondaryCta: { label: "Explore Our Approach", href: "/approach" },
 };

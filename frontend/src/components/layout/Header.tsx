@@ -21,7 +21,7 @@ export function Header() {
       {/* The fixed header stays outside SmoothScrollProvider so it remains anchored to the viewport. */}
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/30 bg-bg-panel/95 backdrop-blur-md">
         <div className="mx-auto flex h-[92px] max-w-[1400px] items-center justify-between gap-5 px-5 xl:px-10">
-          <Logo />
+          <Logo size="lg" />
 
           <nav aria-label="Primary navigation" className="hidden items-center gap-4 xl:flex 2xl:gap-7">
             {NAV.map((item) => (

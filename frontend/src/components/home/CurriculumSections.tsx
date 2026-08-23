@@ -92,7 +92,7 @@ export function SubjectGroups({ subjectGroups }: Pick<CurriculumSectionsProps, "
   return (
     <section id="curriculum" className="bg-bg-cream px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="subject-groups-title">
       <div className="mx-auto max-w-[1280px]">
-        <SectionIntro eyebrow="Curriculum" title="Many subjects, one education" lead="Academic learning, language, arts, physical development, practical service, character, and scripture are brought together in the Gurukulam curriculum." headingId="subject-groups-title" />
+        <SectionIntro eyebrow="Curriculum" title="Mainstream academic standard with unmatched life skills" lead="Our program completely covers the official NCERT syllabus defined by the government, matching the high academic standard of mainstream schools. Alongside regular subjects, we blend culture, physical mastery, and life skills to give your child an unmatched, well-rounded edge for the future." headingId="subject-groups-title" />
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {subjectGroups.map((group, index) => (

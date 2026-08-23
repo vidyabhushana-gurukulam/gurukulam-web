@@ -6,14 +6,17 @@
 type LogoProps = {
   className?: string;
   variant?: "dark" | "light";
+  size?: "default" | "lg";
 };
 
-export function Logo({ className = "", variant = "dark" }: LogoProps) {
+export function Logo({ className = "", variant = "dark", size = "default" }: LogoProps) {
+  // The header carries the larger lockup; the footer and drawer keep the compact one.
+  const dimensions = size === "lg" ? "h-[68px] w-[209px]" : "h-[40px] w-[123px]";
   const filter = variant === "light" ? "brightness(0) invert(1)" : "brightness(0) saturate(100%) invert(17%) sepia(27%) saturate(1354%) hue-rotate(177deg) brightness(89%) contrast(93%)";
 
   return (
     <a href="/" className={`group/logo inline-flex items-center ${className}`} aria-label="Vidyabhushana Gurukulam home">
-      <img src="/brand/vidyabhushana-horizontal.svg" alt="Vidyabhushana Gurukulam" className="h-[66px] w-[172px] object-contain object-left transition-[transform,filter] duration-(--default-transition-duration) ease-(--ease-out-back) group-hover/logo:scale-[1.02] sm:w-[210px]" style={{ filter }} />
+      <img src="/brand/vidyabhushana-horizontal.svg" alt="Vidyabhushana Gurukulam" className={`${dimensions} object-contain object-left transition-[transform,filter] duration-(--default-transition-duration) ease-(--ease-out-back) group-hover/logo:scale-[1.02]`} style={{ filter }} />
     </a>
   );
 }

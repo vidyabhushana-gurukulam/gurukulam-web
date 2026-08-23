@@ -109,7 +109,7 @@ design-prototypes/       style-explorer.html — the visual direction exploratio
 | Navigation | `src/data/nav.ts` |
 | Image paths and alt text | `src/data/media.ts` |
 
-Both the homepage and the Parent Guide render the same `FAQS` and `FACILITIES`, so editing them once updates both.
+Both the homepage and the Parent Guide render the same `FAQS`, so editing it once updates both. Facilities details live in FAQ group F; there is no separate facilities section.
 
 ---
 
@@ -120,8 +120,8 @@ Both the homepage and the Parent Guide render the same `FAQS` and `FACILITIES`, 
 `docs/overview.md` carries binding rules that exist because parents verify claims on a campus visit, and for a school with no track record, word of mouth is the only marketing that matters. The ones most easily broken by accident:
 
 - **Transport is arranged by parents.** The Gurukulam shares transport contacts; the expense is borne by parents. The site previously said transport "will be provided", which the Parent Handbook contradicts. Do not reintroduce that.
-- **Krishi and Gau Seva are off-campus** — a weekly visit to a separate farm. Never imply a goshala or farmland on school grounds.
-- **Chaitanya Bala Sankar Kendra is a separate organisation.** The founding team still teaches around 300 children there. Credit it to the *people* ("our founding team teaches around 300 children at Chaitanya Bala Sankar Kendra"), never to the institution, and keep it in the present tense — it is ongoing, not a finished chapter.
+- **Gau Seva is off-campus** — part of the weekly hands-on skills day held at a dedicated off-campus space. Never imply a goshala or farmland on school grounds.
+- **Chaitanya Bala Sankar Kendra is a separate organisation.** The founding team still teaches around 300 children there, across seven centres in Vadodara. Credit it to the *people* ("our founding team teaches around 300 children across seven centres of Chaitanya Bala Sankar Kendra"), never to the institution, and keep it in the present tense — it is ongoing, not a finished chapter.
 - **Never criticise mainstream or modern schools.** Parents reading the site have children currently enrolled in them. Contrast is communicated by describing what this school offers, never by naming what others lack.
 - **No health claims.** Do not claim the school addresses depression, anxiety or attention disorders. Describe the environment instead — screen-free campus, small classes, a settled daily rhythm.
 

@@ -20,7 +20,7 @@ const SCHOOL_FACTS = [
 export function AboutPage() {
   return (
     <>
-      <PageHero eyebrow="About Vidyabhushana Gurukulam" title="A school where knowledge and character grow together" lead="Vidyabhushana Gurukulam is a new day school in Vadodara, bringing an NCERT-based academic education together with Vedic learning and cultural practice." />
+      <PageHero eyebrow="About Vidyabhushana Gurukulam" title="A school where knowledge and character grow together" lead="Vidyabhushana Gurukulam is a new day school in Vadodara, bringing an NCERT academic education together with Vedic learning and cultural practice." />
       <FoundationSections site={SITE} pillars={PILLARS} />
 
       <section className="bg-bg-cream px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="school-at-a-glance-title">

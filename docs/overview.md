@@ -42,9 +42,9 @@ The website is **not** a school management system. There is no fee payment, no p
 
 ### Founding team's experience
 
-The founding team runs **Chaitanya Bala Sankar Kendra in Vadodara, where it teaches around 300 children**, with spiritual activities and character development. It has done so for five years and continues to run today — this is ongoing work, not a finished chapter.
+The founding team runs **Chaitanya Bala Sankar Kendra across seven centres in Vadodara, where it teaches around 300 children in total**, with spiritual activities and character development. It has done so for five years and continues to run today — this is ongoing work, not a finished chapter.
 
-> ⚠️ **Attribution rule.** Chaitanya Bala Sankar Kendra is a **separate organisation with its own management** and is not part of the gurukulam. The website must credit this teaching to the **people**, never to the institution — for example *"our founding team teaches around 300 children at Chaitanya Bala Sankar Kendra"*, never *"our school teaches 300 children"*. It gets no dedicated page. A parent who investigates will find the two are separate, and an overstated claim would damage exactly the trust it was meant to build.
+> ⚠️ **Attribution rule.** Chaitanya Bala Sankar Kendra is a **separate organisation with its own management** and is not part of the gurukulam. The website must credit this teaching to the **people**, never to the institution — for example *"our founding team teaches around 300 children across seven centres of Chaitanya Bala Sankar Kendra"*, never *"our school teaches 300 children"*. It gets no dedicated page. A parent who investigates will find the two are separate, and an overstated claim would damage exactly the trust it was meant to build.
 
 ---
 
@@ -82,19 +82,19 @@ The full subject list as defined by the school:
 
 | Area | Subjects |
 |---|---|
-| **Academic core** | NCERT-based syllabus |
+| **Academic core** | NCERT syllabus, Practical learning, Scientific craft |
 | **Languages** | Sanskrit, English, Gujarati, Hindi |
 | **Mathematics** | Vedic Mathematics |
-| **Arts** | Sangeet, Nritya, Kala |
-| **Physical** | Kreeda, Martial Arts |
-| **Practical / seva** | Krishi, Gau Seva |
+| **Arts** | Sangeet, Nritya, Kala, Rangoli, Art and craft, Pottery |
+| **Physical activity** | Kreeda, Martial Arts |
+| **Practical / seva** | Gau Seva, Carpentry, Knitting, Crochet, Hand embroidery, Beading, Garland making |
 | **Character & culture** | Spiritual Culture, Value Based Education |
 | **Practice** | Sadhana, Seva, Sadachar |
 | **Frameworks** | 30 Qualities of Humans, Pancha Kosha Vikas of the Child |
 | **Scriptures** | Mahabharata, Ramayana, Bhagavad-gita, Srimad-Bhagavatam |
 | **Moral literature** | Panchatantra, Hitopadesha |
 
-> ⚠️ **Krishi and Gau Seva are off-campus.** Children visit a **separate farm once a week**. The website must never imply that a goshala or farmland exists on the school grounds. Described accurately as a *weekly Gau Seva and Krishi visit*, it remains a genuine differentiator — no mainstream school in Vadodara takes children to a farm every week.
+> ⚠️ **Gau Seva is off-campus.** Children visit a **dedicated off-campus space once a week** for a hands-on skills day — carpentry, pottery, science projects, textile crafts, and Gau Seva among the practical arts covered. The website must never imply that a goshala or farmland exists on the school grounds. Framed positively as what the day provides — the room, tools, and materials each craft needs — it remains a genuine differentiator — no mainstream school in Vadodara takes children off campus for hands-on skills every week.
 
 ---
 
@@ -104,11 +104,11 @@ The five-fold development of the child is the school's organising philosophy and
 
 | Kosha | Dimension | Subjects and activities |
 |---|---|---|
-| **Annamaya** | Body | Kreeda, Martial Arts, Krishi |
-| **Pranamaya** | Energy | Yoga, pranayama, daily rhythm |
-| **Manomaya** | Mind | Sangeet, Nritya, Kala |
-| **Vijnanamaya** | Intellect | NCERT, Sanskrit, Vedic Mathematics, Scriptures |
-| **Anandamaya** | Bliss | Sadhana, Seva, kirtan |
+| **Annamaya** | Body | Kreeda, Martial Arts, Gross Motor Activities, Fine Motor Activities |
+| **Pranamaya** | Energy | Yoga, Pranayam, Dincharya |
+| **Manomaya** | Mind | Sangeet, Nritya, Japa & Kala |
+| **Vijnanamaya** | Intellect | Academics, Vedic Scriptures, Sloka Recitation |
+| **Anandamaya** | Bliss | Sadhana, Seva, Kirtan |
 
 This mapping is approved by the stakeholder and should be reproduced exactly.
 
@@ -116,23 +116,23 @@ This mapping is approved by the stakeholder and should be reproduced exactly.
 
 ## 6. The 30 Qualities of Humans
 
-The complete list, as supplied by the school. **Reproduce verbatim** — these are not to be reworded, shortened, or partially listed.
+The complete list, as supplied by the school and stated by Nārada Muni in the Śrīmad-Bhāgavatam (Canto 7, Chapter 11, Verses 8–12). **Reproduce verbatim** — these are not to be reworded, shortened, or partially listed.
 
 | # | Quality |
 |---|---|
 | 1 | Truthfulness |
 | 2 | Mercy |
-| 3 | Austerity (observing fasts on certain days of the month) |
-| 4 | Bathing twice a day |
+| 3 | Control of the mind |
+| 4 | Simplicity |
 | 5 | Tolerance |
 | 6 | Discrimination between right and wrong |
-| 7 | Control of the mind |
-| 8 | Control of the senses |
-| 9 | Non-violence |
-| 10 | Celibacy |
-| 11 | Charity |
-| 12 | Reading of scripture |
-| 13 | Simplicity |
+| 7 | Austerity |
+| 8 | Bathing twice a day |
+| 9 | Control of the senses |
+| 10 | Non-violence |
+| 11 | Celibacy |
+| 12 | Charity |
+| 13 | Reading of scripture |
 | 14 | Satisfaction |
 | 15 | Rendering service to saintly persons |
 | 16 | Gradually taking leave of unnecessary engagements |
@@ -141,15 +141,15 @@ The complete list, as supplied by the school. **Reproduce verbatim** — these a
 | 19 | Considering whether one is the body or the soul |
 | 20 | Distributing food equally to all living entities (both men and animals) |
 | 21 | Seeing every soul (especially in the human form) as a part of the Supreme Lord |
-| 22 | Hearing about the activities and instructions given by the Supreme Personality of Godhead |
-| 23 | Chanting about these activities and instructions |
-| 24 | Always remembering these activities and instructions |
-| 25 | Trying to render service |
-| 26 | Performing worship |
-| 27 | Offering obeisances |
-| 28 | Becoming a servant |
-| 29 | Becoming a friend |
-| 30 | Surrendering one's whole self |
+| 22 | Shravanam |
+| 23 | Kirtanam |
+| 24 | Smaranam |
+| 25 | Pada-sevanam |
+| 26 | Archanam |
+| 27 | Vandanam |
+| 28 | Daasyam |
+| 29 | Sakhyam |
+| 30 | Atma-nivedanam |
 
 ### Proposed grouping for the website
 
@@ -162,7 +162,7 @@ Thirty items in an unbroken list is unreadable on a webpage. The following clust
 | Detachment & Discernment | 15 – 21 |
 | Devotion | 22 – 30 |
 
-Note that items **22–30 correspond to the nine processes of devotional service (navadha bhakti)**, which is why they form a natural final group.
+Note that items **22–30 are now named directly as the nine processes of devotional service (navadha-bhakti)** — Shravanam, Kirtanam, Smaranam, Pada-sevanam, Archanam, Vandanam, Daasyam, Sakhyam, Atma-nivedanam — which is why they form a natural final group.
 
 ---
 
@@ -176,7 +176,8 @@ The website must distinguish clearly between what exists and what is planned. A 
 | Science lab | Planned | As a future plan, never as existing |
 | Robotics | Planned | As a future plan, never as existing |
 | Smart classes | Planned | As a future plan, never as existing |
-| Goshala / farmland | **Not on campus** | Weekly visit to a separate farm |
+| Goshala / farmland | **Not on campus** | Gau Seva happens during the weekly off-campus hands-on skills day |
+| CCTV | Planned for launch | As a planned facility, not yet installed |
 | Transport | Will be provided | Coverage areas not yet decided |
 | Midday prasadam | Will be provided | As a current facility |
 | Campus (land, classrooms, buildings) | **Not yet documented** | See Open Items |
@@ -253,12 +254,16 @@ Home                  → the team's five years of teaching · June 2027 admissi
 ├── About             → vision, the founding team's journey and experience
 ├── Our Approach      → Pancha Kosha · 30 Qualities · Sadhana, Seva, Sadachar
 ├── Curriculum        → subjects, daily timetable, practical NCERT,
-│                       weekly Gau Seva & Krishi visit
+│                       weekly off-campus hands-on skills day incl. Gau Seva
 ├── Gallery           → activities and festivals
+├── Parent Guide      → FAQs A–F, transcribed from the Parent Handbook,
+│                       including Facilities (group F) — transport, food, computers, CCTV
 ├── Admissions        → June 2027 · timings · process · fees on enquiry
 │                       · [ENQUIRY FORM]
 └── Contact           → Vadodara map, phone, WhatsApp
 ```
+
+The homepage also renders the same FAQ groups, so Facilities content is not confined to a standalone section — it lives entirely in FAQ group F, on both the homepage and the Parent Guide page. There is no dedicated "Facilities and care" section or page.
 
 A **Sunday School** page appeared in an earlier draft and was **removed** after it emerged that the programme — Chaitanya Bala Sankar Kendra — is a separate organisation. Its substance now lives as a paragraph on the About page, attributed to the team.
 
@@ -327,7 +332,7 @@ These are not oversights. Several will need answers before the corresponding **w
 | Item | Why it's needed |
 |---|---|
 | **Campus details and build status** | The Campus/Gallery content depends entirely on this |
-| **Safety and care arrangements** | Gated campus, CCTV, female attendants, first aid, verified drivers. With pre-primary as the entry class, this is the first question parents ask. Stakeholder asked to revisit. |
+| **Safety and care arrangements** | Gated campus, female attendants, first aid, verified drivers. CCTV is now confirmed as a planned facility (see §7). With pre-primary as the entry class, the remaining items are still the first question parents ask. Stakeholder asked to revisit. |
 | **Transport coverage areas** | Parents filter schools by whether pickup reaches their area, often before reading anything else |
 | **Public contact details** | Phone, WhatsApp, email — required for the Contact page and footer |
 | **Festival and event list** | Content for the events section |

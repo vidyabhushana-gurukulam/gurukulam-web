@@ -63,6 +63,9 @@ export function DailyRhythm({ dailyRhythm }: Pick<RhythmAndKoshaSectionsProps, "
   );
 }
 
+/** Disc radii, outermost first, in the diagram's 400x400 viewBox. The 32-unit step leaves each band room for its arc label. */
+const KOSHA_RADII = [190, 158, 126, 94, 60];
+
 export function PanchaKosha({ panchaKosha }: Pick<RhythmAndKoshaSectionsProps, "panchaKosha">) {
   return (
     <section id="approach" className="overflow-hidden bg-header px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="pancha-kosha-title">
@@ -71,15 +74,30 @@ export function PanchaKosha({ panchaKosha }: Pick<RhythmAndKoshaSectionsProps, "
 
         <div className="mt-14 grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
           <Reveal className="hidden lg:block">
-            <div role="img" aria-label="Five nested layers representing the five koshas" className="relative mx-auto aspect-square w-full max-w-[530px] rounded-full bg-white/[0.035]">
+            {/* SVG rather than stacked divs: only textPath can set each kosha's name on its own arc. */}
+            <svg viewBox="0 0 400 400" role="img" aria-label="Five nested sheaths, from Annamaya on the outside to Anandamaya at the centre" className="mx-auto w-full max-w-[520px]">
+              <defs>
+                {KOSHA_RADII.slice(0, -1).map((radius, index) => {
+                  const labelRadius = (radius + KOSHA_RADII[index + 1]) / 2;
+                  return <path key={index} id={`kosha-arc-${index}`} fill="none" d={`M ${200 - labelRadius},200 a ${labelRadius},${labelRadius} 0 0 1 ${labelRadius * 2},0`} />;
+                })}
+              </defs>
+
+              {/* Outer to inner: each disc paints over the last, leaving the visible band. */}
               {panchaKosha.items.map((item, index) => (
-                <div key={item.name} className="absolute flex items-start justify-center rounded-full border-2" style={{ inset: `${index * 8}%`, zIndex: index + 1, borderColor: `color-mix(in srgb, ${item.accent} 58%, white)`, background: `color-mix(in srgb, ${item.accent} 12%, var(--color-header))`, boxShadow: "inset 0 0 0 1px rgb(255 255 255 / 0.08)" }}>
-                  <span className="mt-2 rounded-full bg-header/90 px-3 py-1 text-center font-heading text-[clamp(0.7rem,1.1vw,0.9rem)] font-semibold leading-tight text-white">
-                    {item.name} · {item.dimension}
-                  </span>
-                </div>
+                <circle key={item.name} cx="200" cy="200" r={KOSHA_RADII[index]} strokeWidth="1.5" style={{ fill: `color-mix(in srgb, ${item.accent} 12%, var(--color-header))`, stroke: `color-mix(in srgb, ${item.accent} 58%, white)` }} />
               ))}
-            </div>
+
+              {panchaKosha.items.slice(0, -1).map((item, index) => (
+                <text key={item.name} className="fill-white font-heading text-[13px] font-semibold">
+                  <textPath href={`#kosha-arc-${index}`} startOffset="50%" textAnchor="middle">{item.name} · {item.dimension}</textPath>
+                </text>
+              ))}
+
+              {/* The innermost kosha is a disc, not a band, so its label sits flat at the centre. */}
+              <text x="200" y="196" textAnchor="middle" className="fill-white font-heading text-[17px] font-medium">{panchaKosha.items.at(-1)?.name}</text>
+              <text x="200" y="214" textAnchor="middle" className="fill-white/60 font-heading text-[10px] font-semibold uppercase tracking-[0.2em]">{panchaKosha.items.at(-1)?.dimension}</text>
+            </svg>
           </Reveal>
 
           <ol className="flex flex-col gap-3">
