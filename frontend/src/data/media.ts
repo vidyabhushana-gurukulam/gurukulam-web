@@ -15,7 +15,7 @@ export interface MediaAsset {
 export const SCENES = {
   classroomDiscussion: {
     src: "/images/school-life/classroom-discussion.webp",
-    alt: "A calm classroom of children at low wooden desks, hands raised toward a teacher at the blackboard",
+    alt: "A male teacher guiding boys as they study at low wooden desks in a calm classroom",
   },
   outdoorDiscussion: {
     src: "/images/school-life/outdoor-discussion.webp",
@@ -29,9 +29,9 @@ export const SCENES = {
     src: "/images/school-life/geometry-class.webp",
     alt: "A teacher constructing a triangle on the blackboard while children copy the figure into notebooks",
   },
-  yogaClass: {
-    src: "/images/school-life/yoga-class.webp",
-    alt: "Children seated in meditation on mats along an open colonnade",
+  bhagavatamReading: {
+    src: "/images/school-life/bhagavatam-reading.webp",
+    alt: "A male teacher reading Srimad-Bhagavatam with children seated around him in an open pavilion",
   },
   kreedaFootball: {
     src: "/images/school-life/kreeda-football.webp",

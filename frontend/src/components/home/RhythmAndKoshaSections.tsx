@@ -9,7 +9,7 @@ import { SCENES } from "@/data/media";
 
 /** Positional map from the approved three-part school day to its illustrating scene. */
 // One photo per block of the day: sadhana, academics, then movement.
-const RHYTHM_SCENES = [SCENES.yogaClass, SCENES.abacusMaths, SCENES.kreedaFootball];
+const RHYTHM_SCENES = [SCENES.bhagavatamReading, SCENES.abacusMaths, SCENES.kreedaFootball];
 
 type RhythmAndKoshaSectionsProps = {
   dailyRhythm: typeof import("@/data/home").DAILY_RHYTHM;

@@ -6,8 +6,6 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { SectionIntro } from "@/components/home/SectionIntro";
-import { FloatingChild } from "@/components/motion/FloatingChild";
-import { CHILDREN } from "@/data/media";
 import { CONTACT } from "@/data/home";
 import { PhoneIcon } from "@/components/ui/Icon";
 
@@ -54,8 +52,6 @@ function FinalCta({ finalCta }: Pick<AdmissionsSectionsProps, "finalCta">) {
       <Reveal className="mx-auto max-w-[1280px]">
         <div className="relative overflow-hidden rounded-b-[28px] rounded-t-[clamp(110px,18vw,230px)] bg-header px-7 pb-14 pt-28 text-center sm:px-12 sm:pb-20 sm:pt-36 lg:px-24 lg:pb-24 lg:pt-44">
           <div aria-hidden="true" className="absolute left-1/2 top-0 h-px w-[65%] -translate-x-1/2 bg-theme/55" />
-          <FloatingChild media={CHILDREN.kirtanKartals} className="bottom-0 left-6 w-[118px] xl:left-10 xl:w-[136px]" drift={-52} />
-          <FloatingChild media={CHILDREN.abacus} className="bottom-0 right-6 w-[118px] xl:right-10 xl:w-[136px]" drift={-34} />
           <p className="font-heading text-sm font-semibold uppercase tracking-[0.18em] text-theme">{finalCta.eyebrow}</p>
           <h2 id="final-cta-title" className="mx-auto mt-5 max-w-[850px] font-heading text-[clamp(2.25rem,5vw,4.3rem)] font-medium leading-[1.06] tracking-[-0.03em] text-white">{finalCta.title}</h2>
           <p className="mx-auto mt-6 max-w-[650px] text-lg leading-8 text-white/75">{finalCta.body}</p>
