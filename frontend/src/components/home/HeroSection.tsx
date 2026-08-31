@@ -6,9 +6,8 @@
 import { Button } from "@/components/ui/Button";
 import { Img } from "@/components/ui/Img";
 import { PhotoFrame } from "@/components/ui/PhotoFrame";
-import { FloatingChild } from "@/components/motion/FloatingChild";
 import { GoldRule } from "@/components/home/SectionIntro";
-import { CHILDREN, SCENES } from "@/data/media";
+import { SCENES } from "@/data/media";
 
 type HeroSectionProps = {
   site: typeof import("@/data/home").SITE;
@@ -32,10 +31,12 @@ export function HeroSection({ site, hero }: HeroSectionProps) {
 
       <div className="relative mx-auto max-w-[1360px] overflow-hidden rounded-b-[28px] rounded-t-[clamp(150px,24vw,330px)] border border-theme/45 bg-bg-cream px-5 pb-7 pt-14 shadow-[0_28px_90px_-60px_var(--color-header)] sm:px-9 sm:pb-9 sm:pt-20 lg:px-14 lg:pb-12 lg:pt-24">
         <div className="mx-auto flex w-full min-w-0 max-w-[920px] flex-col items-center text-center">
-          <Img src="/brand/vidyabhushana-crest.webp" alt="Vidyabhushana Gurukulam crest" loading="eager" className="h-auto w-[150px] drop-shadow-[0_18px_28px_rgb(27_48_87_/_0.13)] sm:w-[190px] lg:w-[220px]" />
+          <div className="flex w-full justify-center">
+            <Img src="/brand/vidyabhushana-crest.webp" alt="Vidyabhushana Gurukulam crest" loading="eager" className="h-auto w-[150px] drop-shadow-[0_18px_28px_rgb(27_48_87_/_0.13)] sm:w-[190px] lg:w-[220px]" />
+          </div>
 
           <div className="hidden sm:block">
-            <span className="mt-4 inline-flex max-w-full items-center justify-center rounded-full border border-theme/35 bg-white/70 px-4 py-2 text-center font-heading text-sm font-semibold leading-5 tracking-wide whitespace-normal text-header backdrop-blur-sm">
+            <span className="mt-4 inline-flex max-w-full items-center justify-center rounded-full border border-theme/35 bg-white/70 px-4 py-2 text-center font-heading text-xl font-semibold leading-7 tracking-wide whitespace-normal text-header backdrop-blur-sm">
               {site.admissions}
             </span>
           </div>
@@ -65,9 +66,6 @@ export function HeroSection({ site, hero }: HeroSectionProps) {
 
         {/* The photograph and the fact strip read as one plinth: image above, verified detail beneath. */}
         <div className="relative mx-auto mt-12 max-w-[1240px] sm:mt-16">
-          <FloatingChild media={CHILDREN.readingRaisedHand} className="-bottom-2 left-0 w-[128px] xl:w-[148px]" drift={-34} />
-          <FloatingChild media={CHILDREN.wateringSapling} className="-bottom-2 right-0 w-[136px] xl:w-[156px]" drift={-22} />
-
           <div className="mx-auto max-w-[980px]">
             <PhotoFrame media={SCENES.kidsWalking} eager className="aspect-[7/5] w-full rounded-t-[clamp(60px,9vw,120px)] rounded-b-[6px] border border-theme/30" />
 

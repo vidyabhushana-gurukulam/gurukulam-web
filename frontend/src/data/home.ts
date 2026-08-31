@@ -178,7 +178,7 @@ export const SITE: SiteContent = {
 };
 
 export const HERO: HeroContent = {
-  eyebrow: "Quality education · Cultural roots · All-round development",
+  eyebrow: "Quality education · Safe and Cultural Environment · All-round development",
   title: "Where learning meets core values",
   subtitle: { lead: "Give your child a", accent: "complete education." },
   // The headline renders the admission hoarding's Hindi tagline in English. The lead keeps
@@ -193,16 +193,16 @@ export const PILLARS: Pillar[] = [
   {
     icon: "01",
     title: "Rooted in Vedic learning",
-    body: "Vedic education, sadhana, scripture, Sanskrit, spiritual culture, and devotional practice provide a grounding for the child's education.",
+    body: "Vedic education, sadhana, scriptures, spiritual culture, and devotional practice provide a grounding for the child's education.",
   },
   {
     icon: "02",
-    title: "Serious NCERT academics",
+    title: "NCERT academics",
     body: "For Classes 1–5, five hours each day are dedicated to NCERT academics taught for understanding through visual projects and 3D models.",
   },
   {
     icon: "03",
-    title: "Whole-child development",
+    title: "All round development",
     body: "Pancha Kosha Vikas brings the body, energy, mind, intellect, and bliss into one coherent education.",
   },
 ];
@@ -216,9 +216,9 @@ export const DAILY_RHYTHM: DailyRhythmContent = {
     { label: "Classes 1–5", timing: "08:00–17:00", note: "The three-part full-day rhythm shown below." },
   ],
   slots: [
-    { time: "08:00–10:00", title: "Vedic education", body: "Two hours of sadhana, scripture, Sanskrit, and spiritual culture open the day, so children are settled and grounded before academics begin." },
-    { time: "10:00–15:00", title: "NCERT academics", body: "Five focused hours of NCERT, languages, and Vedic Mathematics, taught for understanding through visual projects and 3D models, not rote learning." },
-    { time: "15:00–17:00", title: "Kreeda & Arts", body: "Two hours close the day in movement and expression — Kreeda and martial arts for the body, and Sangeet, Nritya, and Kala for the mind." },
+    { time: "08:00–10:00", title: "Vedic education", body: "Two hours of spiritual practice—including prayers, japa, classes on Vedic scriptures, śloka recitation, and more—begin each day, cultivating calmness, discipline and focus." },
+    { time: "10:00–15:00", title: "NCERT academics", body: "Five focused hours of NCERT learning that transforms concepts into understanding through visual projects, 3D models, and hands-on experiences—not rote learning." },
+    { time: "15:00–17:00", title: "Kreeda & Arts", body: "Two hours bring the day to a close through movement, creativity, and self-expression—Kreeda and skills such as Sangeet, Nritya, and Kala, nurturing both body and mind." },
   ],
 };
 
@@ -228,9 +228,9 @@ export const PANCHA_KOSHA: PanchaKoshaContent = {
   lead: "The Gurukulam's organising framework connects every dimension to the subjects, practices, and rhythm of school life.",
   items: [
     { name: "Annamaya", dimension: "Body", activities: "Kreeda, Martial Arts, Gross Motor Activities, Fine Motor Activities", accent: "#C9A227" },
-    { name: "Pranamaya", dimension: "Energy", activities: "Yoga, Pranayam, Dincharya", accent: "#1B3057" },
-    { name: "Manomaya", dimension: "Mind", activities: "Sangeet, Nritya, Japa & Kala", accent: "#C9A227" },
-    { name: "Vijnanamaya", dimension: "Intellect", activities: "Academics, Vedic Scriptures, Sloka Recitation", accent: "#1B3057" },
+    { name: "Pranamaya", dimension: "Energy", activities: "Yoga, Pranayam, Vedic Dincharya", accent: "#1B3057" },
+    { name: "Manomaya", dimension: "Mind", activities: "Sangeet, Nritya, Kala", accent: "#C9A227" },
+    { name: "Vijnanamaya", dimension: "Intellect", activities: "Academics, Vedic Scriptures", accent: "#1B3057" },
     { name: "Anandamaya", dimension: "Bliss", activities: "Sadhana, Seva, Kirtan", accent: "#C9A227" },
   ],
 };

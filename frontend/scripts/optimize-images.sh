@@ -41,11 +41,12 @@ cwebp -quiet -q 90 -alpha_q 95 -resize 1100 0 "$SRC/../document/logo/logo-color.
 echo "  brand/vidyabhushana-crest.webp"
 
 echo "Scene photography:"
-photo "indoor-classroom-discussion-16x9.png"      "classroom-discussion"   1600
+photo "indoor-boys-classroom-prabhuji-4x3-v2.png" "classroom-discussion"  1448
 photo "outdoor-discussion-class-16x9.png"         "outdoor-discussion"     1600
 photo "indoor-abacus-maths-class-16x9.png"        "abacus-maths"           1600
 photo "indoor-geometry-construction-class-16x9.png" "geometry-class"       1600
-photo "outdoor-yoga-class-4x3.png"                "yoga-class"             1400
+# This square source is only drawn as a 112px circle, so 600px remains sharp at high density.
+photo "outdoor-bhagavatam-reading-circle-square.png" "bhagavatam-reading"      600
 photo "outdoor-nature-study-4x5.png"              "nature-study"           1200
 photo "off-campus-gau-seva-cow-feeding-4x5.png"   "gau-seva"               1200
 # Only ever drawn as a 112px circle in the daily-rhythm strip, so 600px is already 3x sharp.
