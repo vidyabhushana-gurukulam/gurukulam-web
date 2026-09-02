@@ -4,7 +4,7 @@
 */
 import { AdmissionsSections } from "@/components/home/AdmissionsSections";
 import { CurriculumSections } from "@/components/home/CurriculumSections";
-import { FoundationSections } from "@/components/home/FoundationSections";
+import { FoundingExperience, Pillars } from "@/components/home/FoundationSections";
 import { ParentGuideSections } from "@/components/home/GalleryCareSections";
 import { HeroSection } from "@/components/home/HeroSection";
 import { RhythmAndKoshaSections } from "@/components/home/RhythmAndKoshaSections";
@@ -14,10 +14,11 @@ export function HomePage() {
   return (
     <>
       <HeroSection site={SITE} hero={HERO} />
-      <FoundationSections site={SITE} pillars={PILLARS} />
+      <Pillars pillars={PILLARS} />
       <RhythmAndKoshaSections dailyRhythm={DAILY_RHYTHM} panchaKosha={PANCHA_KOSHA} />
       <CurriculumSections qualities={QUALITIES} farmVisit={FARM_VISIT} subjectGroups={SUBJECT_GROUPS} />
       <ParentGuideSections faqs={FAQS} />
+      <FoundingExperience site={SITE} />
       <AdmissionsSections admissionsSteps={ADMISSIONS_STEPS} finalCta={FINAL_CTA} />
     </>
   );

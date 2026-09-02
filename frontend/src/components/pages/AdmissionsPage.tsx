@@ -14,13 +14,13 @@ const ADMISSION_FACTS = [
   ["Pre-primary timings", "08:00–12:00"],
   ["Classes 1–5 timings", "08:00–17:00"],
   ["School format", "Day school, not residential"],
-  ["Fees", "₹30,000–₹90,000, by class"],
+  ["Fees", "₹30,000–₹90,000"],
 ];
 
 export function AdmissionsPage() {
   return (
     <>
-      <PageHero eyebrow="Admissions · June 2027" title="Begin the conversation about your child's place" lead="Admission enquiries are open for Vidyabhushana Gurukulam's first batch, from Nursery through Class 5 in Vadodara." />
+      <PageHero eyebrow="Admissions · June 2027" title="The complete process to apply for admission" lead="Admission enquiries are open for Vidyabhushana Gurukulam's first batch, from Nursery through Class 5 in Vadodara." />
       <AdmissionsSteps admissionsSteps={ADMISSIONS_STEPS} />
 
       <section className="bg-bg-cream px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="admission-details-title">

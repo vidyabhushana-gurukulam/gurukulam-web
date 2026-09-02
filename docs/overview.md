@@ -42,9 +42,9 @@ The website is **not** a school management system. There is no fee payment, no p
 
 ### Founding team's experience
 
-The founding team runs **Chaitanya Bala Sankar Kendra across seven centres in Vadodara, where it teaches around 300 children in total**, with spiritual activities and character development. It has done so for five years and continues to run today — this is ongoing work, not a finished chapter.
+The founding team runs **Chaitanya Bal Sankar Kendra across seven centres in Vadodara, where it teaches around 300 children in total**, with spiritual activities and character development. It has done so for five years and continues to run today — this is ongoing work, not a finished chapter.
 
-> ⚠️ **Attribution rule.** Chaitanya Bala Sankar Kendra is a **separate organisation with its own management** and is not part of the gurukulam. The website must credit this teaching to the **people**, never to the institution — for example *"our founding team teaches around 300 children across seven centres of Chaitanya Bala Sankar Kendra"*, never *"our school teaches 300 children"*. It gets no dedicated page. A parent who investigates will find the two are separate, and an overstated claim would damage exactly the trust it was meant to build.
+> ⚠️ **Attribution rule.** Chaitanya Bal Sankar Kendra is a **separate organisation with its own management** and is not part of the gurukulam. The website must credit this teaching to the **people**, never to the institution — for example *"our founding team teaches around 300 children across seven centres of Chaitanya Bal Sankar Kendra"*, never *"our school teaches 300 children"*. It gets no dedicated page. A parent who investigates will find the two are separate, and an overstated claim would damage exactly the trust it was meant to build.
 
 ---
 
@@ -210,7 +210,7 @@ The stakeholder's motivation, in summary: today's curriculum lacks character and
 
 2. **No health claims.** Do not claim the school solves depression, anxiety, or attention disorders. Reframe as environment rather than cure: a screen-free campus, small classes, personal attention, and a settled daily rhythm. This is more credible and completely honest.
 
-3. **Everything must be literally true.** Parents verify claims on a campus visit. Planned facilities are described as plans. Off-campus activities are described as off-campus. Chaitanya Bala Sankar Kendra is credited to the team.
+3. **Everything must be literally true.** Parents verify claims on a campus visit. Planned facilities are described as plans. Off-campus activities are described as off-campus. Chaitanya Bal Sankar Kendra is credited to the team.
 
 4. **Name the humans.** Not yet supplied (see Open Items), but a school website with no named people reads as anonymous. Parents want to know who is responsible for their child.
 
@@ -265,7 +265,7 @@ Home                  → the team's five years of teaching · June 2027 admissi
 
 The homepage also renders the same FAQ groups, so Facilities content is not confined to a standalone section — it lives entirely in FAQ group F, on both the homepage and the Parent Guide page. There is no dedicated "Facilities and care" section or page.
 
-A **Sunday School** page appeared in an earlier draft and was **removed** after it emerged that the programme — Chaitanya Bala Sankar Kendra — is a separate organisation. Its substance now lives as a paragraph on the About page, attributed to the team.
+A **Sunday School** page appeared in an earlier draft and was **removed** after it emerged that the programme — Chaitanya Bal Sankar Kendra — is a separate organisation. Its substance now lives as a paragraph on the About page, attributed to the team.
 
 ---
 
@@ -356,7 +356,7 @@ These are not oversights. Several will need answers before the corresponding **w
 | Website language | English only |
 | Classes | Pre-primary to Class 5, one added per year |
 | Fees on site | Shared on enquiry, not published |
-| Chaitanya Bala Sankar Kendra reference | Credited to the founding team, not the school; described as ongoing |
+| Chaitanya Bal Sankar Kendra reference | Credited to the founding team, not the school; described as ongoing |
 | Tone toward other schools | Positive only, no criticism |
 | Sitemap | Approved (Section 10) |
 | Logo design | Approved, vector in production |

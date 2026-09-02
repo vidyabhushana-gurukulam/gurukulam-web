@@ -52,6 +52,12 @@ photo "off-campus-gau-seva-cow-feeding-4x5.png"   "gau-seva"               1200
 # Only ever drawn as a 112px circle in the daily-rhythm strip, so 600px is already 3x sharp.
 photo "outdoor-boys-football-match-16x9.png"      "kreeda-football"         600
 photo "gurukulam.png"                             "hands-on-learning"      1500
+# Homepage founding-experience panel. Fills a half-width cell, so 1400px covers it at 2x.
+photo "arts-drama-performance-3x2.png"             "arts-performance"       1400
+# Approach page daily-practice cards. Each is drawn in a third-width 4:3 frame, so 1200px is 3x.
+photo "daily-practice-sadhana-japa-4x3.png"       "sadhana-japa"           1200
+photo "daily-practice-seva-prasadam-4x3.png"      "seva-prasadam"          1200
+photo "daily-practice-sadachar-greeting-4x3.png"  "sadachar-greeting"      1200
 # Hero. The group is already centred in this master (spans 17%-83%, midpoint 50%), so the
 # crop keeps the full width and only trims 52px off the top to reach 7:5, which leaves
 # headroom above the children and clear ground beneath their feet.
@@ -59,8 +65,14 @@ photo_crop "kids-walking-together.png" "kids-walking-together" "0 52 1448 1034"
 
 echo "Inspiration portraits:"
 # The Baladeva painting arrives with a printed yellow border; crop it away before resizing.
-cwebp -quiet -q 82 -crop 28 28 976 994 -resize 900 0 "$SRC/inspiration/baladeva-vidyabhushana.jpg" -o "$OUT/inspiration/baladeva-vidyabhushana.webp"
-echo "  inspiration/baladeva-vidyabhushana.webp"
+# Its master is currently absent from the repo, so skip rather than abort the whole run and
+# leave the previously built WebP in place; restore the master to regenerate it.
+if [ -f "$SRC/inspiration/baladeva-vidyabhushana.jpg" ]; then
+  cwebp -quiet -q 82 -crop 28 28 976 994 -resize 900 0 "$SRC/inspiration/baladeva-vidyabhushana.jpg" -o "$OUT/inspiration/baladeva-vidyabhushana.webp"
+  echo "  inspiration/baladeva-vidyabhushana.webp"
+else
+  echo "  SKIPPED inspiration/baladeva-vidyabhushana.webp — master missing at images/inspiration/"
+fi
 cwebp -quiet -q 86 -resize 900 0 "$SRC/../document/logo/srila-prabhupada.png" -o "$OUT/inspiration/srila-prabhupada.webp"
 echo "  inspiration/srila-prabhupada.webp"
 

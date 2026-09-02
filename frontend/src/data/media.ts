@@ -49,6 +49,22 @@ export const SCENES = {
     src: "/images/school-life/hands-on-learning.webp",
     alt: "A teacher and children exploring counting materials and wooden models around a low table",
   },
+  artsPerformance: {
+    src: "/images/school-life/arts-performance.webp",
+    alt: "Children in Krishna-lila costume performing on a school stage while classmates clap and laugh",
+  },
+  sadhanaJapa: {
+    src: "/images/school-life/sadhana-japa.webp",
+    alt: "Boys in dhoti-kurta chanting on japa beads alongside their teacher on a shaded veranda in the early morning",
+  },
+  sevaPrasadam: {
+    src: "/images/school-life/seva-prasadam.webp",
+    alt: "Two older boys serving rice and dal to younger boys seated in a row in the dining hall",
+  },
+  sadacharGreeting: {
+    src: "/images/school-life/sadachar-greeting.webp",
+    alt: "A boy greeting his teacher with folded hands at a classroom doorway while an older boy helps a younger one gather a dropped notebook",
+  },
   kidsWalking: {
     src: "/images/school-life/kids-walking-together.webp",
     alt: "Four children in traditional dress walking together through a sunlit courtyard, carrying a globe, a model, and books",
