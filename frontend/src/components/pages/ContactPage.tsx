@@ -52,7 +52,7 @@ export function ContactPage() {
           <div className="flex min-h-[360px] flex-col justify-center bg-header px-8 py-12 text-white sm:px-12">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-theme">Location</p>
             <h2 id="contact-details-title" className="mt-5 font-heading text-[clamp(2.2rem,4vw,3.5rem)] font-medium leading-tight text-white">Vadodara, Gujarat, India</h2>
-            <p className="mt-5 max-w-[430px] text-[17px] leading-7 text-white/70">The Gurukulam is on Gotri Road. The exact campus address and map will be published once the campus details are confirmed.</p>
+            <p className="mt-5 max-w-[430px] text-[17px] leading-7 text-white/70">The Gurukulam is near Yash Complex, Gotri Road. </p>
           </div>
 
           <div className="flex min-h-[360px] flex-col justify-center gap-3 px-6 py-10 sm:px-10 sm:py-12">
@@ -80,7 +80,7 @@ export function ContactPage() {
         </div>
       </section>
 
-      <PageCta title="Learn what families can expect at launch" body="The Parent Guide covers timings, school format, transport, meals, facilities, and frequently asked questions." primaryLabel="Read the Parent Guide" primaryHref="/parent-guide" secondaryLabel="View Admissions" secondaryHref="/admissions" />
+      <PageCta title="The parent's guide to the Gurukulam" body="The Parent Guide covers timings, school format, transport, meals, facilities, and frequently asked questions." primaryLabel="Read the Parent Guide" primaryHref="/parent-guide" secondaryLabel="View Admissions" secondaryHref="/admissions" />
     </>
   );
 }

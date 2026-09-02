@@ -6,7 +6,6 @@
   programme photography would sit badly on a devotional image.
 */
 import { PageCta, PageHero } from "@/components/pages/InnerPage";
-import { SectionIntro, GoldRule } from "@/components/home/SectionIntro";
 import { Reveal } from "@/components/motion/Reveal";
 import { Img } from "@/components/ui/Img";
 import { INSPIRATION } from "@/data/media";
@@ -24,13 +23,12 @@ export function InspirationPage() {
     <>
       <PageHero
         eyebrow="Our Inspiration"
-        title="The teachers this school looks to"
+        title="The Acharyas who guide our vision"
         lead="Vidyabhushana Gurukulam rests on two lives: the scholar whose name it carries, and the teacher who carried Vedic education to the world."
       />
 
       <Prabhupada />
       <Baladeva />
-      <ClosingThought />
 
       <PageCta
         title="See how this shapes the school day"
@@ -129,25 +127,6 @@ function Baladeva() {
           ))}
         </div>
       </div>
-    </section>
-  );
-}
-
-function ClosingThought() {
-  return (
-    <section className="bg-body px-5 py-20 sm:px-8 lg:py-24" aria-labelledby="inspiration-closing-title">
-      <Reveal className="mx-auto max-w-[860px] text-center">
-        <SectionIntro
-          eyebrow="What we take from them"
-          title="Scholarship and reach, brought to one classroom"
-          headingId="inspiration-closing-title"
-          className="mx-auto"
-        />
-        <GoldRule className="my-8" />
-        <p className="text-[18px] leading-8 text-text">
-          From Srila Baladeva Vidyabhushana we take the standard: that the tradition deserves real intellectual rigour, and that a child raised in it should never have to choose between faith and thinking clearly. From Srila Prabhupada we take the method: an education that is practical, disciplined, and unembarrassed about its own culture. Between them they describe the whole of what we are attempting in Vadodara.
-        </p>
-      </Reveal>
     </section>
   );
 }

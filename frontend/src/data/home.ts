@@ -143,7 +143,7 @@ export interface FooterContent {
  * PDF, so anything linking to it should say "documents" instead of promising one download.
  */
 export const CONTACT = {
-  phoneDisplay: "+91 9512512600",
+  phoneDisplay: "+91 95125 12600",
   phoneHref: "tel:+919512512600",
   email: "vidyabhushanagurukulam@gmail.com",
   emailHref: "mailto:vidyabhushanagurukulam@gmail.com",
@@ -166,12 +166,12 @@ export const SITE: SiteContent = {
   description: "An English-medium GSEB day school bringing an NCERT academic education together with a Vedic and cultural curriculum.",
   admissions: "Admissions open for 2027–28 · Nursery to Class 5",
   contactHref: "/contact",
-  // Present tense on purpose: Chaitanya Bala Sankar Kendra is still running. The attribution rule in
+  // Present tense on purpose: Chaitanya Bal Sankar Kendra is still running. The attribution rule in
   // docs/overview.md still applies — the teaching belongs to the founding team, never to the Gurukulam.
   experience: {
     eyebrow: "The people behind the Gurukulam",
     title: "Five years of teaching, and still teaching today",
-    body: "Our founding team teaches around 300 children through Chaitanya Bala Sankar Kendra, a separately managed initiative they have run for five years and continue to run today across seven centres in Vadodara.",
+    body: "Our founding team teaches around 300 children through Chaitanya Bal Sankar Kendra, a separately managed initiative they have run for five years and continue to run today across seven centres in Vadodara.",
     stat: "Around 300",
     statLabel: "children our founding team teaches today",
   },
@@ -209,7 +209,7 @@ export const PILLARS: Pillar[] = [
 
 export const DAILY_RHYTHM: DailyRhythmContent = {
   eyebrow: "A day at the Gurukulam",
-  title: "Grounding first. Academics in depth. Movement and expression to close.",
+  title: "Spiritual Grounding. Academic Depth. Physical & Creative Expression",
   lead: "Classes 1–5 follow a full-day rhythm in which Vedic education comes first, NCERT academics receive the largest block, and two hours of Kreeda and the arts complete the day.",
   groups: [
     { label: "Pre-primary", timing: "08:00–12:00", note: "A separate shorter day." },
@@ -437,7 +437,7 @@ export const ADMISSIONS_STEPS: AdmissionsContent = {
   title: "The admission procedure",
   lead: "Admissions are open from Nursery through Class 5 from the academic year 2027-28.",
   items: [
-    { step: "01", title: "Fill the form", body: "Complete the Gurukulam admission form." },
+    { step: "01", title: "Fill the form", body: "Complete the Gurukulam application form." },
     { step: "02", title: "Orientation", body: "Attend the Gurukulam orientation session." },
     { step: "03", title: "Parent's interview", body: "An interaction & briefing with the parents." },
     { step: "04", title: "Student's evaluation", body: "An assessment of the child." },
