@@ -1,0 +1,88 @@
+<!--
+maintenance/index.html
+Standalone "under maintenance" page published to GitHub Pages while the launch is paused.
+The deploy workflow publishes this folder instead of frontend/dist; copied to 404.html so every old URL lands here too.
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Keep search engines from indexing the placeholder while the site is paused. -->
+    <meta name="robots" content="noindex" />
+    <title>Under Maintenance · Vidyabhushana Gurukulam</title>
+    <meta name="description" content="The Vidyabhushana Gurukulam website is currently under maintenance." />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#1b3057" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --gold: #c9a227;
+        --navy: #1b3057;
+        --ink: #142543;
+        --text: #586254;
+        --border: #dbe3ce;
+        --ground: #f1f4ea;
+        --panel: #fcfdf7;
+      }
+      * { box-sizing: border-box; margin: 0; }
+      html, body { height: 100%; }
+      body {
+        display: grid;
+        place-items: center;
+        padding: 24px 16px;
+        background: radial-gradient(ellipse at top, #f8f3e5 0%, var(--ground) 60%);
+        color: var(--text);
+        font-family: "DM Sans", system-ui, sans-serif;
+        line-height: 1.6;
+      }
+      .poster {
+        width: 100%;
+        max-width: 560px;
+        padding: 56px 40px 48px;
+        text-align: center;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        /* Arched top echoes the arch motif used across the main site. */
+        border-radius: 280px 280px 24px 24px;
+        box-shadow: 0 24px 60px -30px rgba(27, 48, 87, 0.35);
+      }
+      .logo { width: 260px; max-width: 80%; height: auto; margin: 32px auto 0; display: block; }
+      .rule { width: 56px; height: 2px; background: var(--gold); border: 0; margin: 36px auto 28px; }
+      .label {
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      h1 {
+        margin: 12px 0 16px;
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 600;
+        font-size: clamp(30px, 6vw, 40px);
+        line-height: 1.2;
+        color: var(--navy);
+      }
+      p { font-size: 16px; max-width: 38ch; margin: 0 auto; }
+      .sign { margin-top: 32px; font-size: 14px; color: var(--ink); }
+      @media (max-width: 480px) {
+        .poster { padding: 40px 24px 36px; border-radius: 200px 200px 20px 20px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="poster">
+      <img class="logo" src="/logo.svg" alt="Vidyabhushana Gurukulam" />
+      <hr class="rule" />
+      <div class="label">Under maintenance</div>
+      <h1>We'll be back soon</h1>
+      <p>Our website is currently under maintenance. Thank you for your patience and interest in Vidyabhushana Gurukulam.</p>
+      <div class="sign">Hare Krishna</div>
+    </main>
+  </body>
+</html>
